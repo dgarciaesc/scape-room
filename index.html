@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#2b1d0e" />
+  <meta name="description" content="El Testamento del Siglo de Oro — Escape room urbano por el Madrid de los Austrias" />
+  <title>El Testamento del Siglo de Oro</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="css/styles.css?v=5" />
+</head>
+<body>
+  <div id="app">
+    <!-- Barra superior: progreso y puntuación -->
+    <header id="topbar" class="hidden">
+      <div class="seal-track" id="sealTrack" aria-label="Progreso de sellos"></div>
+      <div class="score-box">
+        <span id="scoreValue">0</span>
+        <span class="score-label">ducados</span>
+      </div>
+    </header>
+
+    <!-- Contenedor de pantallas -->
+    <main id="screen" aria-live="polite"></main>
+  </div>
+
+  <!-- Plantilla de aviso (toast) -->
+  <div id="toast" class="toast hidden" role="status"></div>
+
+  <script src="js/data.js?v=5"></script>
+  <script src="js/art.js?v=5"></script>
+  <script src="js/engine.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol === "https:") {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>
