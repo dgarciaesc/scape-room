@@ -61,13 +61,18 @@ empaqueta la PWA ya publicada en HTTPS como app de Play Store sin tocar código.
 ```
 index.html          Shell de la app
 css/styles.css      Estética pergamino / Siglo de Oro
-js/data.js          Guion completo: etapas, enigmas, pistas, respuestas
+js/data.js          Marco del juego: título, prólogo, Historiador, victoria.
+                    Las 6 pruebas NO están aquí (ver "Monetización" abajo)
+js/license.js       Habla con el backend: código de licencia, dispositivo,
+                    caché local de las etapas ya desbloqueadas
 js/art.js           Grabados SVG de reserva (si una etapa no tiene photo)
 img/                Obras de arte de época (dominio público, W. Commons)
 js/engine.js        Validación (normaliza tildes/mayúsculas/separadores),
                     pistas progresivas, puntuación, guardado, haversine GPS
-js/app.js           Pantallas, narración TTS, GPS, compartir
+js/app.js           Pantallas, narración TTS, GPS, compartir, candado de licencia
 sw.js               Cache offline
+gracias.html        Página post-pago: muestra el código de licencia
+backend/            Worker de Cloudflare + esquema D1 (ver backend/README.md)
 manifest.webmanifest, icons/
 ```
 
@@ -87,6 +92,30 @@ histórico, enigmas, las tres pistas progresivas, indicaciones de camino,
 prueba de Google y despedida final. Cada cabecera indica qué está haciendo
 ("os plantea el enigma", "os susurra una pista"), para que se lea como una
 conversación con el guía.
+
+## Monetización: licencia de pago por equipo
+
+El juego **no funciona sin un código de licencia válido**. Al abrirlo por
+primera vez aparece un candado en vez del botón de jugar, con dos opciones:
+introducir un código ya comprado, o comprar uno (Stripe Checkout).
+
+**Por qué no basta con JavaScript en el cliente:** cualquier "si no ha
+pagado, bloquear" en el propio código se salta abriendo la consola del
+navegador. Por eso el contenido real de las 6 pruebas (narrativa, enigmas,
+pistas, respuestas) **no vive en este repositorio público** — se sirve
+desde un backend (`backend/worker.js`, Cloudflare Workers + D1) solo tras
+validar el código contra la base de datos. `js/data.js` solo contiene el
+marco gratuito (título, prólogo, Historiador): no hay nada que "hackear"
+ahí porque las respuestas no están.
+
+- Un código = un equipo (hasta 6 personas) = un dispositivo, fijado en la
+  primera vez que se usa.
+- Tras la validación, las 6 pruebas se cachean en el móvil: tal como
+  antes, el resto de la partida funciona sin cobertura — la única vez que
+  hace falta conexión es para desbloquear al principio.
+- Ver [`backend/README.md`](backend/README.md) para desplegar el backend
+  (Cloudflare + Stripe, todo desde panel web, sin instalar nada) y
+  conectar `js/license.js` a tu Worker.
 
 ## Mecánicas implementadas (según especificación)
 

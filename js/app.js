@@ -339,6 +339,8 @@
 
   /* ---------- Pantalla: título ---------- */
   function viewTitle() {
+    if (!License.isUnlocked()) return viewLicenseGate();
+
     const hasSave = S.startedAt && !S.finishedAt;
     const v = el(`
       <div class="title-screen">
@@ -372,6 +374,82 @@
           location.reload();
         }
       };
+    $screen.appendChild(v);
+  }
+
+  /* ---------- Pantalla: licencia (candado antes de jugar) ----------
+     Sin código válido no hay pruebas que cargar: GAME_DATA.stages
+     está vacío hasta que License.redeem() las descarga del backend. */
+  function viewLicenseGate() {
+    const v = el(`
+      <div class="title-screen">
+        <div class="title-emblem">🔑</div>
+        <h1>${GAME_DATA.title}</h1>
+        <p class="title-sub">${GAME_DATA.subtitle}</p>
+        <div class="ornament">❦ ❦ ❦</div>
+
+        <div class="card">
+          <div class="card-label">🔑 Licencia de equipo</div>
+          <p>
+            Esta aventura requiere una licencia por equipo (válida para
+            hasta 6 personas jugando juntas desde un mismo móvil). Si ya
+            la has comprado, introduce aquí tu código:
+          </p>
+          <form class="answer-form" id="licenseForm">
+            <input type="text" id="licenseInput" placeholder="MADRID-XXXXXX"
+                   autocomplete="off" autocapitalize="characters" enterkeyhint="go" />
+            <div id="licenseError"></div>
+            <button type="submit" class="btn-primary" id="btnRedeem">
+              Desbloquear la aventura
+            </button>
+          </form>
+        </div>
+
+        <button class="btn-secondary" id="btnBuy">
+          💳 Comprar licencia — ${GAME_DATA.price || "19€ por equipo"}
+        </button>
+        <p class="title-meta">
+          El código se activa en este móvil la primera vez que se usa.
+          Solo hace falta conexión para este paso — el resto de la
+          aventura funciona sin cobertura.
+        </p>
+      </div>
+    `);
+
+    const $input = v.querySelector("#licenseInput");
+    const $error = v.querySelector("#licenseError");
+    const $btnRedeem = v.querySelector("#btnRedeem");
+    const $btnBuy = v.querySelector("#btnBuy");
+
+    v.querySelector("#licenseForm").onsubmit = async (e) => {
+      e.preventDefault();
+      $error.innerHTML = "";
+      $btnRedeem.disabled = true;
+      $btnRedeem.textContent = "Comprobando…";
+      try {
+        const stages = await License.redeem($input.value);
+        GAME_DATA.stages = stages;
+        toast("⚜ Licencia activada. ¡Que comience la aventura!");
+        go("title");
+      } catch (err) {
+        $error.innerHTML = `<div class="hint-box direct">${err.message}</div>`;
+        $btnRedeem.disabled = false;
+        $btnRedeem.textContent = "Desbloquear la aventura";
+      }
+    };
+
+    $btnBuy.onclick = async () => {
+      $btnBuy.disabled = true;
+      $btnBuy.textContent = "Abriendo pago…";
+      try {
+        await License.startCheckout();
+      } catch (err) {
+        toast(err.message);
+        $btnBuy.disabled = false;
+        $btnBuy.textContent = `💳 Comprar licencia — ${GAME_DATA.price || "19€ por equipo"}`;
+      }
+    };
+
     $screen.appendChild(v);
   }
 
@@ -807,8 +885,16 @@
   }
 
   /* ---------- Arranque ---------- */
+  // Si ya se validó una licencia antes, las 6 pruebas se recuperan de
+  // la caché local (sin red); si no, GAME_DATA.stages queda vacío y
+  // viewTitle() mostrará el candado de licencia.
+  GAME_DATA.stages = License.cachedStages() || [];
+
   const restored = Engine.load();
-  if (restored && S.startedAt && !S.finishedAt) {
+  if (!GAME_DATA.stages.length) {
+    // sin licencia válida en caché no hay nada que reanudar: al candado
+    S.screen = "title";
+  } else if (restored && S.startedAt && !S.finishedAt) {
     S.savedScreen = S.screen; // recordar dónde iba para "Continuar"
     S.screen = "title";
   } else if (restored && S.finishedAt) {
