@@ -98,6 +98,14 @@ conversación con el guía.
 - Puntuación en "ducados": 1000/etapa, −100 por fallo, −250 por revelación.
 - GPS opcional: botón "¿Estoy cerca?" (distancia haversine al hito) y enlace
   a Google Maps a pie. Nunca bloquea: se puede jugar en "modo sofá".
+- En el prólogo, el plano de Texeira (1656) está georreferenciado: al
+  pulsar "¿Estoy cerca?" aparece un punto pulsante con la posición real
+  del jugador sobre el propio grabado antiguo. Se calibra con una
+  transformación afín (`mapGeoref` en `js/data.js`) ajustada con 3 puntos
+  identificables en el mapa (Plaza Mayor, Puerta del Sol, Plaza de la
+  Villa); fuera de esa zona el punto se ajusta al borde más cercano y se
+  marca en dorado como aproximado, ya que es un mapa manuscrito del
+  s. XVII, no una ortofoto.
 - Narración por voz masculina (Web Speech API). La voz no se deja al azar:
   se busca por nombre entre las masculinas de cada plataforma (Jorge, Diego,
   Pablo, Raúl, Reed…), prefiriendo acento de España, porque la primera voz

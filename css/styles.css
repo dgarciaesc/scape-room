@@ -195,6 +195,17 @@ figure.art-card img {
   object-fit: contain;
 }
 
+.art-card-imgwrap {
+  position: relative; /* ancla del punto "estáis aquí" */
+  line-height: 0;
+}
+
+/* El plano de Texeira no debe recortarse ni dejar bandas vacías: el
+   punto del jugador se calcula como % exacto sobre la imagen entera. */
+#prologueMap img {
+  max-height: none;
+}
+
 figure.art-card figcaption {
   line-height: 1.4;
   font-size: 12.5px;
@@ -616,6 +627,62 @@ input.shake {
 }
 
 .gps-status.near { color: var(--ok); font-weight: 700; }
+
+.pin-note {
+  font-size: 12.5px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* ---------- Punto "estáis aquí" sobre el plano de Texeira ---------- */
+.user-map-pin {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+  animation: fadein 0.4s ease;
+}
+
+.pin-dot,
+.pin-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+}
+
+.pin-dot {
+  width: 13px;
+  height: 13px;
+  margin: -6.5px 0 0 -6.5px;
+  background: radial-gradient(circle at 35% 30%, #d34848, var(--crimson));
+  border: 2px solid #fff6e6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.pin-ring {
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border: 2px solid var(--crimson);
+  animation: pin-ping 1.7s ease-out infinite;
+}
+
+/* Cuando el jugador cae fuera de este fragmento del plano y se ha
+   recortado su posición, el punto se distingue en dorado */
+.user-map-pin.approximate .pin-dot {
+  background: radial-gradient(circle at 35% 30%, #e0ab2e, var(--gold));
+}
+.user-map-pin.approximate .pin-ring {
+  border-color: var(--gold);
+}
+
+@keyframes pin-ping {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.3); opacity: 0; }
+}
 
 /* ---------- Victoria ---------- */
 .victory-screen { text-align: center; }

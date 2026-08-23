@@ -45,6 +45,22 @@ const GAME_DATA = {
     photo: "img/prologo.jpg",
     photoCaption:
       "Plano de Madrid de Pedro Texeira (1656) · Biblioteca Nacional de España",
+    /* Georreferenciación del plano de Texeira: transformación afín que
+       convierte lat/lng real en píxel (x,y) sobre img/prologo.jpg
+       (960×770 px). Calibrada con 3 puntos identificables en el propio
+       grabado y sus coordenadas reales: Plaza Mayor, Puerta del Sol y
+       Plaza de la Villa. Al ser un mapa manuscrito del s. XVII (no una
+       ortofoto), la posición resultante es aproximada, no exacta. */
+    mapGeoref: {
+      imageWidth: 960,
+      imageHeight: 770,
+      a: -5304.878048769218,
+      b: 102896.34146342106,
+      c: 596270.1951215196,
+      d: -48231.70731729298,
+      e: -14298.780487738779,
+      f: 1896574.268301812,
+    },
   },
 
   victory: {

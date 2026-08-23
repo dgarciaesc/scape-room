@@ -154,8 +154,11 @@
     });
   }
 
-  /* ---------- GPS ---------- */
-  function gpsCheck(targetCoords, $status) {
+  /* ---------- GPS ----------
+     `onMap`, si se pasa, georreferencia al jugador sobre un plano
+     histórico: {georef, container} donde container es el <figure> de la
+     imagen. Hoy solo se usa en el prólogo, con el plano de Texeira. */
+  function gpsCheck(targetCoords, $status, onMap) {
     if (!("geolocation" in navigator)) {
       $status.textContent = "Este dispositivo no dispone de GPS.";
       return;
@@ -163,10 +166,8 @@
     $status.textContent = "Consultando la brújula real…";
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const d = Engine.distanceMeters(
-          { lat: pos.coords.latitude, lng: pos.coords.longitude },
-          targetCoords
-        );
+        const here = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        const d = Engine.distanceMeters(here, targetCoords);
         if (d < 120) {
           $status.textContent = "✔ ¡Habéis llegado al lugar señalado!";
           $status.classList.add("near");
@@ -177,6 +178,7 @@
           $status.textContent =
             "Estáis muy lejos de Madrid… pero podéis jugar en modo sofá igualmente.";
         }
+        if (onMap) placePinOnMap(here, onMap, $status);
       },
       () => {
         $status.textContent =
@@ -184,6 +186,33 @@
       },
       { enableHighAccuracy: true, timeout: 8000 }
     );
+  }
+
+  /* Dibuja (o mueve) el punto "estáis aquí" sobre un plano histórico
+     georreferenciado, usando la transformación afín de data.js. */
+  function placePinOnMap(here, { georef, container }, $status) {
+    if (!container) return;
+    const pos = Engine.projectToMap(here, georef);
+    let pin = container.querySelector(".user-map-pin");
+    if (!pin) {
+      pin = el(`
+        <div class="user-map-pin" title="Vuestra posición aproximada">
+          <span class="pin-ring"></span>
+          <span class="pin-dot"></span>
+        </div>`);
+      container.appendChild(pin);
+    }
+    pin.style.left = pos.xPercent + "%";
+    pin.style.top = pos.yPercent + "%";
+    pin.classList.toggle("approximate", pos.approximate);
+    if ($status) {
+      $status.insertAdjacentHTML(
+        "beforeend",
+        pos.approximate
+          ? " <span class='pin-note'>(os situamos donde el plano alcanza)</span>"
+          : " <span class='pin-note'>· ⚜ marcados en el plano</span>"
+      );
+    }
   }
 
   function mapsLink(coords, label) {
@@ -216,16 +245,22 @@
   /* ---------- Obra de arte de cada etapa ---------- */
   /* Cuadro/grabado histórico (photo) con su crédito; si la etapa no
      tiene imagen, cae al grabado SVG de art.js */
-  function artCard(item, alt) {
+  function artCard(item, alt, id) {
+    // El id va en el envoltorio de la imagen (no en el <figure>): así el
+    // pie de foto no descuadra los porcentajes al posicionar un punto
+    // sobre la imagen (ver placePinOnMap).
+    const idAttr = id ? ` id="${id}"` : "";
     if (item.photo) {
       return `
         <figure class="art-card">
-          <img src="${item.photo}" alt="${alt}" loading="lazy" />
+          <div class="art-card-imgwrap"${idAttr}>
+            <img src="${item.photo}" alt="${alt}" loading="lazy" />
+          </div>
           ${item.photoCaption ? `<figcaption>${item.photoCaption}</figcaption>` : ""}
         </figure>`;
     }
     const key = item.id || "prologue";
-    return STAGE_ART[key] ? `<div class="art-card">${STAGE_ART[key]}</div>` : "";
+    return STAGE_ART[key] ? `<div class="art-card"${idAttr}>${STAGE_ART[key]}</div>` : "";
   }
 
   /* ---------- Fotos de recuerdo ---------- */
@@ -371,7 +406,7 @@
           ${speaker("os encomienda una misión")}
           <p>${p.text}</p>
         </div>
-        ${artCard(p, "Plano de Madrid de Texeira, 1656")}
+        ${artCard(p, "Plano de Madrid de Texeira, 1656", "prologueMap")}
         ${mapsLink(p.startCoords, p.startLocation)}
         <p class="gps-status" id="gpsStatus"></p>
         <button class="btn-secondary" id="btnGps">📍 ¿Estoy cerca?</button>
@@ -380,7 +415,10 @@
     `);
     v.querySelector(".btn-audio").onclick = (e) => tts.speak(p.text, e.currentTarget);
     v.querySelector("#btnGps").onclick = () =>
-      gpsCheck(p.startCoords, v.querySelector("#gpsStatus"));
+      gpsCheck(p.startCoords, v.querySelector("#gpsStatus"), {
+        georef: p.mapGeoref,
+        container: v.querySelector("#prologueMap"),
+      });
     v.querySelector("#btnGo").onclick = () => {
       if (!S.startedAt) S.startedAt = Date.now();
       go("stage");

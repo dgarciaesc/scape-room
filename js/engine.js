@@ -152,6 +152,26 @@ const Engine = (() => {
     return 2 * R * Math.asin(Math.sqrt(h));
   }
 
+  /* --- Proyección sobre un mapa histórico georreferenciado ---
+     Convierte lat/lng real en una posición porcentual (0-100) dentro de
+     la imagen, vía la transformación afín calibrada en data.js. Se deja
+     un margen para que el punto nunca caiga pegado al borde ni fuera de
+     la imagen, aunque el usuario esté lejos de la zona calibrada. */
+  function projectToMap(coords, georef) {
+    const x = georef.a * coords.lat + georef.b * coords.lng + georef.c;
+    const y = georef.d * coords.lat + georef.e * coords.lng + georef.f;
+    const margin = 22;
+    const cx = Math.min(georef.imageWidth - margin, Math.max(margin, x));
+    const cy = Math.min(georef.imageHeight - margin, Math.max(margin, y));
+    return {
+      xPercent: (cx / georef.imageWidth) * 100,
+      yPercent: (cy / georef.imageHeight) * 100,
+      // si hubo que recortar la posición, el punto real cae fuera de
+      // este fragmento del plano: la posición mostrada es orientativa
+      approximate: cx !== x || cy !== y,
+    };
+  }
+
   /* --- Fotos de recuerdo (clave aparte: pueden pesar) --- */
   const PHOTO_KEY = "testamento_fotos_v1";
 
@@ -210,6 +230,7 @@ const Engine = (() => {
     completeGoogle,
     advanceStage,
     distanceMeters,
+    projectToMap,
     elapsedText,
     getPhotos,
     savePhoto,
