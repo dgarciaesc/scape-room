@@ -4,7 +4,7 @@
    pegando este archivo en el panel de Cloudflare (Quick Edit).
    ============================================================
 
-   RUTAS:
+   RUTAS :
      POST /api/checkout          → crea una sesión de pago (Stripe)
      POST /api/stripe-webhook    → Stripe notifica el pago; genera el código
      GET  /api/code-for-session  → la página de "gracias" recupera el código
