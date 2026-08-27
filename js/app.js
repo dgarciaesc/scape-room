@@ -7,9 +7,11 @@
   const $topbar = document.getElementById("topbar");
   const $sealTrack = document.getElementById("sealTrack");
   const $scoreValue = document.getElementById("scoreValue");
+  const $scoreLabel = document.querySelector(".score-label");
   const $toast = document.getElementById("toast");
 
   const S = Engine.state;
+  const t = I18N.t; // atajo muy usado
 
   /* ---------- Utilidades ---------- */
   function el(html) {
@@ -28,56 +30,70 @@
 
   /* ---------- Narración (Web Speech API) ----------
      Don Baltasar debe sonar a hombre. El catálogo de voces varía mucho
-     entre dispositivos y la primera voz "es" suele ser femenina (Mónica en
-     Apple, Google español en Android), así que se elige por nombre. */
+     entre dispositivos y la primera voz "es"/"en"/"fr" suele ser
+     femenina (Mónica en Apple, Google español en Android), así que se
+     elige por nombre. La voz sigue el idioma activo de la interfaz. */
 
-  // Voces masculinas en español por plataforma, de más a menos preferida
-  const MALE_VOICES = [
-    "jorge", "diego", "pablo", "raul", "raúl", "alvaro", "álvaro", // Apple / Microsoft
-    "carlos", "juan", "enrique", "javier", "miguel", "paco",
-    "reed", "rocko", "eddy", "grandpa", // voces de sistema recientes de Apple
-  ];
+  const BCP47 = { es: "es-ES", en: "en-GB", fr: "fr-FR" };
+
+  // Voces masculinas conocidas por idioma y plataforma, de más a menos
+  // preferida. Cubre Apple/Microsoft/Android.
+  const MALE_VOICES = {
+    es: [
+      "jorge", "diego", "pablo", "raul", "raúl", "alvaro", "álvaro",
+      "carlos", "juan", "enrique", "javier", "miguel", "paco",
+      "reed", "rocko", "eddy", "grandpa",
+    ],
+    en: [
+      "daniel", "arthur", "oliver", "ryan", "aaron", "fred", "gordon",
+      "reed", "rocko", "eddy", "grandpa", "george", "james",
+    ],
+    fr: [
+      "thomas", "daniel", "nicolas", "yannick", "aurelien", "aurélien",
+      "reed", "rocko", "eddy", "grandpa",
+    ],
+  };
 
   // Femeninas habituales, para descartarlas cuando no hay coincidencia clara
   const FEMALE_VOICES = [
     "monica", "mónica", "paulina", "marisol", "esperanza", "helena", "laura",
     "sabina", "dalia", "elena", "lucia", "lucía", "penelope", "penélope",
     "flo", "sandy", "shelley", "grandma", "isabela", "camila", "google español",
+    "samantha", "kate", "serena", "moira", "tessa", "karen", "google uk english",
+    "amelie", "amélie", "audrey", "chantal", "google français",
   ];
 
   const tts = {
-    _voice: undefined, // se resuelve una vez y se reutiliza
+    _voice: undefined,
+    _voiceLang: undefined, // idioma para el que se calculó _voice
 
-    pickVoice() {
+    pickVoice(lang) {
       const voices = speechSynthesis.getVoices();
       if (!voices.length) return null;
-      const spanish = voices.filter((v) => v.lang.toLowerCase().startsWith("es"));
-      if (!spanish.length) return null;
+      const prefix = lang; // "es" | "en" | "fr"
+      const pool = voices.filter((v) => v.lang.toLowerCase().startsWith(prefix));
+      if (!pool.length) return null;
 
-      // España primero: es el acento del personaje
+      const bcp = BCP47[lang].toLowerCase();
       const byLocale = (list) => [
-        ...list.filter((v) => v.lang.toLowerCase().startsWith("es-es")),
-        ...list.filter((v) => !v.lang.toLowerCase().startsWith("es-es")),
+        ...list.filter((v) => v.lang.toLowerCase() === bcp),
+        ...list.filter((v) => v.lang.toLowerCase() !== bcp),
       ];
       const name = (v) => (v.name + " " + (v.voiceURI || "")).toLowerCase();
+      const wantedList = MALE_VOICES[lang] || [];
 
-      // 1) voz masculina conocida, por orden de preferencia
-      for (const wanted of MALE_VOICES) {
-        const hit = byLocale(spanish).find((v) => name(v).includes(wanted));
+      for (const wanted of wantedList) {
+        const hit = byLocale(pool).find((v) => name(v).includes(wanted));
         if (hit) return hit;
       }
-      // 2) voces que se declaran masculinas (Android: "...#male_1")
-      const tagged = byLocale(spanish).find((v) => /male|masculin|hombre/.test(name(v)));
-      if (tagged && !/female|femenin/.test(name(tagged))) return tagged;
-      // 3) cualquiera que no sea una femenina conocida
-      const neutral = byLocale(spanish).find(
+      const tagged = byLocale(pool).find((v) => /male|masculin|homme|hombre/.test(name(v)));
+      if (tagged && !/female|femenin|féminin/.test(name(tagged))) return tagged;
+      const neutral = byLocale(pool).find(
         (v) => !FEMALE_VOICES.some((f) => name(v).includes(f))
       );
-      return neutral || byLocale(spanish)[0];
+      return neutral || byLocale(pool)[0];
     },
 
-    /* Si el dispositivo solo ofrece voces femeninas, se compensa bajando
-       más el tono para que Don Baltasar no suene a mujer. */
     pitchFor(voice) {
       if (!voice) return 0.85;
       const n = (voice.name + " " + (voice.voiceURI || "")).toLowerCase();
@@ -85,19 +101,19 @@
     },
 
     voice() {
-      if (this._voice === undefined) {
-        const v = this.pickVoice();
-        // getVoices() llega vacío al principio en algunos navegadores:
-        // no memorizar hasta que haya catálogo
-        if (v === null) return null;
+      const lang = I18N.getLang() || "es";
+      if (this._voice === undefined || this._voiceLang !== lang) {
+        const v = this.pickVoice(lang);
+        if (v === null) return null; // catálogo aún vacío: no memorizar
         this._voice = v;
+        this._voiceLang = lang;
       }
       return this._voice;
     },
 
     speak(text, btn) {
       if (!("speechSynthesis" in window)) {
-        toast("Tu navegador no soporta narración por voz");
+        toast(t("gps_unsupported")); // reutilizamos aviso genérico de "no soportado"
         return;
       }
       if (speechSynthesis.speaking) {
@@ -109,7 +125,7 @@
         }
       }
       const u = new SpeechSynthesisUtterance(text);
-      u.lang = "es-ES";
+      u.lang = BCP47[I18N.getLang() || "es"];
       u.rate = 1.0;
       const voice = this.voice();
       if (voice) u.voice = voice;
@@ -142,9 +158,10 @@
   function renderTopbar() {
     $topbar.classList.toggle(
       "hidden",
-      S.screen === "title" || S.screen === "prologue"
+      S.screen === "home" || S.screen === "title" || S.screen === "prologue"
     );
     $scoreValue.textContent = S.score;
+    $scoreLabel.textContent = t("currency");
     $sealTrack.innerHTML = "";
     GAME_DATA.stages.forEach((st, i) => {
       const done =
@@ -160,29 +177,27 @@
      imagen. Hoy solo se usa en el prólogo, con el plano de Texeira. */
   function gpsCheck(targetCoords, $status, onMap) {
     if (!("geolocation" in navigator)) {
-      $status.textContent = "Este dispositivo no dispone de GPS.";
+      $status.textContent = t("gps_unsupported");
       return;
     }
-    $status.textContent = "Consultando la brújula real…";
+    $status.textContent = t("gps_checking");
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const here = { lat: pos.coords.latitude, lng: pos.coords.longitude };
         const d = Engine.distanceMeters(here, targetCoords);
         if (d < 120) {
-          $status.textContent = "✔ ¡Habéis llegado al lugar señalado!";
+          $status.textContent = t("gps_arrived");
           $status.classList.add("near");
         } else if (d < 100000) {
-          $status.textContent = `Estáis a ${Math.round(d)} m del objetivo. ¡Seguid caminando!`;
+          $status.textContent = t("gps_distance", { d: Math.round(d) });
           $status.classList.remove("near");
         } else {
-          $status.textContent =
-            "Estáis muy lejos de Madrid… pero podéis jugar en modo sofá igualmente.";
+          $status.textContent = t("gps_far");
         }
         if (onMap) placePinOnMap(here, onMap, $status);
       },
       () => {
-        $status.textContent =
-          "Sin señal de GPS (permiso denegado). Podéis continuar sin él.";
+        $status.textContent = t("gps_denied");
       },
       { enableHighAccuracy: true, timeout: 8000 }
     );
@@ -196,7 +211,7 @@
     let pin = container.querySelector(".user-map-pin");
     if (!pin) {
       pin = el(`
-        <div class="user-map-pin" title="Vuestra posición aproximada">
+        <div class="user-map-pin" title="${t("pin_title")}">
           <span class="pin-ring"></span>
           <span class="pin-dot"></span>
         </div>`);
@@ -208,31 +223,30 @@
     if ($status) {
       $status.insertAdjacentHTML(
         "beforeend",
-        pos.approximate
-          ? " <span class='pin-note'>(os situamos donde el plano alcanza)</span>"
-          : " <span class='pin-note'>· ⚜ marcados en el plano</span>"
+        ` <span class='pin-note'>${pos.approximate ? t("pin_approx") : t("pin_exact")}</span>`
       );
     }
   }
 
   function mapsLink(coords, label) {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}&travelmode=walking`;
-    return `<a class="map-link" href="${url}" target="_blank" rel="noopener">🗺 Cómo llegar a ${label}</a>`;
+    return `<a class="map-link" href="${url}" target="_blank" rel="noopener">${t("maps_link", { label })}</a>`;
   }
 
   /* ---------- El Historiador: cabecera con su avatar ----------
      Se antepone a todo texto que pronuncia el guía, para que se vea
-     quién habla. `tag` describe el tipo de intervención. */
+     quién habla. `tagKey` es una clave de I18N.STRINGS que describe el
+     tipo de intervención. */
   const NARRATOR = GAME_DATA.narrator;
 
-  function speaker(tag) {
+  function speaker(tagKey) {
     return `
       <div class="speaker">
         <img class="speaker-avatar" src="${NARRATOR.avatar}"
              alt="${NARRATOR.name}, ${NARRATOR.role}" />
         <div class="speaker-id">
           <span class="speaker-name">${NARRATOR.name}</span>
-          <span class="speaker-tag">${tag}</span>
+          <span class="speaker-tag">${t(tagKey)}</span>
         </div>
       </div>`;
   }
@@ -270,12 +284,12 @@
       <div class="photo-section">
         <div id="photoPreview">${
           existing
-            ? `<div class="photo-frame"><img src="${existing}" alt="Foto del equipo" />
+            ? `<div class="photo-frame"><img src="${existing}" alt="${t("photo_alt")}" />
                  <div class="photo-seal">✦</div></div>`
             : ""
         }</div>
         <button class="btn-secondary" id="btnPhoto">
-          📸 ${existing ? "Repetir foto de recuerdo" : `Foto de recuerdo en ${stage.location}`}
+          ${existing ? t("photo_repeat") : t("photo_take", { location: stage.location })}
         </button>
         <input type="file" accept="image/*" capture="environment" id="photoInput" hidden />
       </div>
@@ -297,13 +311,13 @@
         URL.revokeObjectURL(img.src);
         if (Engine.savePhoto(stage.id, dataUrl)) {
           wrap.querySelector("#photoPreview").innerHTML = `
-            <div class="photo-frame"><img src="${dataUrl}" alt="Foto del equipo" />
+            <div class="photo-frame"><img src="${dataUrl}" alt="${t("photo_alt")}" />
               <div class="photo-seal">✦</div></div>`;
-          wrap.querySelector("#btnPhoto").textContent = "📸 Repetir foto de recuerdo";
-          toast("⚜ Foto sellada en la crónica");
+          wrap.querySelector("#btnPhoto").textContent = t("photo_repeat");
+          toast(t("photo_saved"));
           if (onSaved) onSaved();
         } else {
-          toast("No hay espacio para guardar la foto");
+          toast(t("photo_no_space"));
         }
       };
       img.src = URL.createObjectURL(file);
@@ -327,6 +341,7 @@
     renderTopbar();
     $screen.innerHTML = "";
     const views = {
+      home: viewHome,
       title: viewTitle,
       prologue: viewPrologue,
       stage: viewStage,
@@ -334,7 +349,89 @@
       transition: viewTransition,
       victory: viewVictory,
     };
-    (views[S.screen] || viewTitle)();
+    (views[S.screen] || viewHome)();
+  }
+
+  /* Cambia de idioma en caliente: re-resuelve GAME_DATA, refresca el
+     contenido de las 6 pruebas si ya había una licencia activa, y
+     vuelve a pintar la pantalla actual. */
+  async function changeLanguage(lang) {
+    I18N.setLang(lang);
+    applyLanguage(lang);
+    document.documentElement.lang = lang;
+    if (License.isUnlocked()) {
+      const before = JSON.stringify(GAME_DATA.stages.map((s) => s.id));
+      await License.refreshLanguage(lang);
+      const refreshed = License.cachedStages();
+      if (refreshed && JSON.stringify(refreshed.map((s) => s.id)) === before) {
+        GAME_DATA.stages = refreshed;
+      }
+    }
+    render();
+  }
+
+  /* ---------- Pantalla: home (marca + selector de idioma) ----------
+     Es la primerísima pantalla, antes incluso del candado de licencia.
+     Solo se muestra si no hay idioma elegido todavía; una vez elegido,
+     se recuerda (localStorage) y no vuelve a aparecer. */
+  function viewHome() {
+    const v = el(`
+      <div class="home-screen">
+        <div class="home-photo">
+          <img src="img/home_madrid.jpg" alt="Madrid" />
+          <div class="home-scrim"></div>
+          <div class="home-content">
+            <div class="home-emblem">👑</div>
+            <h1 class="home-title">Madrid Aventure</h1>
+            <p class="home-tagline" id="homeTagline"></p>
+            <div class="home-langs">
+              <button class="home-lang-btn" data-lang="es">
+                <span class="flag">🇪🇸</span> Español
+              </button>
+              <button class="home-lang-btn" data-lang="en">
+                <span class="flag">🇬🇧</span> English
+              </button>
+              <button class="home-lang-btn" data-lang="fr">
+                <span class="flag">🇫🇷</span> Français
+              </button>
+            </div>
+          </div>
+          <p class="home-credit">Foto: José Manuel Suárez (CC BY 2.0)</p>
+        </div>
+      </div>
+    `);
+
+    // El tagline rota entre los 3 idiomas — nadie ha elegido uno
+    // todavía, así que no presuponemos que el jugador lee español.
+    // Acceso directo a los 3 textos, sin tocar el idioma activo global
+    // (que aún no existe en este punto).
+    const $tagline = v.querySelector("#homeTagline");
+    const rawStrings = {
+      es: "Escape rooms urbanos por el corazón histórico de Madrid",
+      en: "Urban escape rooms through the historic heart of Madrid",
+      fr: "Escape games urbains au cœur historique de Madrid",
+    };
+    let i = 0;
+    const langs3 = ["es", "en", "fr"];
+    function tickTagline() {
+      $tagline.textContent = rawStrings[langs3[i % 3]];
+      i++;
+    }
+    tickTagline();
+    const taglineInterval = setInterval(tickTagline, 2600);
+
+    v.querySelectorAll(".home-lang-btn").forEach((btn) => {
+      btn.onclick = () => {
+        clearInterval(taglineInterval);
+        const lang = btn.dataset.lang;
+        I18N.setLang(lang);
+        applyLanguage(lang);
+        document.documentElement.lang = lang;
+        go("title");
+      };
+    });
+
+    $screen.appendChild(v);
   }
 
   /* ---------- Pantalla: título ---------- */
@@ -344,21 +441,19 @@
     const hasSave = S.startedAt && !S.finishedAt;
     const v = el(`
       <div class="title-screen">
+        ${langSwitcher()}
         <div class="title-emblem">👑</div>
         <h1>${GAME_DATA.title}</h1>
         <p class="title-sub">${GAME_DATA.subtitle}</p>
         <div class="ornament">❦ ❦ ❦</div>
-        <p class="title-meta">
-          6 sellos ocultos en piedra y bronce<br />
-          Del Palacio Real a la Plaza Mayor · ~2 h a pie<br />
-          Recomendado: jugar en la calle, en equipo
-        </p>
+        <p class="title-meta">${t("title_meta")}</p>
         <button class="btn-primary" id="btnStart">
-          ${hasSave ? "▶ Continuar la investigación" : "Comenzar la aventura"}
+          ${hasSave ? t("title_continue") : t("title_start")}
         </button>
-        ${hasSave ? '<button class="btn-ghost" id="btnReset">Empezar de nuevo</button>' : ""}
+        ${hasSave ? `<button class="btn-ghost" id="btnReset">${t("title_restart")}</button>` : ""}
       </div>
     `);
+    wireLangSwitcher(v);
     v.querySelector("#btnStart").onclick = () => {
       if (hasSave) {
         go(S.stageIndex === 0 && !S.stageLog.length && S.screen === "title" ? "stage" : resumeScreen());
@@ -369,12 +464,30 @@
     const btnReset = v.querySelector("#btnReset");
     if (btnReset)
       btnReset.onclick = () => {
-        if (confirm("¿Borrar la partida guardada y empezar de nuevo?")) {
+        if (confirm(t("title_restart_confirm"))) {
           Engine.reset();
           location.reload();
         }
       };
     $screen.appendChild(v);
+  }
+
+  /* Pequeño selector de idioma (banderas) reutilizado en título y
+     candado de licencia, para poder corregirlo sin volver a la home. */
+  function langSwitcher() {
+    const current = I18N.getLang() || "es";
+    const flags = { es: "🇪🇸", en: "🇬🇧", fr: "🇫🇷" };
+    return `
+      <div class="lang-switcher">
+        ${I18N.SUPPORTED.map(
+          (l) => `<button class="lang-chip ${l === current ? "active" : ""}" data-lang="${l}">${flags[l]}</button>`
+        ).join("")}
+      </div>`;
+  }
+  function wireLangSwitcher(v) {
+    v.querySelectorAll(".lang-chip").forEach((btn) => {
+      btn.onclick = () => changeLanguage(btn.dataset.lang);
+    });
   }
 
   /* ---------- Pantalla: licencia (candado antes de jugar) ----------
@@ -383,38 +496,32 @@
   function viewLicenseGate() {
     const v = el(`
       <div class="title-screen">
+        ${langSwitcher()}
         <div class="title-emblem">🔑</div>
         <h1>${GAME_DATA.title}</h1>
         <p class="title-sub">${GAME_DATA.subtitle}</p>
         <div class="ornament">❦ ❦ ❦</div>
 
         <div class="card">
-          <div class="card-label">🔑 Licencia de equipo</div>
-          <p>
-            Esta aventura requiere una licencia por equipo (válida para
-            hasta 6 personas jugando juntas desde un mismo móvil). Si ya
-            la has comprado, introduce aquí tu código:
-          </p>
+          <div class="card-label">${t("license_label")}</div>
+          <p>${t("license_text")}</p>
           <form class="answer-form" id="licenseForm">
-            <input type="text" id="licenseInput" placeholder="MADRID-XXXXXX"
+            <input type="text" id="licenseInput" placeholder="${t("license_placeholder")}"
                    autocomplete="off" autocapitalize="characters" enterkeyhint="go" />
             <div id="licenseError"></div>
             <button type="submit" class="btn-primary" id="btnRedeem">
-              Desbloquear la aventura
+              ${t("license_unlock")}
             </button>
           </form>
         </div>
 
         <button class="btn-secondary" id="btnBuy">
-          💳 Comprar licencia — ${GAME_DATA.price || "19€ por equipo"}
+          ${t("license_buy", { price: GAME_DATA.price || "19€" })}
         </button>
-        <p class="title-meta">
-          El código se activa en este móvil la primera vez que se usa.
-          Solo hace falta conexión para este paso — el resto de la
-          aventura funciona sin cobertura.
-        </p>
+        <p class="title-meta">${t("license_note")}</p>
       </div>
     `);
+    wireLangSwitcher(v);
 
     const $input = v.querySelector("#licenseInput");
     const $error = v.querySelector("#licenseError");
@@ -425,28 +532,28 @@
       e.preventDefault();
       $error.innerHTML = "";
       $btnRedeem.disabled = true;
-      $btnRedeem.textContent = "Comprobando…";
+      $btnRedeem.textContent = t("license_checking");
       try {
         const stages = await License.redeem($input.value);
         GAME_DATA.stages = stages;
-        toast("⚜ Licencia activada. ¡Que comience la aventura!");
+        toast(t("license_activated"));
         go("title");
       } catch (err) {
         $error.innerHTML = `<div class="hint-box direct">${err.message}</div>`;
         $btnRedeem.disabled = false;
-        $btnRedeem.textContent = "Desbloquear la aventura";
+        $btnRedeem.textContent = t("license_unlock");
       }
     };
 
     $btnBuy.onclick = async () => {
       $btnBuy.disabled = true;
-      $btnBuy.textContent = "Abriendo pago…";
+      $btnBuy.textContent = t("license_opening_payment");
       try {
         await License.startCheckout();
       } catch (err) {
         toast(err.message);
         $btnBuy.disabled = false;
-        $btnBuy.textContent = `💳 Comprar licencia — ${GAME_DATA.price || "19€ por equipo"}`;
+        $btnBuy.textContent = t("license_buy", { price: GAME_DATA.price || "19€" });
       }
     };
 
@@ -465,7 +572,7 @@
     const v = el(`
       <div>
         <div class="stage-header">
-          <div class="stage-kicker">Prólogo</div>
+          <div class="stage-kicker">${t("prologue_kicker")}</div>
           <h2>${p.title}</h2>
         </div>
         <figure class="art-card narrator-portrait">
@@ -476,19 +583,19 @@
           </figcaption>
         </figure>
         <div class="card">
-          <div class="card-label">⚜ Quién os guía</div>
+          <div class="card-label">${t("who_guides")}</div>
           <p class="narrator-bio">${NARRATOR.bio}</p>
         </div>
         <div class="card">
-          <button class="btn-audio" title="Escuchar narración">🔊</button>
-          ${speaker("os encomienda una misión")}
+          <button class="btn-audio" title="${t("listen_narration")}">🔊</button>
+          ${speaker("speaker_prologue")}
           <p>${p.text}</p>
         </div>
         ${artCard(p, "Plano de Madrid de Texeira, 1656", "prologueMap")}
         ${mapsLink(p.startCoords, p.startLocation)}
         <p class="gps-status" id="gpsStatus"></p>
-        <button class="btn-secondary" id="btnGps">📍 ¿Estoy cerca?</button>
-        <button class="btn-primary" id="btnGo">He llegado a la Plaza de Oriente</button>
+        <button class="btn-secondary" id="btnGps">${t("gps_button")}</button>
+        <button class="btn-primary" id="btnGo">${t("arrived_start")}</button>
       </div>
     `);
     v.querySelector(".btn-audio").onclick = (e) => tts.speak(p.text, e.currentTarget);
@@ -516,33 +623,33 @@
     const v = el(`
       <div>
         <div class="stage-header">
-          <div class="stage-kicker">Sello ${st.num} de ${GAME_DATA.stages.length}</div>
+          <div class="stage-kicker">${t("stage_kicker", { n: st.num, total: GAME_DATA.stages.length })}</div>
           <h2>${st.title}</h2>
           <p class="location-line">📍 ${st.location} · ${st.landmark}</p>
-          <p class="stage-timer">⏱ <span id="stageTimer">0 s</span> · bonus si resolvéis en 2 min</p>
+          <p class="stage-timer">${t("stage_timer", { timer: "0 s" })}</p>
         </div>
 
         ${art}
 
         <div class="card">
-          <button class="btn-audio" data-say="narrative" title="Escuchar narración">🔊</button>
-          ${speaker("relata la historia del lugar")}
+          <button class="btn-audio" data-say="narrative" title="${t("listen_narration")}">🔊</button>
+          ${speaker("speaker_narrative")}
           <p>${st.narrative}</p>
         </div>
 
         <div class="card enigma">
-          <button class="btn-audio" data-say="enigma" title="Escuchar enigma">🔊</button>
-          ${speaker("os plantea el enigma")}
+          <button class="btn-audio" data-say="enigma" title="${t("listen_enigma")}">🔊</button>
+          ${speaker("speaker_enigma")}
           <p>${st.enigma}</p>
         </div>
 
         <form class="answer-form" id="answerForm">
-          <p class="answer-format">Formato: ${st.answerFormat}</p>
-          <input type="text" id="answerInput" placeholder="Escribid aquí la clave…"
+          <p class="answer-format">${t("answer_format", { format: st.answerFormat })}</p>
+          <input type="text" id="answerInput" placeholder="${t("answer_placeholder")}"
                  autocomplete="off" autocapitalize="characters" enterkeyhint="go" />
           <div class="attempts-dots" id="attemptDots"></div>
           <div id="hintArea"></div>
-          <button type="submit" class="btn-primary" id="btnSubmit">Sellar la respuesta</button>
+          <button type="submit" class="btn-primary" id="btnSubmit">${t("seal_answer")}</button>
         </form>
       </div>
     `);
@@ -573,7 +680,7 @@
       if (S.attempts >= 1) {
         $hintArea.appendChild(
           el(`<div class="hint-box subtle">
-                <div class="hint-title">${miniAvatar()} Don Baltasar os susurra una pista</div>
+                <div class="hint-title">${miniAvatar()} ${t("speaker_hint_subtle")}</div>
                 ${st.hintSubtle}
               </div>`)
         );
@@ -581,7 +688,7 @@
       if (S.attempts >= 2) {
         $hintArea.appendChild(
           el(`<div class="hint-box direct">
-                <div class="hint-title">${miniAvatar()} Don Baltasar os guía paso a paso</div>
+                <div class="hint-title">${miniAvatar()} ${t("speaker_hint_direct")}</div>
                 <ol>${st.directions.map((d) => `<li>${d}</li>`).join("")}</ol>
               </div>`)
         );
@@ -589,11 +696,11 @@
       if (S.attempts >= 3) {
         $hintArea.appendChild(
           el(`<div class="hint-box reveal">
-                <div class="hint-title">${miniAvatar()} Don Baltasar revela el secreto</div>
+                <div class="hint-title">${miniAvatar()} ${t("speaker_hint_reveal")}</div>
                 ${st.revealExplanation}
               </div>`)
         );
-        $btnSubmit.textContent = "Continuar la ruta →";
+        $btnSubmit.textContent = t("continue_route");
       }
     }
 
@@ -601,11 +708,11 @@
     renderHints();
 
     // cronómetro visible de la prueba
-    const $timer = v.querySelector("#stageTimer");
+    const $timerLine = v.querySelector(".stage-timer");
     const tick = () => {
       const s = Math.round((Date.now() - S.stageEnteredAt) / 1000);
-      $timer.textContent = Engine.formatSeconds(s);
-      $timer.parentElement.classList.toggle("over", s > 120);
+      $timerLine.textContent = t("stage_timer", { timer: Engine.formatSeconds(s) });
+      $timerLine.classList.toggle("over", s > 120);
     };
     tick();
     stageTimerInterval = setInterval(tick, 1000);
@@ -616,7 +723,7 @@
       if (S.attempts >= 3) {
         const pts = Engine.completeStage(true);
         S.lastPoints = pts;
-        toast(`Sello abierto con ayuda · +${pts} ducados`);
+        toast(t("stage_solved_help", { pts }));
         go("transition");
         return;
       }
@@ -626,11 +733,7 @@
         const pts = Engine.completeStage(false);
         S.lastPoints = pts;
         const last = S.stageLog[S.stageLog.length - 1];
-        toast(
-          last.bonus
-            ? `⚜ ¡Correcto! +${pts} ducados (¡bonus de celeridad!)`
-            : `⚜ ¡Correcto! +${pts} ducados`
-        );
+        toast(t(last.bonus ? "stage_correct_bonus" : "stage_correct", { pts }));
         go("transition");
       } else {
         S.attempts++;
@@ -642,12 +745,8 @@
         renderDots();
         renderHints();
         renderTopbar();
-        const msgs = [
-          "Esa no es la clave… el Historiador os ofrece una pista.",
-          "Aún no… seguid las instrucciones directas.",
-          "El Historiador revela el secreto. Leed y continuad.",
-        ];
-        toast(msgs[Math.min(S.attempts - 1, 2)]);
+        const keys = ["wrong_1", "wrong_2", "wrong_3"];
+        toast(t(keys[Math.min(S.attempts - 1, 2)]));
       }
     };
 
@@ -661,24 +760,24 @@
     const v = el(`
       <div>
         <div class="stage-header">
-          <div class="stage-kicker">Prueba especial · Única búsqueda permitida</div>
-          <h2>El oráculo de internet</h2>
+          <div class="stage-kicker">${t("google_kicker")}</div>
+          <h2>${t("google_title")}</h2>
         </div>
         <div class="card">
-          ${speaker("os concede una excepción")}
+          ${speaker("speaker_google_intro")}
           <p>${tr.text}</p>
         </div>
         <div class="card enigma">
-          ${speaker("os plantea la pregunta")}
+          ${speaker("speaker_google_question")}
           <p>${tr.question}</p>
         </div>
         <a class="map-link" href="https://www.google.com/search?q=Casa+Museo+Lope+de+Vega+Madrid+direcci%C3%B3n"
-           target="_blank" rel="noopener">🔎 Abrir Google</a>
+           target="_blank" rel="noopener">${t("google_open")}</a>
         <form class="answer-form" id="googleForm">
-          <input type="text" id="googleInput" placeholder="Calle y número…"
+          <input type="text" id="googleInput" placeholder="${t("google_placeholder")}"
                  autocomplete="off" enterkeyhint="go" />
           <div id="googleHints"></div>
-          <button type="submit" class="btn-primary">Confirmar dirección</button>
+          <button type="submit" class="btn-primary">${t("google_confirm")}</button>
         </form>
       </div>
     `);
@@ -691,22 +790,22 @@
       if (S.googleAttempts >= 1)
         $hints.appendChild(
           el(`<div class="hint-box subtle">
-                <div class="hint-title">${miniAvatar()} Don Baltasar os susurra una pista</div>
+                <div class="hint-title">${miniAvatar()} ${t("speaker_hint_subtle")}</div>
                 ${tr.hintSubtle}
               </div>`)
         );
       if (S.googleAttempts >= 2)
         $hints.appendChild(
           el(`<div class="hint-box direct">
-                <div class="hint-title">${miniAvatar()} Don Baltasar os guía paso a paso</div>
+                <div class="hint-title">${miniAvatar()} ${t("speaker_hint_direct")}</div>
                 <ol>${tr.directions.map((d) => `<li>${d}</li>`).join("")}</ol>
               </div>`)
         );
       if (S.googleAttempts >= 3)
         $hints.appendChild(
           el(`<div class="hint-box reveal">
-                <div class="hint-title">${miniAvatar()} Don Baltasar revela el secreto</div>
-                La dirección es <strong>${tr.answer}</strong>. Pulsad de nuevo para continuar.
+                <div class="hint-title">${miniAvatar()} ${t("speaker_hint_reveal")}</div>
+                ${t("google_reveal", { answer: tr.answer })}
               </div>`)
         );
     }
@@ -726,7 +825,7 @@
         const pts = Engine.completeGoogle(false);
         S.lastPoints = pts;
         S.pendingWalkText = tr.walkText;
-        toast(`⚜ ¡Exacto! +${pts} ducados`);
+        toast(t("google_correct", { pts }));
         Engine.advanceStage();
         go("transition");
       } else {
@@ -736,7 +835,7 @@
         void $input.offsetWidth;
         $input.classList.add("shake");
         renderGoogleHints();
-        toast("Esa no es la dirección exacta…");
+        toast(t("google_wrong"));
       }
     };
 
@@ -773,19 +872,19 @@
     const v = el(`
       <div>
         <div class="stage-header">
-          <div class="stage-kicker">Sello ${solvedStage.num} abierto ⚜</div>
-          <h2>Rumbo a ${next.location}</h2>
-          ${S.lastPoints ? `<p class="location-line">+${S.lastPoints} ducados ganados</p>` : ""}
+          <div class="stage-kicker">${t("transition_kicker", { n: solvedStage.num })}</div>
+          <h2>${t("transition_heading", { location: next.location })}</h2>
+          ${S.lastPoints ? `<p class="location-line">${t("transition_points", { pts: S.lastPoints })}</p>` : ""}
         </div>
         <div class="card">
-          <button class="btn-audio" title="Escuchar indicaciones">🔊</button>
-          ${speaker("os indica el camino")}
+          <button class="btn-audio" title="${t("listen_instructions")}">🔊</button>
+          ${speaker("speaker_walk")}
           <p>${walkText}</p>
         </div>
         ${mapsLink(next.coords, next.location)}
         <p class="gps-status" id="gpsStatus"></p>
-        <button class="btn-secondary" id="btnGps">📍 ¿Estoy cerca?</button>
-        <button class="btn-primary" id="btnArrived">He llegado — abrir el siguiente sello</button>
+        <button class="btn-secondary" id="btnGps">${t("gps_button")}</button>
+        <button class="btn-primary" id="btnArrived">${t("arrived_next")}</button>
       </div>
     `);
 
@@ -822,7 +921,7 @@
       .map(
         (st) => `
           <figure class="photo-frame gallery-item">
-            <img src="${photos[st.id]}" alt="Foto en ${st.location}" />
+            <img src="${photos[st.id]}" alt="${st.location}" />
             <div class="photo-seal">✦</div>
             <figcaption>${st.location}</figcaption>
           </figure>`
@@ -834,25 +933,25 @@
         <h1>${vic.title}</h1>
         <div class="ornament">❦ ❦ ❦</div>
         <div class="card">
-          <button class="btn-audio" title="Escuchar">🔊</button>
-          ${speaker("os da las gracias")}
+          <button class="btn-audio" title="${t("listen_narration")}">🔊</button>
+          ${speaker("speaker_victory")}
           <p>${vic.text}</p>
         </div>
         <div class="card">
-          <div class="card-label">⚜ Crónica de la expedición</div>
-          <div class="big-score">${S.score} ducados</div>
-          <p class="location-line">Tiempo total: ${Engine.elapsedText()}</p>
+          <div class="card-label">${t("victory_chronicle")}</div>
+          <div class="big-score">${S.score} ${t("currency")}</div>
+          <p class="location-line">${t("victory_time", { time: Engine.elapsedText() })}</p>
           <table class="stats-table"><tbody>${rows}</tbody></table>
         </div>
         ${
           gallery
-            ? `<div class="card"><div class="card-label">📸 Álbum de la expedición</div>
+            ? `<div class="card"><div class="card-label">${t("victory_album")}</div>
                  <div class="photo-grid">${gallery}</div></div>`
             : ""
         }
         <div id="finalPhotoSlot"></div>
-        <button class="btn-secondary" id="btnShare">📤 Compartir hazaña</button>
-        <button class="btn-ghost" id="btnAgain">Jugar de nuevo</button>
+        <button class="btn-secondary" id="btnShare">${t("victory_share")}</button>
+        <button class="btn-ghost" id="btnAgain">${t("victory_again")}</button>
       </div>
     `);
     v.querySelector(".btn-audio").onclick = (e) => tts.speak(vic.text, e.currentTarget);
@@ -861,9 +960,11 @@
     const slot = v.querySelector("#finalPhotoSlot");
     slot.appendChild(photoSection(lastStage, render)); // re-render: entra en el álbum
     v.querySelector("#btnShare").onclick = async () => {
-      const text =
-        `⚜ He completado "El Testamento del Siglo de Oro" en Madrid: ` +
-        `${S.score} ducados en ${Engine.elapsedText()}. ¿Superarás mi marca?`;
+      const text = t("share_text", {
+        title: GAME_DATA.title,
+        score: S.score,
+        time: Engine.elapsedText(),
+      });
       if (navigator.share) {
         try {
           await navigator.share({ title: GAME_DATA.title, text });
@@ -871,7 +972,7 @@
       } else {
         try {
           await navigator.clipboard.writeText(text);
-          toast("Copiado al portapapeles");
+          toast(t("copied_clipboard"));
         } catch (e) {
           toast(text, 5000);
         }
@@ -889,9 +990,13 @@
   // la caché local (sin red); si no, GAME_DATA.stages queda vacío y
   // viewTitle() mostrará el candado de licencia.
   GAME_DATA.stages = License.cachedStages() || [];
+  if (I18N.getLang()) document.documentElement.lang = I18N.getLang();
 
   const restored = Engine.load();
-  if (!GAME_DATA.stages.length) {
+  if (!I18N.getLang()) {
+    // primera vez en este dispositivo: elegir idioma antes que nada
+    S.screen = "home";
+  } else if (!GAME_DATA.stages.length) {
     // sin licencia válida en caché no hay nada que reanudar: al candado
     S.screen = "title";
   } else if (restored && S.startedAt && !S.finishedAt) {

@@ -7,6 +7,14 @@ para esto).
 Coste fijo mensual a esta escala: **0 €**. Solo paga Stripe su comisión
 por transacción (~1.5% + 0.25€).
 
+**Nota sobre idiomas:** `worker.js` sirve las 6 pruebas en español,
+inglés o francés según el `lang` que mande el cliente en `/api/redeem`
+(`js/data.js`/`js/i18n.js` en el frontend). Si en el futuro cambias el
+guion de una prueba, edítalo en las tres versiones dentro de `STAGES_I18N`
+y vuelve a pegar el archivo entero en "Edit code" — no hay build ni
+despliegue parcial, el paso es siempre "sustituir todo el código y
+Save and deploy".
+
 ---
 
 ## 1. Cloudflare: base de datos D1

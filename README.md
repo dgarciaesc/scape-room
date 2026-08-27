@@ -56,20 +56,49 @@ Compila desde Android Studio. La geolocalización necesita añadir en
 **Opción C — TWA con [Bubblewrap](https://github.com/GoogleChromeLabs/bubblewrap):**
 empaqueta la PWA ya publicada en HTTPS como app de Play Store sin tocar código.
 
+## Idiomas
+
+La primera vez que se abre la app aparece una **home** de bienvenida (foto de
+Madrid + "Madrid Aventure") donde se elige idioma: **español, inglés o
+francés**. La elección se recuerda y se puede cambiar luego con el
+selector de banderas de la esquina superior derecha (título y candado de
+licencia).
+
+La traducción cubre **interfaz y contenido completo**: los textos fijos
+viven en `js/i18n.js` (diccionario `STRINGS`), y el guion de las 6 pruebas
+(narrativa, enigmas, pistas, indicaciones) vive traducido en
+`backend/worker.js` (`STAGES_I18N`) — se entrega ya resuelto en el idioma
+pedido al validar la licencia. Las respuestas y los textos tallados en
+piedra/latín (SANTIAGO, LEPANTO, PARVA DOMUS…, los años) **no se traducen**:
+son transcripción literal de lo que hay físicamente en la calle. Para el
+caso en que el enigma pide una palabra conceptual (p. ej. "SUEÑO" en la
+etapa 5), se aceptan también sus equivalentes en inglés/francés
+(DREAM/SONGE) para no penalizar a quien responde en su idioma.
+
+Motor de traducción: `I18N.resolve()` (duplicado en frontend y backend)
+recorre cualquier estructura de datos y sustituye los "nodos i18n" —
+objetos `{es, en, fr}`— por el texto del idioma activo, con español como
+red de seguridad si falta alguna traducción.
+
 ## Estructura
 
 ```
 index.html          Shell de la app
-css/styles.css      Estética pergamino / Siglo de Oro
-js/data.js          Marco del juego: título, prólogo, Historiador, victoria.
-                    Las 6 pruebas NO están aquí (ver "Monetización" abajo)
+css/styles.css      Estética pergamino / Siglo de Oro + home a sangre completa
+js/i18n.js          Idioma activo, diccionario de interfaz (es/en/fr),
+                    motor I18N.resolve() para contenido multilingüe
+js/data.js          Marco del juego: título, prólogo, Historiador, victoria
+                    (en {es,en,fr}). Las 6 pruebas NO están aquí (ver
+                    "Monetización" abajo)
 js/license.js       Habla con el backend: código de licencia, dispositivo,
-                    caché local de las etapas ya desbloqueadas
+                    idioma, caché local de las etapas ya desbloqueadas
 js/art.js           Grabados SVG de reserva (si una etapa no tiene photo)
-img/                Obras de arte de época (dominio público, W. Commons)
+img/                Obras de arte de época + foto de home (dominio público
+                    / CC, Wikimedia Commons)
 js/engine.js        Validación (normaliza tildes/mayúsculas/separadores),
                     pistas progresivas, puntuación, guardado, haversine GPS
-js/app.js           Pantallas, narración TTS, GPS, compartir, candado de licencia
+js/app.js           Home + selector de idioma, pantallas, narración TTS
+                    (voz según idioma), GPS, compartir, candado de licencia
 sw.js               Cache offline
 gracias.html        Página post-pago: muestra el código de licencia
 backend/            Worker de Cloudflare + esquema D1 (ver backend/README.md)

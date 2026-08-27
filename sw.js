@@ -1,7 +1,8 @@
 /* Service worker: juego 100% offline una vez cargado.
    Importante en la calle, donde la cobertura falla. */
-const CACHE = "testamento-v7";
+const CACHE = "testamento-v8";
 const ASSETS = [
+  "./img/home_madrid.jpg",
   "./img/historiador.jpg",
   "./img/historiador_retrato.jpg",
   "./img/prologo.jpg",
@@ -14,6 +15,7 @@ const ASSETS = [
   "./",
   "./index.html",
   "./css/styles.css",
+  "./js/i18n.js",
   "./js/data.js",
   "./js/art.js",
   "./js/license.js",
