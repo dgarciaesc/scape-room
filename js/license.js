@@ -8,7 +8,7 @@ const License = (() => {
   /* ⚠️ AJUSTA ESTO tras desplegar el Worker en Cloudflare.
      La URL exacta aparece en el panel del Worker, algo como:
      https://testamento-licencias.tu-usuario.workers.dev */
-  const WORKER_URL = "https://testamento-licencias.TU-SUBDOMINIO.workers.dev";
+  const WORKER_URL = "https://siglodeoro.supermoncho.workers.dev";
 
   const DEVICE_KEY = "testamento_device_id";
   const STAGES_CACHE_KEY = "testamento_stages_v1";
