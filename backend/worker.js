@@ -14,8 +14,9 @@
      STRIPE_SECRET_KEY     (Encrypt) — clave secreta de Stripe (sk_live_...)
      STRIPE_WEBHOOK_SECRET (Encrypt) — firma del webhook (whsec_...)
      STRIPE_PRICE_ID                 — ID del precio creado en Stripe (price_...)
-     SITE_URL                        — https://dgarciaesc.github.io/scape-room
-     ALLOWED_ORIGIN                  — mismo valor que SITE_URL (para CORS)
+     SITE_URL                        — https://dgarciaesc.github.io/scape-room (con ruta)
+     ALLOWED_ORIGIN                  — https://dgarciaesc.github.io (SIN ruta: el navegador
+                                        nunca incluye la ruta en la cabecera Origin)
 
    BINDING NECESARIO:
      DB → la base de datos D1 creada con schema.sql

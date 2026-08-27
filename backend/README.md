@@ -40,8 +40,8 @@ por transacción (~1.5% + 0.25€).
    | `STRIPE_SECRET_KEY` | tu clave secreta de Stripe (paso 3) | ✅ |
    | `STRIPE_WEBHOOK_SECRET` | la firma del webhook (paso 3) | ✅ |
    | `STRIPE_PRICE_ID` | el ID del precio creado en Stripe (paso 3) | ✅ |
-   | `SITE_URL` | `https://dgarciaesc.github.io/scape-room` (sin barra final) | — |
-   | `ALLOWED_ORIGIN` | igual que `SITE_URL` | — |
+   | `SITE_URL` | `https://dgarciaesc.github.io/scape-room` (con la ruta, sin barra final — se usa para construir las URLs de vuelta de Stripe) | — |
+   | `ALLOWED_ORIGIN` | `https://dgarciaesc.github.io` (⚠️ **sin** la ruta `/scape-room` — el navegador nunca incluye la ruta en la cabecera `Origin`, así que si pones la ruta aquí, CORS bloquea todas las peticiones) | — |
 
    Guarda y **vuelve a desplegar** el Worker tras añadirlas (Deploy).
 
