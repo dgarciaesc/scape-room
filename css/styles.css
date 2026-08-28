@@ -27,10 +27,18 @@ html, body {
 body {
   font-family: var(--serif);
   color: var(--ink);
+  /* Plaza Mayor al atardecer (dominio público, Alejandro Silvio Alonso)
+     como fondo de toda la app, atenuada con un velo dorado/pergamino
+     para que el texto y las tarjetas (opacas) sigan tan legibles como
+     antes — la foto solo asoma en los huecos entre tarjetas. */
   background:
-    radial-gradient(ellipse at 20% 10%, rgba(212, 160, 23, 0.12), transparent 50%),
-    radial-gradient(ellipse at 80% 90%, rgba(122, 31, 31, 0.10), transparent 50%),
-    linear-gradient(160deg, #efe0c0 0%, #e8d6b0 45%, #dcc697 100%);
+    radial-gradient(ellipse at 20% 10%, rgba(212, 160, 23, 0.10), transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(122, 31, 31, 0.08), transparent 50%),
+    linear-gradient(160deg, rgba(239, 224, 192, 0.82) 0%, rgba(232, 214, 176, 0.8) 45%, rgba(220, 198, 151, 0.85) 100%),
+    url("../img/app_bg.jpg");
+  background-size: auto, auto, auto, cover;
+  background-position: center, center, center, center 30%;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
