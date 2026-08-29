@@ -1,2 +1,7 @@
 .DS_Store
 *.log
+
+# Documentos internos con las respuestas del juego: nunca al repo público
+Guia_Prueba_Campo*.docx
+~$Guia_Prueba_Campo*.docx
+~$*.docx
