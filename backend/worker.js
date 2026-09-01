@@ -87,123 +87,146 @@ const STAGES_I18N = [
         "impresionante estatua de Felipe IV, la primera estatua ecuestre del " +
         "mundo sostenida únicamente sobre las patas traseras del caballo " +
         "gracias a los cálculos del mismísimo Galileo Galilei. Pero el rey no " +
-        "estaba solo en la Corte: si miráis a vuestro alrededor, las estatuas " +
-        "de piedra de los antiguos monarcas custodian los jardines. Para abrir " +
-        "el primer archivo de la dinastía, debéis reconciliar la pintura de " +
-        "Velázquez con el linaje de los reyes.",
+        "está solo: a los pies de su montura, otros guardianes vigilan en " +
+        "silencio. Para abrir el primer archivo de la dinastía, fijaos bien " +
+        "en quién custodia el pedestal.",
       en:
         "Attention, investigators! You stand on the ancient site of the " +
         "Habsburgs' Royal Alcázar, the medieval fortress where Diego " +
         "Velázquez set up his workshop and painted \"Las Meninas.\" Before " +
         "you rises the imposing statue of Philip IV, the first equestrian " +
         "statue in the world held up solely on the horse's hind legs, thanks " +
-        "to the calculations of Galileo Galilei himself. But the king was " +
-        "not alone at Court: look around you and you'll see stone statues of " +
-        "the old monarchs guarding the gardens. To open the dynasty's first " +
-        "file, you must reconcile Velázquez's painting with the royal " +
-        "lineage.",
+        "to the calculations of Galileo Galilei himself. But the king is " +
+        "not alone: at his mount's feet, other guardians keep silent watch. " +
+        "To open the dynasty's first file, look closely at who guards the " +
+        "pedestal.",
       fr:
         "Attention, enquêteurs ! Vous vous trouvez sur l'ancien emplacement " +
         "de l'Alcázar Royal des Habsbourg, la forteresse médiévale où Diego " +
         "Velázquez installa son atelier et peignit « Les Ménines ». Devant " +
         "vous se dresse l'imposante statue de Philippe IV, la première " +
         "statue équestre au monde tenue uniquement sur les pattes arrière du " +
-        "cheval, grâce aux calculs de Galilée lui-même. Mais le roi n'était " +
-        "pas seul à la Cour : regardez autour de vous, des statues de pierre " +
-        "des anciens monarques gardent les jardins. Pour ouvrir le premier " +
-        "dossier de la dynastie, vous devez réconcilier la peinture de " +
-        "Velázquez avec la lignée des rois.",
+        "cheval, grâce aux calculs de Galilée lui-même. Mais le roi n'est " +
+        "pas seul : aux pieds de sa monture, d'autres gardiens veillent en " +
+        "silence. Pour ouvrir le premier dossier de la dynastie, observez " +
+        "bien qui garde le piédestal.",
     },
     enigma: {
       es:
-        "El rey de bronce desafía la gravedad gracias al sabio de Pisa, pero a " +
-        "los pies de su montura, el pintor de «Las Meninas» recibe su hábito " +
-        "de nobleza. Inspecciona el relieve lateral: ¿qué sagrada cruz de " +
-        "orden militar mancha el pecho del artista? Pasea después la mirada " +
-        "por las efigies de piedra que custodian la plaza. Ignora a godos y " +
-        "borbones: cuenta únicamente a los monarcas de la dinastía del águila " +
-        "bicéfala (los Austrias) que reinaron en los siglos XVI y XVII. Une la " +
-        "cruz de la orden con el número de reyes imperiales para descifrar la " +
-        "clave.",
+        "El rey de bronce desafía la gravedad gracias al sabio de Pisa. Pero " +
+        "no miréis arriba, sino abajo: rodead la base de piedra del pedestal " +
+        "a ras de suelo. En cada una de sus cuatro esquinas descansa, " +
+        "tumbado y silencioso, el mismo animal heráldico — el símbolo de la " +
+        "Corona que Felipe IV encarnaba. Identificad qué animal es y contad " +
+        "cuántos hay. Alzad después la vista hacia el remate del tejado del " +
+        "gran palacio que cierra la plaza: allí se iba a esculpir en piedra " +
+        "toda la dinastía de los reyes de España —los mismos veinte que hoy " +
+        "custodian los jardines a vuestro alrededor—, pero un rey de gustos " +
+        "más sobrios ordenó cambiar el proyecto por algo más discreto. ¿Qué " +
+        "pequeños objetos de piedra, repetidos uno tras otro, coronan hoy la " +
+        "balaustrada en su lugar? Unid esa palabra al número de guardianes " +
+        "para sellar la clave.",
       en:
-        "The bronze king defies gravity thanks to the sage of Pisa, but at " +
-        "his mount's feet, the painter of \"Las Meninas\" receives his habit " +
-        "of nobility. Inspect the side relief: what sacred cross of a " +
-        "military order stains the artist's chest? Then sweep your gaze over " +
-        "the stone effigies guarding the square. Ignore the Visigoths and " +
-        "the Bourbons: count only the monarchs of the two-headed eagle " +
-        "dynasty (the Habsburgs) who reigned in the 16th and 17th centuries. " +
-        "Join the order's cross with the number of imperial kings to " +
-        "decipher the key.",
+        "The bronze king defies gravity thanks to the sage of Pisa. But " +
+        "don't look up — look down: walk around the stone base of the " +
+        "pedestal at ground level. On each of its four corners lies the " +
+        "same heraldic animal, silent and resting — the symbol of the Crown " +
+        "Philip IV embodied. Identify the animal and count how many there " +
+        "are. Then raise your eyes to the roofline of the great palace " +
+        "closing off the square: it was meant to be crowned in stone by " +
+        "the entire dynasty of Spanish kings — the same twenty that now " +
+        "stand guard in the gardens around you — but a king with more " +
+        "sober tastes had the plan changed for something plainer. What " +
+        "small stone objects, repeated one after another, crown the " +
+        "balustrade there today? Join that word with the number of " +
+        "guardians to seal the key.",
       fr:
-        "Le roi de bronze défie la gravité grâce au sage de Pise, mais aux " +
-        "pieds de sa monture, le peintre des « Ménines » reçoit son habit de " +
-        "noblesse. Inspectez le relief latéral : quelle croix sacrée d'un " +
-        "ordre militaire tache la poitrine de l'artiste ? Parcourez ensuite " +
-        "du regard les effigies de pierre qui gardent la place. Ignorez les " +
-        "Wisigoths et les Bourbons : ne comptez que les monarques de la " +
-        "dynastie de l'aigle bicéphale (les Habsbourg) qui régnèrent aux " +
-        "XVIe et XVIIe siècles. Associez la croix de l'ordre au nombre de " +
-        "rois impériaux pour déchiffrer la clé.",
+        "Le roi de bronze défie la gravité grâce au sage de Pise. Mais ne " +
+        "regardez pas en haut, regardez en bas : faites le tour de la base " +
+        "en pierre du piédestal, au ras du sol. À chacun de ses quatre " +
+        "angles repose, couché et silencieux, le même animal héraldique — " +
+        "le symbole de la Couronne que Philippe IV incarnait. Identifiez cet " +
+        "animal et comptez combien il y en a. Levez ensuite les yeux vers " +
+        "le couronnement du toit du grand palais qui ferme la place : on " +
+        "prévoyait d'y sculpter en pierre toute la dynastie des rois " +
+        "d'Espagne — les vingt mêmes qui montent aujourd'hui la garde dans " +
+        "les jardins autour de vous —, mais un roi aux goûts plus sobres " +
+        "fit remplacer le projet par quelque chose de plus discret. Quels " +
+        "petits objets de pierre, répétés les uns après les autres, " +
+        "couronnent aujourd'hui la balustrade à leur place ? Associez ce " +
+        "mot au nombre de gardiens pour sceller la clé.",
     },
     answerFormat: {
-      es: "PALABRA-NÚMERO (ej.: ORDEN-0)",
-      en: "WORD-NUMBER (e.g.: ORDER-0)",
-      fr: "MOT-NOMBRE (ex. : ORDRE-0)",
+      es: "PALABRA-NÚMERO (ej.: EJEMPLO-3)",
+      en: "WORD-NUMBER (e.g.: EXAMPLE-3)",
+      fr: "MOT-NOMBRE (ex. : EXEMPLE-3)",
     },
     hintSubtle: {
       es:
-        "La orden militar es la misma que da nombre al Camino que peregrina " +
-        "hasta Galicia… y los reyes que buscas empiezan en Felipe «el Hermoso» " +
-        "y terminan en Carlos «el Hechizado».",
+        "Los cuatro guardianes son felinos, a pie de calle en las esquinas " +
+        "del pedestal. En cuanto a la balaustrada del tejado: no busquéis " +
+        "figuras humanas, sino objetos redondeados, como pequeñas vasijas " +
+        "de piedra, repetidos a lo largo de todo el remate.",
       en:
-        "The military order shares its name with the Way that pilgrims walk " +
-        "to Galicia… and the kings you're after begin with Philip 'the " +
-        "Handsome' and end with Charles 'the Bewitched.'",
+        "The four guardians are felines, right at street level on the " +
+        "pedestal's corners. As for the roofline balustrade: don't look " +
+        "for human figures — look for rounded objects, like small stone " +
+        "vases, repeated all along the top.",
       fr:
-        "L'ordre militaire porte le même nom que le Chemin emprunté par les " +
-        "pèlerins vers la Galice… et les rois que vous cherchez commencent " +
-        "avec Philippe « le Beau » et se terminent avec Charles « " +
-        "l'Ensorcelé ».",
+        "Les quatre gardiens sont des félins, au niveau de la rue, aux " +
+        "angles du piédestal. Quant à la balustrade du toit : ne cherchez " +
+        "pas de silhouettes humaines, mais des objets arrondis, comme de " +
+        "petits vases de pierre, répétés tout le long du couronnement.",
     },
     directions: {
       es: [
         "Acércate al pedestal de la estatua ecuestre de Felipe IV en el centro de la Plaza de Oriente.",
-        "Localiza en el bajorrelieve lateral la escena donde el rey nombra caballero a Velázquez y observa la cruz grabada en su pecho.",
-        "Cuenta las estatuas de piedra de los reyes Austrias en el paseo: Felipe I, Carlos I, Felipe II, Felipe III, Felipe IV y Carlos II.",
+        "Rodea la base de piedra, a ras de suelo, y cuenta el animal de bronce que vigila cada una de las cuatro esquinas.",
+        "Alza la vista hacia el remate del tejado del Palacio Real: fíjate en los pequeños objetos de piedra que coronan la balaustrada, uno tras otro.",
       ],
       en: [
         "Go to the pedestal of the equestrian statue of Philip IV in the centre of Plaza de Oriente.",
-        "Find the scene in the side bas-relief where the king knights Velázquez, and look at the cross carved on his chest.",
-        "Count the stone statues of the Habsburg kings along the walkway: Philip I, Charles I, Philip II, Philip III, Philip IV and Charles II.",
+        "Walk around the stone base at ground level and count the bronze animal watching over each of the four corners.",
+        "Raise your eyes to the roofline of the Royal Palace: look for the small stone objects crowning the balustrade, one after another.",
       ],
       fr: [
         "Approchez-vous du piédestal de la statue équestre de Philippe IV, au centre de la Plaza de Oriente.",
-        "Repérez, dans le bas-relief latéral, la scène où le roi adoube Velázquez, et observez la croix gravée sur sa poitrine.",
-        "Comptez les statues de pierre des rois Habsbourg le long de l'allée : Philippe Ier, Charles Ier, Philippe II, Philippe III, Philippe IV et Charles II.",
+        "Faites le tour de la base en pierre, au ras du sol, et comptez l'animal de bronze qui veille à chacun des quatre angles.",
+        "Levez les yeux vers le couronnement du toit du Palais Royal : repérez les petits objets de pierre qui couronnent la balustrade, les uns après les autres.",
       ],
     },
-    answer: "SANTIAGO-6",
-    acceptedAnswers: ["SANTIAGO-6", "SANTIAGO 6", "SANTIAGO6", "santiago-6", "santiago 6"],
+    answer: "JARRONES-4",
+    acceptedAnswers: [
+      "JARRONES-4", "JARRONES 4", "JARRONES4", "jarrones-4",
+      "JARRON-4", "jarron-4",
+      "VASIJAS-4", "vasijas-4",
+      "URNAS-4", "urnas-4",
+      "VASES-4", "vases-4", "VASE-4", "vase-4",
+      "URNS-4", "urns-4", "URN-4", "urn-4",
+      "URNES-4", "urnes-4", "URNE-4", "urne-4",
+    ],
     revealExplanation: {
       es:
-        "La respuesta era SANTIAGO-6. En el relieve, Felipe IV impone a " +
-        "Velázquez la cruz de la Orden de Santiago — la que el propio pintor " +
-        "lució en «Las Meninas». Y seis son los Austrias con efigie en la " +
-        "plaza: Felipe I, Carlos I, Felipe II, Felipe III, Felipe IV y " +
-        "Carlos II.",
+        "La respuesta era JARRONES-4. La balaustrada del Palacio Real iba a " +
+        "coronarse con las estatuas de todos los reyes de España —las " +
+        "mismas veinte que hoy descansan en los jardines de la plaza—, " +
+        "pero Carlos III, de gustos más sobrios, las sustituyó por una " +
+        "hilera de jarrones de piedra. Y cuatro son los leones de bronce " +
+        "que custodian las esquinas del pedestal.",
       en:
-        "The answer was SANTIAGO-6. In the relief, Philip IV bestows on " +
-        "Velázquez the cross of the Order of Santiago — the very one the " +
-        "painter himself wears in \"Las Meninas.\" And six Habsburgs have a " +
-        "statue in the square: Philip I, Charles I, Philip II, Philip III, " +
-        "Philip IV and Charles II.",
+        "The answer was JARRONES-4 (Spanish for \"vases\"). The Royal " +
+        "Palace's balustrade was meant to be crowned with statues of " +
+        "every king of Spain — the same twenty that now rest in the " +
+        "square's gardens — but Charles III, with more sober tastes, " +
+        "replaced them with a row of stone vases. And four bronze lions " +
+        "guard the corners of the pedestal.",
       fr:
-        "La réponse était SANTIAGO-6. Dans le relief, Philippe IV confère à " +
-        "Velázquez la croix de l'ordre de Santiago — celle-là même que le " +
-        "peintre porte dans « Les Ménines ». Et six Habsbourg ont leur " +
-        "effigie sur la place : Philippe Ier, Charles Ier, Philippe II, " +
-        "Philippe III, Philippe IV et Charles II.",
+        "La réponse était JARRONES-4 (« vases » en espagnol). La " +
+        "balustrade du Palais Royal devait être couronnée des statues de " +
+        "tous les rois d'Espagne — les vingt mêmes qui reposent aujourd'hui " +
+        "dans les jardins de la place —, mais Charles III, aux goûts plus " +
+        "sobres, les remplaça par une rangée de vases de pierre. Et quatre " +
+        "lions de bronze gardent les angles du piédestal.",
     },
     transition: {
       type: "walk",
@@ -241,6 +264,17 @@ const STAGES_I18N = [
       es: "Estatua de Álvaro de Bazán",
       en: "Statue of Álvaro de Bazán",
       fr: "Statue d'Álvaro de Bazán",
+    },
+    freeTourIntro: {
+      es: "Mientras camináis hacia la Plaza de la Villa, dejadme contaros su historia. Es una de las plazas más antiguas de Madrid, corazón político de la villa ya en la Edad Media. Fijaos, al llegar, en la torre almenada de ladrillo y piedra: es la Torre de los Lujanes, el edificio civil más antiguo de Madrid, del siglo XV. Cuenta la leyenda que allí estuvo preso el rey Francisco I de Francia, capturado por las tropas de Carlos V en la batalla de Pavía de 1525 — aunque, a decir verdad, solo pasó allí unos pocos días mientras le preparaban aposentos más cómodos en el Alcázar. Su cautiverio en Madrid, entre la Torre, el Alcázar y otros palacios, se prolongó casi once meses, hasta que en enero de 1526 firmó el Tratado de Madrid, renunciando a sus derechos sobre Nápoles, Milán, Flandes y Borgoña — un tratado que, por cierto, rompió en cuanto puso un pie fuera de España. Justo al lado, la Casa de Cisneros, un palacio plateresco de 1537 mandado construir por el sobrino del cardenal Cisneros, también guarda fama de haber servido de prisión, esta vez para Antonio Pérez, el todopoderoso secretario de Felipe II caído en desgracia. Frente a la torre, el antiguo Ayuntamiento, que Juan Gómez de Mora empezó a construir en 1644. Hoy la plaza vive tranquila, a menudo escenario de bodas civiles y pequeños conciertos al aire libre.",
+      en: "As you walk toward Plaza de la Villa, let me tell you its story. It's one of Madrid's oldest squares, the town's political heart already in the Middle Ages. When you arrive, look for the battlemented brick-and-stone tower: that's the Torre de los Lujanes, Madrid's oldest civil building, dating to the 15th century. Legend has it that King Francis I of France was held prisoner there, captured by Charles V's troops at the Battle of Pavia in 1525 — though, in truth, he only spent a few days there while more comfortable quarters were prepared for him at the Alcázar. His captivity in Madrid, split between the Tower, the Alcázar and other palaces, dragged on for nearly eleven months, until in January 1526 he signed the Treaty of Madrid, renouncing his claims to Naples, Milan, Flanders and Burgundy — a treaty he broke, incidentally, the moment he set foot outside Spain. Right next door, the Casa de Cisneros, a Plateresque palace from 1537 built for the nephew of Cardinal Cisneros, is also said to have served as a prison — this time for Antonio Pérez, Philip II's once all-powerful secretary who fell from grace. Facing the tower, the old City Hall, which Juan Gómez de Mora began building in 1644. Today the square lives quietly, often hosting civil weddings and small open-air concerts.",
+      fr: "En marchant vers la Plaza de la Villa, laissez-moi vous raconter son histoire. C'est l'une des plus anciennes places de Madrid, cœur politique de la ville dès le Moyen Âge. En arrivant, repérez la tour crénelée de brique et de pierre : c'est la Torre de los Lujanes, le plus ancien bâtiment civil de Madrid, datant du XVe siècle. La légende raconte que le roi François Ier de France y fut retenu prisonnier, capturé par les troupes de Charles Quint à la bataille de Pavie en 1525 — bien qu'en réalité, il n'y passa que quelques jours, le temps qu'on lui prépare des appartements plus confortables à l'Alcázar. Sa captivité à Madrid, répartie entre la Tour, l'Alcázar et d'autres palais, dura près de onze mois, jusqu'à ce qu'en janvier 1526 il signe le traité de Madrid, renonçant à ses droits sur Naples, Milan, la Flandre et la Bourgogne — un traité qu'il rompit d'ailleurs dès qu'il eut posé le pied hors d'Espagne. Juste à côté, la Casa de Cisneros, un palais plateresque de 1537 construit pour le neveu du cardinal Cisneros, aurait elle aussi servi de prison — cette fois pour Antonio Pérez, le tout-puissant secrétaire de Philippe II tombé en disgrâce. Face à la tour, l'ancien hôtel de ville, dont Juan Gómez de Mora commença la construction en 1644. Aujourd'hui, la place vit paisiblement, accueillant souvent des mariages civils et de petits concerts en plein air.",
+    },
+    freeTourPhoto: "img/freetour2.jpg",
+    freeTourPhotoCaption: {
+      es: "Francisco I de Francia, por Jean Clouet (h. 1530) · Museo del Louvre",
+      en: "Francis I of France, by Jean Clouet (c. 1530) · Louvre Museum",
+      fr: "François Ier de France, par Jean Clouet (v. 1530) · Musée du Louvre",
     },
     coords: { lat: 40.4154, lng: -3.71 },
     photo: "img/etapa2.jpg",
@@ -449,6 +483,17 @@ const STAGES_I18N = [
       en: "Lintel of the Lope de Vega House-Museum",
       fr: "Linteau de la Maison-Musée de Lope de Vega",
     },
+    freeTourIntro: {
+      es: "De camino a la Casa de Lope de Vega, un poco de contexto. El propio Fénix de los Ingenios mandó construir esta casa hacia 1610, tras años de vivir de alquiler en alquiler, y vivió en ella hasta su muerte en 1635. Cultivaba con sus propias manos un pequeño huerto que llamaba cariñosamente «mi güertecillo» y menciona con ternura en sus cartas — todavía hoy se puede visitar, recreado con las plantas de la época. Escribió, según él mismo alardeaba, más de 1.500 comedias — una cifra tan desmesurada que su rival Cervantes, medio en broma medio en serio, lo llamó «monstruo de la naturaleza». Pero tras esa fachada prolífica se escondía una vida sentimental turbulenta: aquí, ya viudo y sacerdote (se ordenó tras la muerte de su segunda esposa), vivió su última gran pasión, Marta de Nevares, a la que llamaba Amarilis en sus versos. La relación, escandalosa para la época, terminó en tragedia: Marta se quedó ciega y, hacia el final, perdió la razón, muriendo en 1628 sin que Lope dejara nunca de cuidarla. Con el tiempo la casa cayó en el olvido, hasta que la Real Academia Española la recuperó y restauró, abriéndola como museo en 1935. Dentro descubriréis los muebles, libros y objetos cotidianos de un hombre que, además de escribir más obras que nadie en la historia del teatro, vivió tantas pasiones como sus propias comedias.",
+      en: "On your way to the Lope de Vega House, a bit of context. The Phoenix of Wits himself had this house built around 1610, after years of moving from rental to rental, and lived in it until his death in 1635. He tended a small garden with his own hands that he fondly called 'my little orchard' and mentions tenderly in his letters — you can still visit it today, recreated with period plants. He wrote, by his own boast, more than 1,500 plays — such an outrageous figure that his rival Cervantes, half in jest, half in earnest, called him a 'monster of nature.' But behind that prolific façade lay a turbulent love life: here, already widowed and ordained a priest (he took orders after his second wife's death), he lived out his last great passion, Marta de Nevares, whom he called Amarilis in his verses. The relationship, scandalous for its time, ended in tragedy: Marta went blind and, toward the end, lost her mind, dying in 1628 with Lope never once ceasing to care for her. Over time the house fell into obscurity, until the Real Academia Española recovered and restored it, opening it as a museum in 1935. Inside you'll find the furniture, books and everyday objects of a man who, besides writing more plays than anyone else in the history of theatre, lived as many passions as his own comedies.",
+      fr: "En chemin vers la Maison de Lope de Vega, un peu de contexte. Le Phénix des Esprits lui-même fit construire cette maison vers 1610, après des années de location en location, et y vécut jusqu'à sa mort en 1635. Il cultivait de ses propres mains un petit jardin qu'il appelait affectueusement « mon petit potager » et évoque avec tendresse dans ses lettres — on peut encore le visiter aujourd'hui, recréé avec des plantes d'époque. Il écrivit, à l'en croire, plus de 1 500 pièces — un chiffre si démesuré que son rival Cervantès, mi-plaisantant mi-sérieux, le surnomma « monstre de la nature ». Mais derrière cette façade prolifique se cachait une vie sentimentale tourmentée : ici, déjà veuf et devenu prêtre (il fut ordonné après la mort de sa seconde épouse), il vécut sa dernière grande passion, Marta de Nevares, qu'il appelait Amarilis dans ses vers. La relation, scandaleuse pour l'époque, se termina en tragédie : Marta devint aveugle et, vers la fin, perdit la raison, mourant en 1628 sans que Lope cesse jamais de veiller sur elle. Avec le temps, la maison tomba dans l'oubli, jusqu'à ce que la Real Academia Española la récupère et la restaure, l'ouvrant comme musée en 1935. À l'intérieur, vous découvrirez les meubles, livres et objets du quotidien d'un homme qui, en plus d'avoir écrit plus de pièces que quiconque dans l'histoire du théâtre, vécut autant de passions que ses propres comédies.",
+    },
+    freeTourPhoto: "img/freetour3.jpg",
+    freeTourPhotoCaption: {
+      es: "El huerto de la Casa-Museo de Lope de Vega, recreado con plantas de su época",
+      en: "The garden of the Lope de Vega House-Museum, recreated with plants from his time",
+      fr: "Le jardin de la Maison-Musée de Lope de Vega, recréé avec des plantes de son époque",
+    },
     coords: { lat: 40.414, lng: -3.6976 },
     photo: "img/etapa3.jpg",
     photoCaption: {
@@ -462,108 +507,118 @@ const STAGES_I18N = [
         "Lope de Vega, el «Fénix de los Ingenios». Lope escribió más de 1.500 " +
         "obras teatrales, tuvo una vida llena de pasiones y amores " +
         "prohibidos, y mantuvo una enemistad encarnizada con su vecino Miguel " +
-        "de Cervantes. Buscando la paz que su agitada vida le negaba, Lope " +
-        "mandó esculpir en el dintel de piedra de su puerta una célebre " +
-        "máxima latina que recuerda que la verdadera grandeza está en la " +
-        "quietud del hogar.",
+        "de Cervantes. Tras años de vivir de alquiler en alquiler, Lope pudo " +
+        "por fin comprar esta casa en 1610, y tan orgulloso estaba de ser " +
+        "dueño de su propio tejado que mandó esculpirlo en el dintel de " +
+        "piedra de su puerta, en latín.",
       en:
         "Stop before the wooden gate of the house where Lope de Vega, the " +
         "'Phoenix of Wits,' lived and died. Lope wrote more than 1,500 " +
         "plays, led a life full of passions and forbidden loves, and kept " +
-        "up a bitter feud with his neighbour Miguel de Cervantes. Seeking " +
-        "the peace his turbulent life denied him, Lope had a famous Latin " +
-        "maxim carved into his door's stone lintel, recalling that true " +
-        "greatness lies in the stillness of home.",
+        "up a bitter feud with his neighbour Miguel de Cervantes. After " +
+        "years of moving from rental to rental, Lope was finally able to " +
+        "buy this house in 1610, and was so proud of owning his own roof " +
+        "that he had it carved, in Latin, into his door's stone lintel.",
       fr:
         "Arrêtez-vous devant le portail de bois de la maison où vécut et " +
         "mourut Lope de Vega, le « Phénix des Esprits ». Lope écrivit plus " +
         "de 1 500 pièces de théâtre, mena une vie pleine de passions et " +
         "d'amours interdites, et entretint une inimitié féroce avec son " +
-        "voisin Miguel de Cervantès. En quête de la paix que sa vie agitée " +
-        "lui refusait, Lope fit graver sur le linteau de pierre de sa porte " +
-        "une célèbre maxime latine, rappelant que la vraie grandeur réside " +
-        "dans la quiétude du foyer.",
+        "voisin Miguel de Cervantès. Après des années de location en " +
+        "location, Lope put enfin acheter cette maison en 1610, et il était " +
+        "si fier d'avoir enfin un toit à lui qu'il le fit graver, en latin, " +
+        "sur le linteau de pierre de sa porte.",
     },
     enigma: {
       es:
         "Ante el portón del poeta más prolijo del Imperio, alza la mirada " +
-        "hacia el dintel tallado en piedra. Lope buscaba la calma que sus " +
-        "romances le negaban y mandó labrar en la lengua de la antigua Roma " +
-        "una sentencia que proclama: «Casa pequeña, pero de gran " +
-        "tranquilidad». Transcribe las cinco palabras latinas en piedra que " +
-        "custodian la entrada para cruzar el umbral del dramaturgo.",
+        "hacia el dintel tallado en piedra. Bajo las siglas D.O.M., Lope " +
+        "mandó labrar en la lengua de la antigua Roma una sentencia en dos " +
+        "líneas sobre el valor de lo propio frente a lo ajeno. Transcribe " +
+        "las seis palabras latinas en piedra que custodian la entrada para " +
+        "cruzar el umbral del dramaturgo.",
       en:
         "Before the gate of the Empire's most prolific poet, raise your " +
-        "eyes to the stone-carved lintel. Lope sought the calm his romances " +
-        "denied him, and had carved, in the tongue of ancient Rome, a " +
-        "sentence proclaiming: 'Small house, but of great tranquillity.' " +
-        "Transcribe the five Latin words in stone that guard the entrance to " +
-        "cross the playwright's threshold.",
+        "eyes to the stone-carved lintel. Beneath the letters D.O.M., Lope " +
+        "had carved, in the tongue of ancient Rome, a two-line sentence " +
+        "about the worth of what is one's own versus what belongs to " +
+        "another. Transcribe the six Latin words in stone that guard the " +
+        "entrance to cross the playwright's threshold.",
       fr:
         "Devant le portail du poète le plus prolifique de l'Empire, levez " +
-        "les yeux vers le linteau taillé dans la pierre. Lope cherchait le " +
-        "calme que ses romances lui refusaient, et fit graver, dans la " +
-        "langue de la Rome antique, une phrase proclamant : « Petite " +
-        "maison, mais de grande tranquillité ». Transcrivez les cinq mots " +
-        "latins gravés dans la pierre qui gardent l'entrée, pour franchir " +
-        "le seuil du dramaturge.",
+        "les yeux vers le linteau taillé dans la pierre. Sous les lettres " +
+        "D.O.M., Lope fit graver, dans la langue de la Rome antique, une " +
+        "phrase en deux lignes sur la valeur de ce qui nous appartient face " +
+        "à ce qui appartient à autrui. Transcrivez les six mots latins " +
+        "gravés dans la pierre qui gardent l'entrée, pour franchir le " +
+        "seuil du dramaturge.",
     },
     answerFormat: {
-      es: "CINCO PALABRAS EN LATÍN",
-      en: "FIVE WORDS IN LATIN",
-      fr: "CINQ MOTS EN LATIN",
+      es: "SEIS PALABRAS EN LATÍN",
+      en: "SIX WORDS IN LATIN",
+      fr: "SIX MOTS EN LATIN",
     },
     hintSubtle: {
       es:
-        "Mira justo encima del portón de madera: la inscripción empieza por " +
-        "«PARVA…» (pequeña) y termina en «…QUIES» (quietud). Transcríbela " +
-        "completa, tal cual está tallada.",
+        "Mira justo encima del portón de madera: bajo las letras D.O.M., la " +
+        "inscripción dice «PARVA PROPIA MAGNA» en la primera línea y " +
+        "«MAGNA ALIENA PARVA» en la segunda. Transcribe las seis palabras, " +
+        "tal cual están talladas.",
       en:
-        "Look just above the wooden gate: the inscription begins with " +
-        "'PARVA…' (small) and ends with '…QUIES' (stillness). Transcribe it " +
-        "in full, exactly as carved.",
+        "Look just above the wooden gate: beneath the letters D.O.M., the " +
+        "inscription reads 'PARVA PROPIA MAGNA' on the first line and " +
+        "'MAGNA ALIENA PARVA' on the second. Transcribe all six words, " +
+        "exactly as carved.",
       fr:
-        "Regardez juste au-dessus du portail de bois : l'inscription " +
-        "commence par « PARVA… » (petite) et se termine par « …QUIES » " +
-        "(quiétude). Transcrivez-la intégralement, telle qu'elle est " +
-        "gravée.",
+        "Regardez juste au-dessus du portail de bois : sous les lettres " +
+        "D.O.M., l'inscription indique « PARVA PROPIA MAGNA » sur la " +
+        "première ligne et « MAGNA ALIENA PARVA » sur la seconde. " +
+        "Transcrivez les six mots, tels qu'ils sont gravés.",
     },
     directions: {
       es: [
         "Sitúate frente al portón de madera en la Calle de Cervantes, 11.",
-        "Mira el dintel de piedra sobre la puerta.",
-        "Transcribe las 5 palabras en latín grabadas en la piedra.",
+        "Mira el dintel de piedra sobre la puerta, bajo las siglas D.O.M.",
+        "Transcribe las 6 palabras en latín grabadas en dos líneas.",
       ],
       en: [
         "Stand in front of the wooden gate at Calle de Cervantes, 11.",
-        "Look at the stone lintel above the door.",
-        "Transcribe the 5 Latin words carved in the stone.",
+        "Look at the stone lintel above the door, beneath the letters D.O.M.",
+        "Transcribe the 6 Latin words carved in two lines.",
       ],
       fr: [
         "Placez-vous devant le portail de bois au Calle de Cervantes, 11.",
-        "Regardez le linteau de pierre au-dessus de la porte.",
-        "Transcrivez les 5 mots latins gravés dans la pierre.",
+        "Regardez le linteau de pierre au-dessus de la porte, sous les lettres D.O.M.",
+        "Transcrivez les 6 mots latins gravés sur deux lignes.",
       ],
     },
-    answer: "PARVA DOMUS SED MAGNA QUIES",
+    answer: "PARVA PROPIA MAGNA MAGNA ALIENA PARVA",
     acceptedAnswers: [
-      "PARVA DOMUS SED MAGNA QUIES",
-      "parva domus sed magna quies",
-      "PARVA DOMUS SED MAGNA QUIES.",
+      "PARVA PROPIA MAGNA MAGNA ALIENA PARVA",
+      "parva propia magna magna aliena parva",
+      "PARVA PROPIA MAGNA, MAGNA ALIENA PARVA",
+      "parva propia magna, magna aliena parva",
+      "PARVA PROPIA MAGNA. MAGNA ALIENA PARVA.",
     ],
     revealExplanation: {
       es:
-        "La inscripción reza PARVA DOMUS SED MAGNA QUIES: «casa pequeña, " +
-        "pero de gran quietud». El refugio que Lope opuso a su tormentosa " +
-        "vida de amores, pleitos y rivalidades literarias.",
+        "La inscripción reza PARVA PROPIA MAGNA, MAGNA ALIENA PARVA: «lo " +
+        "pequeño, siendo propio, es grande; lo grande, siendo ajeno, es " +
+        "pequeño». Orgulloso de ser, por primera vez, dueño de su propia " +
+        "casa, Lope mandó grabar esta máxima sobre la puerta de la vivienda " +
+        "que compró en 1610 por 9.000 reales.",
       en:
-        "The inscription reads PARVA DOMUS SED MAGNA QUIES: 'small house, " +
-        "but of great stillness.' The refuge Lope set against his stormy " +
-        "life of love affairs, lawsuits and literary rivalries.",
+        "The inscription reads PARVA PROPIA MAGNA, MAGNA ALIENA PARVA: " +
+        "'what is small, being one's own, is great; what is great, being " +
+        "another's, is small.' Proud to finally own his own house after " +
+        "years of renting, Lope had this maxim carved above the door of " +
+        "the house he bought in 1610 for 9,000 reales.",
       fr:
-        "L'inscription dit PARVA DOMUS SED MAGNA QUIES : « petite maison, " +
-        "mais de grande quiétude ». Le refuge que Lope opposa à sa vie " +
-        "tumultueuse faite d'amours, de procès et de rivalités littéraires.",
+        "L'inscription dit PARVA PROPIA MAGNA, MAGNA ALIENA PARVA : « ce " +
+        "qui est petit, étant nôtre, est grand ; ce qui est grand, étant à " +
+        "autrui, est petit ». Fier de posséder enfin sa propre maison après " +
+        "des années de location, Lope fit graver cette maxime au-dessus de " +
+        "la porte de la maison qu'il acheta en 1610 pour 9 000 réaux.",
     },
     transition: {
       type: "walk",
@@ -602,6 +657,17 @@ const STAGES_I18N = [
       es: "Placa de la RAE · Convento de las Trinitarias",
       en: "RAE plaque · Convent of the Trinitarian Nuns",
       fr: "Plaque de la RAE · Couvent des Trinitaires",
+    },
+    freeTourIntro: {
+      es: "Antes de llegar al convento, escuchad esto. Lo fundó en 1612 doña Beatriz Ramírez de Mendoza, condesa de Castellar, y sigue siendo hoy un convento de clausura en activo — las monjas trinitarias descalzas viven allí exactamente igual que hace cuatro siglos, por lo que no se puede visitar el interior libremente. Entre sus muros tomó los hábitos, años más tarde, Sor Marcela de San Félix — hija de otro gigante del Siglo de Oro, Lope de Vega, fruto de su relación con la actriz Micaela de Luján. En 2015, un equipo de treinta especialistas dirigido por el forense Francisco Etxeberria pasó 35 días excavando la cripta, buscando los restos exactos de Cervantes entre huesos mezclados de al menos quince personas distintas. No fue posible hacer una prueba de ADN —la única pariente directa de Cervantes, su hermana, está enterrada en una fosa común en Alcalá de Henares— así que los investigadores concluyeron, tras cruzar todos los datos históricos y forenses disponibles, que existía «una suma de coincidencias y ninguna discrepancia»: es muy probable, aunque nunca del todo seguro, que entre esos fragmentos estén los huesos del propio Cervantes. Hoy descansan en un monumento dentro de la iglesia, repartidos en tres urnas junto a los de otras personas.",
+      en: "Before reaching the convent, listen to this. It was founded in 1612 by Doña Beatriz Ramírez de Mendoza, Countess of Castellar, and remains an active cloistered convent to this day — the Barefoot Trinitarian nuns live there exactly as they did four centuries ago, which is why you can't freely visit the inside. Within its walls, years later, Sor Marcela de San Félix took her vows — daughter of another giant of the Golden Age, Lope de Vega, born of his relationship with the actress Micaela de Luján. In 2015, a team of thirty specialists led by forensic scientist Francisco Etxeberria spent 35 days excavating the crypt, searching for Cervantes' exact remains among bones mixed together from at least fifteen different people. A DNA test wasn't possible — Cervantes' only living direct relative, his sister, is buried in a common grave in Alcalá de Henares — so, after cross-checking every available historical and forensic clue, the researchers concluded there was 'an accumulation of coincidences and not a single discrepancy': it's highly likely, though never entirely certain, that Cervantes' own bones are among those fragments. Today they rest in a monument inside the church, divided among three urns alongside those of other people.",
+      fr: "Avant d'arriver au couvent, écoutez ceci. Il fut fondé en 1612 par doña Beatriz Ramírez de Mendoza, comtesse de Castellar, et reste aujourd'hui un couvent de clôture actif — les religieuses trinitaires déchaussées y vivent exactement comme il y a quatre siècles, raison pour laquelle on ne peut pas visiter librement l'intérieur. Entre ces murs, des années plus tard, Sœur Marcela de San Félix prononça ses vœux — fille d'un autre géant du Siècle d'Or, Lope de Vega, née de sa relation avec l'actrice Micaela de Luján. En 2015, une équipe de trente spécialistes dirigée par le médecin légiste Francisco Etxeberria passa 35 jours à fouiller la crypte, à la recherche des restes exacts de Cervantès parmi des ossements mêlés d'au moins quinze personnes différentes. Un test ADN fut impossible —la seule parente directe vivante de Cervantès, sa sœur, est enterrée dans une fosse commune à Alcalá de Henares— si bien que les chercheurs conclurent, après avoir recoupé toutes les données historiques et médico-légales disponibles, qu'il existait « une somme de coïncidences et aucune divergence » : il est très probable, sans jamais être tout à fait certain, que les os de Cervantès lui-même se trouvent parmi ces fragments. Aujourd'hui, ils reposent dans un monument à l'intérieur de l'église, répartis en trois urnes aux côtés de ceux d'autres personnes.",
+    },
+    freeTourPhoto: "img/freetour4.jpg",
+    freeTourPhotoCaption: {
+      es: "Fachada del Convento de las Trinitarias Descalzas, Calle de Lope de Vega",
+      en: "Façade of the Convent of the Barefoot Trinitarian Nuns, Calle de Lope de Vega",
+      fr: "Façade du couvent des Trinitaires déchaussées, Calle de Lope de Vega",
     },
     coords: { lat: 40.4136, lng: -3.697 },
     photo: "img/etapa4.jpg",
@@ -644,74 +710,86 @@ const STAGES_I18N = [
     enigma: {
       es:
         "En la morada sagrada que rescató de Argel al autor de «El Quijote», " +
-        "la lápida de la Academia guarda el año de su homenaje en la pared. " +
-        "Pero los eruditos no escribieron el año con números comunes, sino " +
-        "con el lenguaje del César: MDCCCLXVIII. Desentraña el valor de " +
-        "estas letras romanas y conviértelas en la cifra de cuatro dígitos de " +
-        "nuestro calendario.",
+        "la lápida de mármol de la Academia guarda dos fechas talladas en " +
+        "números normales: el año de su nacimiento y el de su muerte. " +
+        "Buscad el segundo —el mismo que ya conocéis por este relato— y " +
+        "convertidlo al lenguaje del César: los números romanos. Esa " +
+        "conversión, escrita por vosotros mismos, es la clave.",
       en:
         "In the sacred dwelling that ransomed the author of 'Don Quixote' " +
-        "from Algiers, the Academy's plaque holds on the wall the year of " +
-        "its tribute. But the scholars did not write the year in common " +
-        "numerals, but in the language of Caesar: MDCCCLXVIII. Unravel the " +
-        "value of these Roman letters and turn them into the four-digit " +
-        "figure of our calendar.",
+        "from Algiers, the Academy's marble plaque holds two dates carved " +
+        "in ordinary numerals: the year of his birth and the year of his " +
+        "death. Find the second one — the same one you already know from " +
+        "this story — and convert it into the language of Caesar: Roman " +
+        "numerals. That conversion, written by you, is the key.",
       fr:
         "Dans la demeure sacrée qui racheta d'Alger l'auteur de « Don " +
-        "Quichotte », la plaque de l'Académie garde sur le mur l'année de " +
-        "son hommage. Mais les érudits n'ont pas écrit l'année en chiffres " +
-        "ordinaires, mais dans la langue de César : MDCCCLXVIII. Démêlez la " +
-        "valeur de ces lettres romaines et transformez-les en le nombre à " +
-        "quatre chiffres de notre calendrier.",
+        "Quichotte », la plaque de marbre de l'Académie porte deux dates " +
+        "gravées en chiffres ordinaires : l'année de sa naissance et celle " +
+        "de sa mort. Cherchez la seconde — celle que vous connaissez déjà " +
+        "grâce à ce récit — et convertissez-la dans la langue de César : " +
+        "les chiffres romains. Cette conversion, écrite par vous, est la " +
+        "clé.",
     },
     answerFormat: {
-      es: "AÑO DE 4 DÍGITOS",
-      en: "4-DIGIT YEAR",
-      fr: "ANNÉE À 4 CHIFFRES",
+      es: "NÚMEROS ROMANOS (ej.: MCMXCIX)",
+      en: "ROMAN NUMERALS (e.g.: MCMXCIX)",
+      fr: "CHIFFRES ROMAINS (ex. : MCMXCIX)",
     },
     hintSubtle: {
       es:
-        "Recuerda el valor de cada letra romana: M=1000, D=500, C=100, L=50, " +
-        "X=10, V=5, I=1. Ve sumando de izquierda a derecha.",
+        "La placa dice, con toda claridad: «Cervantes nació en 1547 y " +
+        "falleció en 1616». Es el segundo año el que buscáis. Recordad: " +
+        "M=1000, D=500, C=100, X=10, V=5, I=1.",
       en:
-        "Remember the value of each Roman numeral: M=1000, D=500, C=100, " +
-        "L=50, X=10, V=5, I=1. Add them up from left to right.",
+        "The plaque plainly reads: 'Cervantes nació en 1547 y falleció en " +
+        "1616' ('Cervantes was born in 1547 and died in 1616'). It's the " +
+        "second year you need. Remember: M=1000, D=500, C=100, X=10, V=5, " +
+        "I=1.",
       fr:
-        "Rappelez-vous la valeur de chaque chiffre romain : M=1000, D=500, " +
-        "C=100, L=50, X=10, V=5, I=1. Additionnez de gauche à droite.",
+        "La plaque indique clairement : « Cervantes nació en 1547 y " +
+        "falleció en 1616 » (« Cervantès est né en 1547 et mort en 1616 »). " +
+        "C'est la seconde année qu'il vous faut. Rappelez-vous : M=1000, " +
+        "D=500, C=100, X=10, V=5, I=1.",
     },
     directions: {
       es: [
         "Acércate a la fachada exterior del convento en la Calle de Lope de Vega, 18.",
-        "Localiza la placa de la Real Academia Española (RAE).",
-        "Convierte los números romanos MDCCCLXVIII: M(1000) + DCCC(800) + LX(60) + VIII(8).",
+        "Localiza la placa de mármol de la Real Academia Española (RAE): indica en qué año nació y en qué año murió Cervantes.",
+        "Toma su año de muerte (1616) y conviértelo a números romanos.",
       ],
       en: [
         "Go to the outer façade of the convent at Calle de Lope de Vega, 18.",
-        "Find the plaque of the Real Academia Española (RAE).",
-        "Convert the Roman numerals MDCCCLXVIII: M(1000) + DCCC(800) + LX(60) + VIII(8).",
+        "Find the marble plaque of the Real Academia Española (RAE): it states the years Cervantes was born and died.",
+        "Take his death year (1616) and convert it into Roman numerals.",
       ],
       fr: [
         "Rendez-vous à la façade extérieure du couvent, Calle de Lope de Vega, 18.",
-        "Repérez la plaque de la Real Academia Española (RAE).",
-        "Convertissez les chiffres romains MDCCCLXVIII : M(1000) + DCCC(800) + LX(60) + VIII(8).",
+        "Repérez la plaque de marbre de la Real Academia Española (RAE) : elle indique les années de naissance et de mort de Cervantès.",
+        "Prenez son année de décès (1616) et convertissez-la en chiffres romains.",
       ],
     },
-    answer: "1868",
-    acceptedAnswers: ["1868"],
+    answer: "MDCXVI",
+    acceptedAnswers: ["MDCXVI", "mdcxvi"],
     revealExplanation: {
       es:
-        "MDCCCLXVIII = 1868: M(1000) + DCCC(800) + LX(60) + VIII(8). Ese año " +
-        "la RAE rindió homenaje a Cervantes en el convento donde reposa desde " +
-        "1616.",
+        "La respuesta era MDCXVI (=1616 en números romanos: M=1000, " +
+        "D=500, C=100, X=10, V=5, I=1). La placa de mármol, obra del " +
+        "escultor Ponciano Ponzano e instalada por la RAE en 1869, dice: " +
+        "«Cervantes nació en 1547 y falleció en 1616» — el mismo año en que " +
+        "fue enterrado en este convento.",
       en:
-        "MDCCCLXVIII = 1868: M(1000) + DCCC(800) + LX(60) + VIII(8). That " +
-        "year the RAE paid tribute to Cervantes at the convent where he has " +
-        "rested since 1616.",
+        "The answer was MDCXVI (1616 in Roman numerals: M=1000, D=500, " +
+        "C=100, X=10, V=5, I=1). The marble plaque, the work of sculptor " +
+        "Ponciano Ponzano and installed by the RAE in 1869, reads: " +
+        "'Cervantes nació en 1547 y falleció en 1616' — the same year he " +
+        "was buried in this convent.",
       fr:
-        "MDCCCLXVIII = 1868 : M(1000) + DCCC(800) + LX(60) + VIII(8). Cette " +
-        "année-là, la RAE rendit hommage à Cervantès au couvent où il repose " +
-        "depuis 1616.",
+        "La réponse était MDCXVI (1616 en chiffres romains : M=1000, " +
+        "D=500, C=100, X=10, V=5, I=1). La plaque de marbre, œuvre du " +
+        "sculpteur Ponciano Ponzano et installée par la RAE en 1869, " +
+        "indique : « Cervantes nació en 1547 y falleció en 1616 » — la " +
+        "même année où il fut enterré dans ce couvent.",
     },
     transition: {
       type: "walk",
@@ -745,6 +823,17 @@ const STAGES_I18N = [
       es: "Estatua de Calderón de la Barca",
       en: "Statue of Calderón de la Barca",
       fr: "Statue de Calderón de la Barca",
+    },
+    freeTourIntro: {
+      es: "Un dato curioso antes de llegar a la Plaza de Santa Ana: esta plaza tal como la veis no es del Siglo de Oro, sino de principios del XIX. La mandó abrir José Bonaparte, el hermano de Napoleón que reinó brevemente en España entre 1808 y 1813, derribando el convento que ocupaba el solar. Los madrileños, poco contentos con un rey impuesto por los franceses y aficionado, según cuentan, a la bebida, le pusieron dos motes burlones: «Pepe Botella» y «Pepe Plazuelas», este último por su manía de abrir plazas y calles anchas tirando conventos, en un intento —bastante adelantado a su época— de modernizar y airear el laberíntico Madrid de los Austrias. Irónicamente, muchas de esas reformas urbanas, tan criticadas entonces, son hoy algunas de las plazas más queridas de la ciudad. Con el paso de las décadas, esta en concreto se convirtió en el corazón bohemio del Barrio de las Letras, frecuentado por escritores, actores y noctámbulos, y hoy es una de las zonas con más ambiente y terrazas de todo Madrid.",
+      en: "A curious fact before you reach Plaza de Santa Ana: the square as you see it doesn't date from the Golden Age, but from the early 19th century. It was created by Joseph Bonaparte, Napoleon's brother who briefly reigned over Spain between 1808 and 1813, by tearing down the convent that stood on the site. Madrileños, none too pleased with a king imposed by the French and, so the story goes, rather fond of drink, gave him two mocking nicknames: 'Pepe Botella' ('Joe Bottle') and 'Pepe Plazuelas' ('Joe Little-Squares'), the latter for his habit of opening up squares and wide streets by knocking down convents, in an attempt — rather ahead of its time — to modernise and air out the labyrinthine Madrid of the Habsburgs. Ironically, many of those urban reforms, so criticised at the time, are today among the city's most beloved squares. Over the following decades, this particular one became the bohemian heart of the Barrio de las Letras, frequented by writers, actors and night owls, and today it's one of the liveliest areas in Madrid, packed with bars and outdoor terraces.",
+      fr: "Un fait curieux avant d'arriver à la Plaza de Santa Ana : la place telle que vous la voyez ne date pas du Siècle d'Or, mais du début du XIXe siècle. Elle fut créée par Joseph Bonaparte, le frère de Napoléon qui régna brièvement sur l'Espagne entre 1808 et 1813, en démolissant le couvent qui occupait ce terrain. Les Madrilènes, peu satisfaits d'un roi imposé par les Français et, dit-on, porté sur la bouteille, lui donnèrent deux surnoms moqueurs : « Pepe Botella » (« Joseph Bouteille ») et « Pepe Plazuelas » (« Joseph Petites-Places »), ce dernier pour sa manie d'ouvrir des places et de larges rues en abattant des couvents, dans une tentative — plutôt en avance sur son temps — de moderniser et d'aérer le labyrinthique Madrid des Habsbourg. Ironiquement, nombre de ces réformes urbaines, tant critiquées à l'époque, comptent aujourd'hui parmi les places les plus appréciées de la ville. Au fil des décennies, celle-ci devint le cœur bohème du Barrio de las Letras, fréquenté par des écrivains, des acteurs et des noctambules, et c'est aujourd'hui l'un des quartiers les plus animés de Madrid, plein de bars et de terrasses.",
+    },
+    freeTourPhoto: "img/freetour5.jpg",
+    freeTourPhotoCaption: {
+      es: "José I Bonaparte, por François Gérard (1808) · Palacio de Fontainebleau",
+      en: "Joseph Bonaparte, by François Gérard (1808) · Palace of Fontainebleau",
+      fr: "Joseph Bonaparte, par François Gérard (1808) · Château de Fontainebleau",
     },
     coords: { lat: 40.4149, lng: -3.7008 },
     photo: "img/etapa5.jpg",
@@ -785,26 +874,29 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "El gran dramaturgo en bronce contempla la plaza rodeado por sus " +
-        "cuatro obras maestras esculpidas en metal. Busca el cuadro donde el " +
-        "príncipe Segismundo yace encadenado descubriendo que toda la " +
-        "existencia es una ilusión. Cuenta las figuras humanas de bronce " +
-        "atrapadas en esa escena concreta. Junta la cantidad de figuras con " +
-        "la palabra clave que da título a la ficción dramática.",
+        "El gran dramaturgo en mármol preside la plaza, sentado sobre su " +
+        "pedestal de piedra. Bajo su nombre esculpido, varios relieves de " +
+        "bronce —uno por cada obra maestra— rodean la base: recórrelos " +
+        "todos y cuenta cuántos son en total. Uno de ellos retrata «La vida " +
+        "es sueño», el drama donde el príncipe Segismundo descubre que toda " +
+        "la existencia puede ser una ilusión. Une el número de relieves con " +
+        "la palabra clave del título de esa obra.",
       en:
-        "The great playwright in bronze surveys the square, surrounded by " +
-        "his four masterpieces sculpted in metal. Find the panel where " +
-        "Prince Segismundo lies in chains, discovering that all existence " +
-        "is an illusion. Count the bronze human figures trapped in that " +
-        "particular scene. Join the number of figures with the key word " +
-        "that gives the dramatic fiction its title.",
+        "The great playwright in marble surveys the square, seated on his " +
+        "stone pedestal. Beneath his carved name, several bronze reliefs — " +
+        "one per masterpiece — surround the base: walk all the way around " +
+        "and count how many there are in total. One of them portrays 'Life " +
+        "Is a Dream,' the drama where Prince Segismundo discovers that all " +
+        "existence may be an illusion. Join the number of reliefs with the " +
+        "key word from that play's title.",
       fr:
-        "Le grand dramaturge de bronze contemple la place, entouré de ses " +
-        "quatre chefs-d'œuvre sculptés dans le métal. Trouvez le tableau où " +
-        "le prince Sigismond gît enchaîné, découvrant que toute existence " +
-        "est une illusion. Comptez les figures humaines de bronze " +
-        "prisonnières de cette scène précise. Associez le nombre de " +
-        "figures au mot-clé qui donne son titre à cette fiction dramatique.",
+        "Le grand dramaturge de marbre contemple la place, assis sur son " +
+        "piédestal de pierre. Sous son nom gravé, plusieurs reliefs de " +
+        "bronze — un par chef-d'œuvre — entourent la base : faites-en le " +
+        "tour complet et comptez combien il y en a au total. L'un d'eux " +
+        "représente « La vie est un songe », le drame où le prince " +
+        "Sigismond découvre que toute existence pourrait être une illusion. " +
+        "Associez le nombre de reliefs au mot-clé du titre de cette œuvre.",
     },
     answerFormat: {
       es: "NÚMERO-PALABRA (ej.: 0-DRAMA)",
@@ -813,57 +905,61 @@ const STAGES_I18N = [
     },
     hintSubtle: {
       es:
-        "Rodea el pedestal: son cuatro relieves, uno por obra. El que buscas " +
-        "muestra a un hombre encadenado. «¿Qué es la vida? Un frenesí. ¿Qué " +
-        "es la vida? Una ilusión…» — la última palabra del título es la " +
-        "clave.",
+        "Rodea el pedestal completo: verás una placa con el nombre CALDERÓN " +
+        "DE LA BARCA y, debajo, los relieves de bronce. Cuéntalos todos, " +
+        "sin dejarte ninguno. «¿Qué es la vida? Un frenesí. ¿Qué es la " +
+        "vida? Una ilusión…» — la última palabra del título es la clave.",
       en:
-        "Walk around the pedestal: there are four reliefs, one per play. " +
-        "The one you want shows a man in chains. 'What is life? A frenzy. " +
-        "What is life? An illusion…' — the last word of the title is the " +
-        "key.",
+        "Walk all the way around the pedestal: you'll see a plaque reading " +
+        "CALDERÓN DE LA BARCA and, below it, the bronze reliefs. Count all " +
+        "of them, don't miss any. 'What is life? A frenzy. What is life? " +
+        "An illusion…' — the last word of the title is the key.",
       fr:
-        "Faites le tour du piédestal : il y a quatre reliefs, un par " +
-        "pièce. Celui que vous cherchez montre un homme enchaîné. « " +
-        "Qu'est-ce que la vie ? Une frénésie. Qu'est-ce que la vie ? Une " +
-        "illusion… » — le dernier mot du titre est la clé.",
+        "Faites le tour complet du piédestal : vous verrez une plaque " +
+        "indiquant CALDERÓN DE LA BARCA et, en dessous, les reliefs de " +
+        "bronze. Comptez-les tous, sans en oublier aucun. « Qu'est-ce que " +
+        "la vie ? Une frénésie. Qu'est-ce que la vie ? Une illusion… » — " +
+        "le dernier mot du titre est la clé.",
     },
     directions: {
       es: [
-        "Inspecciona las cuatro caras del pedestal de la estatua de Calderón de la Barca.",
-        "Encuentra el relieve de «La vida es sueño» y cuenta las figuras humanas esculpidas.",
-        "Une esa cifra con la palabra clave del título de la obra.",
+        "Busca la placa de mármol que dice CALDERÓN DE LA BARCA en el pedestal de su estatua.",
+        "Rodea la base completa y cuenta cuántos relieves de bronce hay en total.",
+        "Une esa cifra con la palabra clave del título de «La vida es sueño».",
       ],
       en: [
-        "Inspect all four faces of the pedestal of the Calderón de la Barca statue.",
-        "Find the relief of 'Life Is a Dream' and count the sculpted human figures.",
-        "Join that number with the play's key title word.",
+        "Find the marble plaque reading CALDERÓN DE LA BARCA on the pedestal of his statue.",
+        "Walk all the way around the base and count how many bronze reliefs there are in total.",
+        "Join that number with the key word from the title of 'Life Is a Dream.'",
       ],
       fr: [
-        "Inspectez les quatre faces du piédestal de la statue de Calderón de la Barca.",
-        "Trouvez le relief de « La vie est un songe » et comptez les figures humaines sculptées.",
-        "Associez ce chiffre au mot-clé du titre de l'œuvre.",
+        "Trouvez la plaque de marbre indiquant CALDERÓN DE LA BARCA sur le piédestal de sa statue.",
+        "Faites le tour complet de la base et comptez combien il y a de reliefs de bronze au total.",
+        "Associez ce chiffre au mot-clé du titre de « La vie est un songe ».",
       ],
     },
-    answer: "3-SUEÑO",
+    answer: "4-SUEÑO",
     acceptedAnswers: [
-      "3-SUEÑO", "3 SUEÑO", "3SUEÑO", "3-sueno", "3 sueno",
-      "3-DREAM", "3 DREAM", "3DREAM", "3-dream", "3 dream", // inglés
-      "3-SONGE", "3 SONGE", "3SONGE", "3-songe", "3 songe", // francés
+      "4-SUEÑO", "4 SUEÑO", "4SUEÑO", "4-sueno", "4 sueno",
+      "4-DREAM", "4 DREAM", "4DREAM", "4-dream", "4 dream", // inglés
+      "4-SONGE", "4 SONGE", "4SONGE", "4-songe", "4 songe", // francés
     ],
     revealExplanation: {
       es:
-        "La respuesta era 3-SUEÑO: tres figuras habitan el relieve de «La " +
-        "vida es sueño», el drama donde Segismundo descubre que «los sueños, " +
-        "sueños son».",
+        "La respuesta era 4-SUEÑO: cuatro relieves de bronce decoran la " +
+        "base de la estatua de Calderón, dedicados a El alcalde de " +
+        "Zalamea, La vida es sueño, La danza de la muerte y El escondido y " +
+        "la tapada — cuatro de sus obras más célebres.",
       en:
-        "The answer was 3-SUEÑO ('dream' in Spanish): three figures inhabit " +
-        "the relief of 'Life Is a Dream,' the drama where Segismundo " +
-        "discovers that 'dreams are only dreams.'",
+        "The answer was 4-SUEÑO ('dream' in Spanish): four bronze reliefs " +
+        "decorate the base of Calderón's statue, dedicated to El alcalde " +
+        "de Zalamea, La vida es sueño, La danza de la muerte and El " +
+        "escondido y la tapada — four of his most celebrated plays.",
       fr:
-        "La réponse était 3-SUEÑO (« songe » en espagnol) : trois figures " +
-        "peuplent le relief de « La vie est un songe », le drame où " +
-        "Sigismond découvre que « les songes ne sont que des songes ».",
+        "La réponse était 4-SUEÑO (« songe » en espagnol) : quatre reliefs " +
+        "de bronze ornent la base de la statue de Calderón, dédiés à El " +
+        "alcalde de Zalamea, La vida es sueño, La danza de la muerte et El " +
+        "escondido y la tapada — quatre de ses œuvres les plus célèbres.",
     },
     transition: {
       type: "walk",
@@ -902,6 +998,17 @@ const STAGES_I18N = [
       en: "Equestrian Statue of Philip III",
       fr: "Statue équestre de Philippe III",
     },
+    freeTourIntro: {
+      es: "Y ahora, el gran final: la Plaza Mayor. La construyó Felipe III entre 1617 y 1619, encargando el diseño al mismo arquitecto que la Casa de la Villa, Juan Gómez de Mora. En sus más de cuatro siglos de historia ha sido escenario de corridas de toros, coronaciones, mascaradas y también de los terribles autos de fe de la Inquisición —el más multitudinario, en junio de 1680, se celebró presidido por el joven rey Carlos II y su madre, la reina Mariana de Austria, y quedó inmortalizado en un célebre cuadro de Francisco Rizi que hoy cuelga en el Museo del Prado. La plaza ha ardido por completo tres veces —en 1631, 1672 y, la más destructiva, en 1790— y cada vez Madrid la ha reconstruido, dándole el aspecto más sobrio que veis hoy. Fijaos, eso sí, en el edificio de vuestra izquierda al entrar por el arco, decorado con vistosos frescos de colores: es la Casa de la Panadería, la única fachada que sobrevivió intacta al último gran incendio, conservando su aspecto original del siglo XVII. Cada diciembre la plaza se llena de casetas para el mercadillo navideño más famoso de la ciudad. Aquí termina vuestra búsqueda: buena suerte con el último sello.",
+      en: "And now, the grand finale: Plaza Mayor. Philip III had it built between 1617 and 1619, commissioning the same architect as the Casa de la Villa, Juan Gómez de Mora. In its more than four centuries of history it has been the stage for bullfights, coronations, masquerades and also the terrible autos-da-fé of the Inquisition — the largest of them, in June 1680, was presided over by the young King Charles II and his mother, Queen Mariana of Austria, and was immortalised in a famous painting by Francisco Rizi that now hangs in the Prado Museum. The square has burned to the ground completely three times — in 1631, 1672 and, most destructively, in 1790 — and each time Madrid rebuilt it, giving it the more sober look you see today. Look, though, at the building on your left as you come in through the arch, decorated with colourful frescoes: that's the Casa de la Panadería, the only façade to survive the last great fire intact, still keeping its original 17th-century appearance. Every December the square fills with stalls for the city's most famous Christmas market. Here your quest ends: good luck with the final seal.",
+      fr: "Et maintenant, le grand final : la Plaza Mayor. Philippe III la fit construire entre 1617 et 1619, confiant sa conception au même architecte que la Casa de la Villa, Juan Gómez de Mora. En plus de quatre siècles d'histoire, elle a été le théâtre de corridas, de couronnements, de mascarades et aussi des terribles autodafés de l'Inquisition —le plus grand d'entre eux, en juin 1680, fut présidé par le jeune roi Charles II et sa mère, la reine Mariana d'Autriche, et fut immortalisé dans un célèbre tableau de Francisco Rizi aujourd'hui accroché au musée du Prado. La place a entièrement brûlé trois fois —en 1631, 1672 et, le plus destructeur, en 1790— et à chaque fois Madrid l'a reconstruite, lui donnant l'allure plus sobre que vous voyez aujourd'hui. Observez tout de même le bâtiment sur votre gauche en entrant par l'arche, orné de fresques colorées : c'est la Casa de la Panadería, la seule façade à avoir survécu intacte au dernier grand incendie, conservant son aspect original du XVIIe siècle. Chaque mois de décembre, la place se remplit de chalets pour le marché de Noël le plus célèbre de la ville. Ici s'achève votre quête : bonne chance pour le dernier sceau.",
+    },
+    freeTourPhoto: "img/freetour6.jpg",
+    freeTourPhotoCaption: {
+      es: "«Auto de fe en la Plaza Mayor de Madrid» (1683), Francisco Rizi · Museo del Prado",
+      en: "\"Auto-da-fé in the Plaza Mayor of Madrid\" (1683), Francisco Rizi · Prado Museum",
+      fr: "« Autodafé sur la Plaza Mayor de Madrid » (1683), Francisco Rizi · Musée du Prado",
+    },
     coords: { lat: 40.4155, lng: -3.7074 },
     photo: "img/etapa6.jpg",
     photoCaption: {
@@ -918,8 +1025,9 @@ const STAGES_I18N = [
         "solemnes ceremonias. En el centro de la plaza se alza la estatua " +
         "ecuestre de Felipe III, moldeada en Florencia por los grandes " +
         "maestros del bronce Giambologna y Pietro Tacca. Para certificar " +
-        "vuestra victoria y desbloquear el testamento real, debéis examinar " +
-        "los símbolos y fechas grabados a los pies del caballo del rey.",
+        "vuestra victoria y desbloquear el testamento real, debéis leer la " +
+        "placa de mármol de su pedestal y encontrar, entre las fechas que " +
+        "en ella se recogen, la más antigua de todas.",
       en:
         "You made it! You have reached the beating heart of Habsburg " +
         "Madrid: the Plaza Mayor. Inaugurated by Philip III in 1619, this " +
@@ -928,8 +1036,9 @@ const STAGES_I18N = [
         "solemn ceremonies. In the centre of the square stands the " +
         "equestrian statue of Philip III, cast in Florence by the great " +
         "bronze masters Giambologna and Pietro Tacca. To certify your " +
-        "victory and unlock the royal testament, you must examine the " +
-        "symbols and dates carved at the feet of the king's horse.",
+        "victory and unlock the royal testament, you must read the marble " +
+        "plaque on its pedestal and find, among the dates it records, the " +
+        "oldest of them all.",
       fr:
         "Vous avez réussi ! Vous voici au cœur battant du Madrid des " +
         "Habsbourg : la Plaza Mayor. Inaugurée par Philippe III en 1619, " +
@@ -938,84 +1047,106 @@ const STAGES_I18N = [
         "cérémonies solennelles. Au centre de la place se dresse la statue " +
         "équestre de Philippe III, coulée à Florence par les grands maîtres " +
         "du bronze Giambologna et Pietro Tacca. Pour certifier votre " +
-        "victoire et déverrouiller le testament royal, vous devez examiner " +
-        "les symboles et les dates gravés aux pieds du cheval du roi.",
+        "victoire et déverrouiller le testament royal, vous devez lire la " +
+        "plaque de marbre de son piédestal et trouver, parmi les dates " +
+        "qu'elle indique, la plus ancienne de toutes.",
     },
     enigma: {
       es:
-        "En el foro de la villa, el rey de bronce cabalga desde Florencia. " +
-        "Mira las placas a los pies de la montura: encuentra el año de " +
-        "cuatro dígitos en que los maestros toscanos concluyeron la estatua. " +
-        "Cuenta después los escudos con castillos y leones que vigilan las " +
-        "cuatro esquinas de la base del monumento. Une el año de fundición " +
-        "florentina con el número de escudos esquineros para sellar la " +
-        "victoria final.",
+        "Rodead el gran pedestal de piedra hasta encontrar la placa de " +
+        "mármol que la reina Isabel II mandó colocar aquí en 1848. En ella " +
+        "se leen tres años distintos: el regreso de la Corte a Madrid, la " +
+        "construcción de esta misma plaza, y la llegada de esta estatua a " +
+        "su lugar actual. Buscad el más antiguo de los tres —el primero " +
+        "que se menciona— para sellar la victoria final.",
       en:
-        "In the town's forum, the bronze king rides in from Florence. Look " +
-        "at the plaques at the mount's feet: find the four-digit year when " +
-        "the Tuscan masters completed the statue. Then count the shields " +
-        "bearing castles and lions that watch over the four corners of the " +
-        "monument's base. Join the year of the Florentine casting with the " +
-        "number of corner shields to seal the final victory.",
+        "Walk around the great stone pedestal until you find the marble " +
+        "plaque that Queen Isabel II had placed here in 1848. On it you'll " +
+        "read three different years: the return of the Court to Madrid, " +
+        "the construction of this very square, and the arrival of this " +
+        "statue at its current spot. Find the oldest of the three — the " +
+        "first one mentioned — to seal the final victory.",
       fr:
-        "Sur le forum de la ville, le roi de bronze chevauche depuis " +
-        "Florence. Regardez les plaques aux pieds de la monture : trouvez " +
-        "l'année à quatre chiffres où les maîtres toscans achevèrent la " +
-        "statue. Comptez ensuite les écus aux châteaux et aux lions qui " +
-        "veillent aux quatre coins de la base du monument. Associez " +
-        "l'année de la fonte florentine au nombre d'écus d'angle pour " +
-        "sceller la victoire finale.",
+        "Faites le tour du grand piédestal de pierre jusqu'à trouver la " +
+        "plaque de marbre que la reine Isabelle II fit placer ici en 1848. " +
+        "On y lit trois années différentes : le retour de la Cour à " +
+        "Madrid, la construction de cette même place, et l'arrivée de " +
+        "cette statue à son emplacement actuel. Trouvez la plus ancienne " +
+        "des trois — la première mentionnée — pour sceller la victoire " +
+        "finale.",
     },
     answerFormat: {
-      es: "AÑO-NÚMERO (ej.: 1500-0)",
-      en: "YEAR-NUMBER (e.g.: 1500-0)",
-      fr: "ANNÉE-NOMBRE (ex. : 1500-0)",
+      es: "AÑO DE 4 DÍGITOS",
+      en: "4-DIGIT YEAR",
+      fr: "ANNÉE À 4 CHIFFRES",
     },
     hintSubtle: {
       es:
-        "El año que buscas coincide, curiosamente, con el de la muerte de " +
-        "Cervantes… y los escudos son tantos como esquinas tiene la base.",
+        "La placa dice: «La reina doña Isabel II… mandó colocar en este " +
+        "sitio la estatua del señor rey don Felipe III… que restituyó a " +
+        "ella la corte en [año]… y en 1619 hizo construir esta plaza " +
+        "Mayor. Año de 1848.» El año que buscáis es el primero de los tres, " +
+        "y el más antiguo.",
       en:
-        "The year you're after coincides, curiously, with the year " +
-        "Cervantes died… and there are as many shields as the base has " +
-        "corners.",
+        "The plaque reads: 'Queen Isabel II… ordered the statue of King " +
+        "Philip III to be placed on this site… who restored the Court to " +
+        "it in [year]… and in 1619 had this Plaza Mayor built. Year " +
+        "1848.' The year you want is the first of the three, and the " +
+        "oldest.",
       fr:
-        "L'année que vous cherchez coïncide, curieusement, avec celle de " +
-        "la mort de Cervantès… et il y a autant d'écus que la base compte " +
-        "de coins.",
+        "La plaque indique : « La reine Isabelle II… fit placer en ce lieu " +
+        "la statue du roi Philippe III… qui y ramena la Cour en [année]… " +
+        "et en 1619 fit construire cette Plaza Mayor. Année 1848. » " +
+        "L'année recherchée est la première des trois, et la plus " +
+        "ancienne.",
     },
     directions: {
       es: [
         "Colócate junto a la estatua ecuestre de Felipe III en el centro de la plaza.",
-        "Encuentra en las placas del pedestal el año de fundición en Florencia.",
-        "Cuenta los escudos heráldicos tallados en las esquinas de la base.",
+        "Busca la placa de mármol en el pedestal, colocada por Isabel II en 1848.",
+        "Lee los tres años grabados y anota el más antiguo de todos.",
       ],
       en: [
         "Stand next to the equestrian statue of Philip III in the centre of the square.",
-        "Find the year of the Florentine casting on the pedestal plaques.",
-        "Count the heraldic shields carved into the corners of the base.",
+        "Find the marble plaque on the pedestal, placed by Isabel II in 1848.",
+        "Read the three years engraved and note the oldest of them.",
       ],
       fr: [
         "Placez-vous près de la statue équestre de Philippe III, au centre de la place.",
-        "Trouvez l'année de la fonte florentine sur les plaques du piédestal.",
-        "Comptez les écus héraldiques sculptés aux coins de la base.",
+        "Trouvez la plaque de marbre sur le piédestal, posée par Isabelle II en 1848.",
+        "Lisez les trois années gravées et notez la plus ancienne.",
       ],
     },
-    answer: "1616-4",
-    acceptedAnswers: ["1616-4", "1616 4", "16164"],
+    answer: "1606",
+    acceptedAnswers: ["1606"],
     revealExplanation: {
       es:
-        "La clave final era 1616-4: la estatua se concluyó en Florencia en " +
-        "1616 — el mismo año en que murieron Cervantes y Shakespeare — y " +
-        "cuatro escudos custodian las esquinas de su base.",
+        "La clave final era 1606: el año en que Felipe III devolvió la " +
+        "Corte a Madrid (que su padre, Felipe II, había trasladado " +
+        "brevemente a Valladolid). La propia placa, colocada por Isabel II " +
+        "en 1848, recoge también 1619 (la construcción de esta plaza) y " +
+        "1848 (la llegada de la estatua a este lugar). Como curiosidad: la " +
+        "estatua en sí se terminó de fundir en Florencia en 1616 —el mismo " +
+        "año en que murieron Cervantes y Shakespeare— aunque esa fecha no " +
+        "aparece en ninguna placa visible.",
       en:
-        "The final key was 1616-4: the statue was completed in Florence in " +
-        "1616 — the same year Cervantes and Shakespeare both died — and " +
-        "four shields guard the corners of its base.",
+        "The final key was 1606: the year Philip III brought the Court " +
+        "back to Madrid (which his father, Philip II, had briefly moved to " +
+        "Valladolid). The plaque itself, placed by Isabel II in 1848, also " +
+        "records 1619 (this square's construction) and 1848 (the statue's " +
+        "arrival here). As a curious fact: the statue itself was finished " +
+        "being cast in Florence in 1616 — the same year Cervantes and " +
+        "Shakespeare both died — though that date doesn't appear on any " +
+        "visible plaque.",
       fr:
-        "La clé finale était 1616-4 : la statue fut achevée à Florence en " +
-        "1616 — la même année que moururent Cervantès et Shakespeare — et " +
-        "quatre écus gardent les coins de sa base.",
+        "La clé finale était 1606 : l'année où Philippe III ramena la Cour " +
+        "à Madrid (que son père, Philippe II, avait brièvement transférée " +
+        "à Valladolid). La plaque elle-même, posée par Isabelle II en " +
+        "1848, mentionne aussi 1619 (la construction de cette place) et " +
+        "1848 (l'arrivée de la statue ici). Fait curieux : la statue " +
+        "elle-même fut achevée à Florence en 1616 — la même année que " +
+        "moururent Cervantès et Shakespeare — bien que cette date " +
+        "n'apparaisse sur aucune plaque visible.",
     },
     transition: { type: "victory" },
   },

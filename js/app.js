@@ -111,9 +111,15 @@
       return this._voice;
     },
 
-    speak(text, btn) {
+    /* `onComplete(finished)` es opcional: se llama con `true` solo si la
+       narración terminó de forma natural (para gatear contenido que hay
+       que "escuchar sí o sí", como la explicación entre pruebas). Si el
+       usuario la cancela a mitad, o el navegador no soporta voz, se
+       llama con `false` — quien use esto decide su propio plan B. */
+    speak(text, btn, onComplete) {
       if (!("speechSynthesis" in window)) {
         toast(t("gps_unsupported")); // reutilizamos aviso genérico de "no soportado"
+        if (onComplete) onComplete(false);
         return;
       }
       if (speechSynthesis.speaking) {
@@ -121,6 +127,7 @@
         if (btn && btn.dataset.speaking === "1") {
           btn.dataset.speaking = "";
           btn.textContent = "🔊";
+          if (onComplete) onComplete(false); // cancelada: no cuenta como escuchada
           return;
         }
       }
@@ -133,11 +140,15 @@
       if (btn) {
         btn.dataset.speaking = "1";
         btn.textContent = "⏸";
-        u.onend = u.onerror = () => {
-          btn.dataset.speaking = "";
-          btn.textContent = "🔊";
-        };
       }
+      u.onend = () => {
+        if (btn) { btn.dataset.speaking = ""; btn.textContent = "🔊"; }
+        if (onComplete) onComplete(true);
+      };
+      u.onerror = () => {
+        if (btn) { btn.dataset.speaking = ""; btn.textContent = "🔊"; }
+        if (onComplete) onComplete(false);
+      };
       speechSynthesis.speak(u);
     },
     stop() {
@@ -868,6 +879,10 @@
       ? Engine.currentStage()
       : GAME_DATA.stages[S.stageIndex + 1];
     const walkText = afterGoogle ? S.pendingWalkText : tr.text;
+    const freeTour = next.freeTourIntro; // solo la prueba 1 (cubierta por el prólogo) no tiene
+    const freeTourArt = freeTour
+      ? artCard({ photo: next.freeTourPhoto, photoCaption: next.freeTourPhotoCaption }, next.location)
+      : "";
 
     const v = el(`
       <div>
@@ -881,9 +896,20 @@
           ${speaker("speaker_walk")}
           <p>${walkText}</p>
         </div>
+        ${
+          freeTour
+            ? `${freeTourArt}
+               <div class="card enigma freetour-card">
+                 <button class="btn-audio" title="${t("listen_freetour")}">🔊</button>
+                 ${speaker("speaker_freetour")}
+                 <p>${freeTour}</p>
+               </div>`
+            : ""
+        }
         ${mapsLink(next.coords, next.location)}
         <p class="gps-status" id="gpsStatus"></p>
         <button class="btn-secondary" id="btnGps">${t("gps_button")}</button>
+        <p class="listen-required-hint" id="listenHint"></p>
         <button class="btn-primary" id="btnArrived">${t("arrived_next")}</button>
       </div>
     `);
@@ -891,10 +917,47 @@
     // foto de equipo en el hito recién conquistado
     v.insertBefore(photoSection(solvedStage), v.querySelector(".map-link"));
 
-    v.querySelector(".btn-audio").onclick = (e) => tts.speak(walkText, e.currentTarget);
+    v.querySelector(".card:not(.freetour-card) .btn-audio").onclick = (e) =>
+      tts.speak(walkText, e.currentTarget);
     v.querySelector("#btnGps").onclick = () =>
       gpsCheck(next.coords, v.querySelector("#gpsStatus"));
-    v.querySelector("#btnArrived").onclick = () => {
+
+    /* La explicación estilo free tour es obligatoria: el botón de
+       "he llegado" queda bloqueado hasta que termine de sonar entera al
+       menos una vez. Si el navegador no soporta voz (o algo falla y
+       nunca dispara el final), un plan B por tiempo de lectura evita
+       que nadie se quede atascado sin poder avanzar. */
+    const $btnArrived = v.querySelector("#btnArrived");
+    const $listenHint = v.querySelector("#listenHint");
+    let unlocked = !freeTour;
+
+    function unlockArrive() {
+      if (unlocked) return;
+      unlocked = true;
+      $btnArrived.disabled = false;
+      $listenHint.classList.add("hidden");
+    }
+
+    if (freeTour) {
+      $btnArrived.disabled = true;
+      $listenHint.textContent = t("listen_required_hint");
+      const $ftBtn = v.querySelector(".freetour-card .btn-audio");
+      $ftBtn.onclick = (e) => tts.speak(freeTour, e.currentTarget, (finished) => {
+        if (finished) unlockArrive();
+      });
+      // Red de seguridad: si algo impide detectar el final de la voz
+      // (navegador raro, fallo puntual), no dejamos a nadie bloqueado
+      // para siempre — se desbloquea solo tras un tiempo generoso de
+      // lectura (bastante más que lo que se tarda en escucharlo).
+      const words = freeTour.split(/\s+/).length;
+      const safetyMs = Math.max(15000, (words / 2.3) * 1000 * 2.5);
+      setTimeout(unlockArrive, safetyMs);
+    } else {
+      $listenHint.classList.add("hidden");
+    }
+
+    $btnArrived.onclick = () => {
+      if (!unlocked) return;
       S.pendingWalkText = null;
       S.lastPoints = 0;
       if (!afterGoogle) Engine.advanceStage();

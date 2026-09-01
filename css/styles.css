@@ -447,6 +447,21 @@ button:active { transform: scale(0.97); }
   margin-top: 10px;
 }
 
+.btn-primary:disabled {
+  opacity: 0.45;
+  filter: grayscale(0.4);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.listen-required-hint {
+  margin: 10px 0 0;
+  font-size: 13.5px;
+  text-align: center;
+  color: var(--gold-bright, #d4a017);
+  font-weight: 600;
+}
+
 .btn-ghost {
   background: none;
   border: none;

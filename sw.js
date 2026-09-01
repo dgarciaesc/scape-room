@@ -1,6 +1,6 @@
 /* Service worker: juego 100% offline una vez cargado.
    Importante en la calle, donde la cobertura falla. */
-const CACHE = "testamento-v9";
+const CACHE = "testamento-v10";
 const ASSETS = [
   "./img/app_bg.jpg",
   "./img/home_madrid.jpg",
@@ -13,6 +13,11 @@ const ASSETS = [
   "./img/etapa4.jpg",
   "./img/etapa5.jpg",
   "./img/etapa6.jpg",
+  "./img/freetour2.jpg",
+  "./img/freetour3.jpg",
+  "./img/freetour4.jpg",
+  "./img/freetour5.jpg",
+  "./img/freetour6.jpg",
   "./",
   "./index.html",
   "./css/styles.css",
