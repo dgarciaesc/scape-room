@@ -94,6 +94,8 @@ const I18N = (() => {
       photo_take: "📸 Foto de recuerdo en {location}",
       photo_saved: "⚜ Foto sellada en la crónica",
       photo_no_space: "No hay espacio para guardar la foto",
+      photo_heading: "Un recuerdo de {location}",
+      photo_continue: "Continuar →",
 
       title_meta: "6 sellos ocultos en piedra y bronce<br />Del Palacio Real a la Plaza Mayor · ~2 h a pie<br />Recomendado: jugar en la calle, en equipo",
       title_continue: "▶ Continuar la investigación",
@@ -202,6 +204,8 @@ const I18N = (() => {
       photo_take: "📸 Keepsake photo at {location}",
       photo_saved: "⚜ Photo sealed into the chronicle",
       photo_no_space: "No room left to save the photo",
+      photo_heading: "A memento of {location}",
+      photo_continue: "Continue →",
 
       title_meta: "6 seals hidden in stone and bronze<br />From the Royal Palace to Plaza Mayor · ~2 h on foot<br />Recommended: play outdoors, as a team",
       title_continue: "▶ Continue the investigation",
@@ -310,6 +314,8 @@ const I18N = (() => {
       photo_take: "📸 Photo souvenir à {location}",
       photo_saved: "⚜ Photo scellée dans la chronique",
       photo_no_space: "Plus de place pour enregistrer la photo",
+      photo_heading: "Un souvenir de {location}",
+      photo_continue: "Continuer →",
 
       title_meta: "6 sceaux cachés dans la pierre et le bronze<br />Du Palais Royal à la Plaza Mayor · ~2 h à pied<br />Recommandé : jouer dans la rue, en équipe",
       title_continue: "▶ Continuer l'enquête",

@@ -414,6 +414,7 @@
       prologue: viewPrologue,
       history: viewHistory,
       stage: viewStage,
+      photo: viewPhoto,
       google: viewGoogle,
       transition: viewTransition,
       victory: viewVictory,
@@ -631,7 +632,7 @@
 
   function resumeScreen() {
     // reanudar en la pantalla guardada, con respaldo a la etapa actual
-    const valid = ["history", "stage", "google", "transition", "victory", "prologue"];
+    const valid = ["history", "stage", "photo", "google", "transition", "victory", "prologue"];
     return valid.includes(S.savedScreen) ? S.savedScreen : "history";
   }
 
@@ -722,6 +723,10 @@
       S.stageEnteredAt = Date.now();
       Engine.save();
     }
+    const locationArt = artCard(
+      { photo: st.locationPhoto, photoCaption: st.locationPhotoCaption },
+      st.location
+    );
     const v = el(`
       <div>
         <div class="stage-header">
@@ -730,6 +735,8 @@
           <p class="location-line">📍 ${st.location} · ${st.landmark}</p>
           <p class="stage-timer">${t("stage_timer", { timer: "0 s" })}</p>
         </div>
+
+        ${locationArt}
 
         <div class="card enigma">
           <button class="btn-audio" title="${t("listen_enigma")}">🔊</button>
@@ -816,7 +823,7 @@
         const pts = Engine.completeStage(true);
         S.lastPoints = pts;
         toast(t("stage_solved_help", { pts }));
-        go("transition");
+        go("photo");
         return;
       }
       const val = $input.value;
@@ -826,7 +833,7 @@
         S.lastPoints = pts;
         const last = S.stageLog[S.stageLog.length - 1];
         toast(t(last.bonus ? "stage_correct_bonus" : "stage_correct", { pts }));
-        go("transition");
+        go("photo");
       } else {
         S.attempts++;
         Engine.save();
@@ -840,6 +847,38 @@
         const keys = ["wrong_1", "wrong_2", "wrong_3"];
         toast(t(keys[Math.min(S.attempts - 1, 2)]));
       }
+    };
+
+    $screen.appendChild(v);
+  }
+
+  /* ---------- Pantalla: foto de recuerdo (justo tras resolver) ----------
+     Intermedia entre el enigma y la siguiente parada: aquí es donde se
+     pide la foto de equipo, con el sello recién abierto todavía fresco.
+     `Engine.currentStage()` sigue apuntando a la etapa que se acaba de
+     resolver — el índice no avanza hasta pulsar "he llegado" en la
+     pantalla de transición. */
+  function viewPhoto() {
+    const st = Engine.currentStage();
+    const v = el(`
+      <div>
+        <div class="stage-header">
+          <div class="stage-kicker">${t("transition_kicker", { n: st.num })}</div>
+          <h2>${t("photo_heading", { location: st.location })}</h2>
+          ${S.lastPoints ? `<p class="location-line">${t("transition_points", { pts: S.lastPoints })}</p>` : ""}
+        </div>
+        <div id="photoSlot"></div>
+        <button class="btn-primary" id="btnPhotoContinue">${t("photo_continue")}</button>
+      </div>
+    `);
+
+    v.querySelector("#photoSlot").appendChild(photoSection(st));
+
+    v.querySelector("#btnPhotoContinue").onclick = () => {
+      const tr = st.transition;
+      if (tr.type === "google") { go("google"); return; }
+      if (tr.type === "victory") { Engine.advanceStage(); go("victory"); return; }
+      go("transition");
     };
 
     $screen.appendChild(v);
@@ -998,9 +1037,6 @@
         <button class="btn-primary" id="btnArrived">${t("arrived_next")}</button>
       </div>
     `);
-
-    // foto de equipo en el hito recién conquistado
-    v.insertBefore(photoSection(solvedStage), v.querySelector(".map-link"));
 
     v.querySelector(".card:not(.freetour-card) .btn-audio").onclick = (e) =>
       tts.speak(walkText, e.currentTarget, null, walkAudioId);

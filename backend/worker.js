@@ -79,6 +79,12 @@ const STAGES_I18N = [
       en: "\"Las Meninas,\" Diego Velázquez (1656), painted in the Alcázar · Museo del Prado",
       fr: "« Les Ménines », Diego Velázquez (1656), peint dans l'Alcázar · Museo del Prado",
     },
+    locationPhoto: "img/lugar1.jpg",
+    locationPhotoCaption: {
+      es: "La Plaza de Oriente, con el Palacio Real al fondo",
+      en: "Plaza de Oriente, with the Royal Palace in the background",
+      fr: "La Plaza de Oriente, avec le Palais Royal en arrière-plan",
+    },
     narrative: {
       es:
         "¡Atención, investigadores! Os halláis en el antiguo solar del Alcázar " +
@@ -311,6 +317,12 @@ const STAGES_I18N = [
       es: "«La batalla de Lepanto» (1571), anónimo · National Maritime Museum",
       en: "\"The Battle of Lepanto\" (1571), anonymous · National Maritime Museum",
       fr: "« La bataille de Lépante » (1571), anonyme · National Maritime Museum",
+    },
+    locationPhoto: "img/lugar2.jpg",
+    locationPhotoCaption: {
+      es: "La Plaza de la Villa, con la Torre de los Lujanes al fondo",
+      en: "Plaza de la Villa, with the Torre de los Lujanes in the background",
+      fr: "La Plaza de la Villa, avec la Torre de los Lujanes en arrière-plan",
     },
     narrative: {
       es:
@@ -548,6 +560,12 @@ const STAGES_I18N = [
       en: "Lope de Vega, by Juan van der Hamen (c. 1620), wearing the habit of the Order of St John",
       fr: "Lope de Vega, par Juan van der Hamen (v. 1620), portant l'habit de l'ordre de Saint-Jean",
     },
+    locationPhoto: "img/lugar3.jpg",
+    locationPhotoCaption: {
+      es: "Fachada de la Casa-Museo de Lope de Vega, Calle de Cervantes",
+      en: "Façade of the Lope de Vega House-Museum, Calle de Cervantes",
+      fr: "Façade de la Maison-Musée de Lope de Vega, Calle de Cervantes",
+    },
     narrative: {
       es:
         "Deteneos frente al portón de madera de la finca donde vivió y murió " +
@@ -741,6 +759,12 @@ const STAGES_I18N = [
       en: "Miguel de Cervantes, attributed to Juan de Jáuregui (1600) · RAE",
       fr: "Miguel de Cervantès, attribué à Juan de Jáuregui (1600) · RAE",
     },
+    locationPhoto: "img/lugar4.jpg",
+    locationPhotoCaption: {
+      es: "Fachada del Convento de las Trinitarias Descalzas",
+      en: "Façade of the Convent of the Barefoot Trinitarian Nuns",
+      fr: "Façade du couvent des Trinitaires déchaussées",
+    },
     narrative: {
       es:
         "Estáis ante los muros de ladrillo del Convento de las Trinitarias " +
@@ -923,6 +947,12 @@ const STAGES_I18N = [
       en: "Calderón de la Barca, engraving by Pedro de Villafranca (1676)",
       fr: "Calderón de la Barca, gravure de Pedro de Villafranca (1676)",
     },
+    locationPhoto: "img/lugar5.jpg",
+    locationPhotoCaption: {
+      es: "Monumento a Calderón de la Barca, en la Plaza de Santa Ana",
+      en: "Monument to Calderón de la Barca, in Plaza de Santa Ana",
+      fr: "Monument à Calderón de la Barca, sur la Plaza de Santa Ana",
+    },
     narrative: {
       es:
         "¡Bienvenidos a la cuna del teatro español! En este mismo lugar se " +
@@ -1103,6 +1133,12 @@ const STAGES_I18N = [
       es: "«Fiesta real en la Plaza Mayor» (s. XVII) · Museo de Historia de Madrid",
       en: "\"Royal Celebration in the Plaza Mayor\" (17th c.) · Museo de Historia de Madrid",
       fr: "« Fête royale sur la Plaza Mayor » (XVIIe s.) · Museo de Historia de Madrid",
+    },
+    locationPhoto: "img/lugar6.jpg",
+    locationPhotoCaption: {
+      es: "La Plaza Mayor, con la Casa de la Panadería al fondo",
+      en: "Plaza Mayor, with the Casa de la Panadería in the background",
+      fr: "La Plaza Mayor, avec la Casa de la Panadería en arrière-plan",
     },
     narrative: {
       es:
