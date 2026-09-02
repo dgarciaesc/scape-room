@@ -332,6 +332,10 @@ figure.art-card figcaption {
   line-height: 1.62;
 }
 
+.card p + p {
+  margin-top: 12px;
+}
+
 /* ---------- El Historiador: identidad de quien habla ---------- */
 .speaker {
   display: flex;

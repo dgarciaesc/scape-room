@@ -308,6 +308,20 @@
     return m ? m[1] : stage.num;
   }
 
+  /* Convierte un texto con párrafos separados por línea en blanco
+     (\n\n) en varios <p>, para que las anécdotas largas del "recorrido
+     libre" no lleguen como un único bloque de texto. Si no hay saltos
+     de párrafo (texto corto, o algún idioma sin marcar), se queda en
+     un único <p> como antes. */
+  function paragraphs(text) {
+    return text
+      .split(/\n{2,}/)
+      .map((p) => p.trim())
+      .filter(Boolean)
+      .map((p) => `<p>${p}</p>`)
+      .join("");
+  }
+
   function mapsLink(coords, label) {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}&travelmode=walking`;
     return `<a class="map-link" href="${url}" target="_blank" rel="noopener">${t("maps_link", { label })}</a>`;
@@ -1038,7 +1052,7 @@
                <div class="card enigma freetour-card">
                  <button class="btn-audio" title="${t("listen_freetour")}">🔊</button>
                  ${speaker("speaker_freetour")}
-                 <p>${freeTour}</p>
+                 ${paragraphs(freeTour)}
                </div>`
             : ""
         }
