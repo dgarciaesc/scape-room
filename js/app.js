@@ -1205,4 +1205,24 @@
     S.screen = "title";
   }
   render();
+
+  /* Refresco silencioso en segundo plano: si el jugador ya tenía las
+     pruebas cacheadas de una activación anterior, se piden de nuevo al
+     Worker nada más abrir la app (sin bloquear el arranque, que sigue
+     siendo offline-first con la caché). Así, si hemos publicado un
+     cambio de contenido (como este reordenamiento), llega solo, sin
+     que el jugador tenga que cambiar de idioma dos veces a mano para
+     forzar la descarga. Si falla (sin red) no pasa nada: se sigue
+     jugando con lo que ya había en caché. */
+  if (License.isUnlocked()) {
+    const before = JSON.stringify(GAME_DATA.stages.map((s) => s.id));
+    License.redeem(License.currentCode(), I18N.getLang())
+      .then((fresh) => {
+        if (!fresh || !fresh.length) return;
+        if (JSON.stringify(fresh.map((s) => s.id)) !== before) return; // guarda de seguridad
+        GAME_DATA.stages = fresh;
+        if (S.screen === "title") render(); // no interrumpir si ya está jugando
+      })
+      .catch(() => {}); // sin conexión: se queda con la caché tal cual
+  }
 })();
