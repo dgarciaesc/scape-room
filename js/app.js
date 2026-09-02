@@ -679,10 +679,6 @@
           </figcaption>
         </figure>
         <div class="card">
-          <div class="card-label">${t("who_guides")}</div>
-          <p class="narrator-bio">${NARRATOR.bio}</p>
-        </div>
-        <div class="card">
           <button class="btn-audio" title="${t("listen_narration")}">🔊</button>
           ${speaker("speaker_prologue")}
           <p>${p.text}</p>
