@@ -156,6 +156,12 @@ const GAME_DATA_I18N = {
         "cœur de Madrid, attendant que quelqu'un redécouvre leurs " +
         "secrets.",
     },
+    photo: "img/carlos_v.jpg",
+    photoCaption: {
+      es: "«Carlos V en la batalla de Mühlberg», Tiziano (1548) · Museo del Prado, Madrid",
+      en: "\"Charles V at the Battle of Mühlberg,\" Titian (1548) · Museo del Prado, Madrid",
+      fr: "« Charles Quint à la bataille de Mühlberg », Titien (1548) · Museo del Prado, Madrid",
+    },
   },
 
   prologue: {

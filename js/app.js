@@ -683,12 +683,16 @@
      necesaria para resolver nada. */
   function viewContext() {
     const c = GAME_DATA.historicalContext;
+    const art = artCard(c, "Carlos V, emperador y rey de España");
     const v = el(`
       <div>
         <div class="stage-header">
           <div class="stage-kicker">${t("context_kicker")}</div>
           <h2>${c.title}</h2>
         </div>
+
+        ${art}
+
         <div class="card">
           <button class="btn-audio" title="${t("listen_narration")}">🔊</button>
           ${speaker("speaker_context")}
