@@ -118,6 +118,9 @@ const I18N = (() => {
       license_opening_payment: "Abriendo pago…",
       license_note: "El código se activa en este móvil la primera vez que se usa. Solo hace falta conexión para este paso — el resto de la aventura funciona sin cobertura.",
 
+      context_kicker: "Antes de empezar",
+      speaker_context: "os sitúa en el Siglo de Oro",
+      context_continue: "Continuar →",
       prologue_kicker: "Prólogo",
       listen_narration: "Escuchar narración",
       listen_enigma: "Escuchar enigma",
@@ -228,6 +231,9 @@ const I18N = (() => {
       license_opening_payment: "Opening payment…",
       license_note: "The code activates on this phone the first time it's used. You only need a connection for this step — the rest of the adventure works without coverage.",
 
+      context_kicker: "Before we begin",
+      speaker_context: "sets you in the Golden Age",
+      context_continue: "Continue →",
       prologue_kicker: "Prologue",
       listen_narration: "Listen to narration",
       listen_enigma: "Listen to riddle",
@@ -338,6 +344,9 @@ const I18N = (() => {
       license_opening_payment: "Ouverture du paiement…",
       license_note: "Le code s'active sur ce téléphone dès la première utilisation. Une connexion n'est nécessaire que pour cette étape — le reste de l'aventure fonctionne sans réseau.",
 
+      context_kicker: "Avant de commencer",
+      speaker_context: "vous plonge dans le Siècle d'Or",
+      context_continue: "Continuer →",
       prologue_kicker: "Prologue",
       listen_narration: "Écouter le récit",
       listen_enigma: "Écouter l'énigme",

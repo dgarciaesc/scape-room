@@ -226,7 +226,10 @@
   function renderTopbar() {
     $topbar.classList.toggle(
       "hidden",
-      S.screen === "home" || S.screen === "title" || S.screen === "prologue"
+      S.screen === "home" ||
+        S.screen === "title" ||
+        S.screen === "context" ||
+        S.screen === "prologue"
     );
     $scoreValue.textContent = S.score;
     $scoreLabel.textContent = t("currency");
@@ -437,6 +440,7 @@
     const views = {
       home: viewHome,
       title: viewTitle,
+      context: viewContext,
       prologue: viewPrologue,
       history: viewHistory,
       stage: viewStage,
@@ -554,7 +558,7 @@
       if (hasSave) {
         go(resumeScreen());
       } else {
-        go("prologue");
+        go("context");
       }
     };
     const btnReset = v.querySelector("#btnReset");
@@ -658,8 +662,45 @@
 
   function resumeScreen() {
     // reanudar en la pantalla guardada, con respaldo a la etapa actual
-    const valid = ["history", "stage", "photo", "google", "transition", "victory", "prologue"];
+    const valid = [
+      "history",
+      "stage",
+      "photo",
+      "google",
+      "transition",
+      "victory",
+      "context",
+      "prologue",
+    ];
     return valid.includes(S.savedScreen) ? S.savedScreen : "history";
+  }
+
+  /* ---------- Pantalla: contexto histórico ----------
+     Antepuesta al prólogo: sitúa la dinastía de los Austrias y el
+     Siglo de Oro antes de que Don Baltasar pida ayuda con su misión
+     concreta. Sin candado de escucha obligatoria (a diferencia del
+     recorrido libre entre pruebas): es ambientación, no una pista
+     necesaria para resolver nada. */
+  function viewContext() {
+    const c = GAME_DATA.historicalContext;
+    const v = el(`
+      <div>
+        <div class="stage-header">
+          <div class="stage-kicker">${t("context_kicker")}</div>
+          <h2>${c.title}</h2>
+        </div>
+        <div class="card">
+          <button class="btn-audio" title="${t("listen_narration")}">🔊</button>
+          ${speaker("speaker_context")}
+          ${paragraphs(c.text)}
+        </div>
+        <button class="btn-primary" id="btnContextGo">${t("context_continue")}</button>
+      </div>
+    `);
+    v.querySelector(".btn-audio").onclick = (e) =>
+      tts.speak(c.text, e.currentTarget, null, "historical_context");
+    v.querySelector("#btnContextGo").onclick = () => go("prologue");
+    $screen.appendChild(v);
   }
 
   /* ---------- Pantalla: prólogo ---------- */
