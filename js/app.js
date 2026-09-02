@@ -114,22 +114,76 @@
     /* `onComplete(finished)` es opcional: se llama con `true` solo si la
        narración terminó de forma natural (para gatear contenido que hay
        que "escuchar sí o sí", como la explicación entre pruebas). Si el
-       usuario la cancela a mitad, o el navegador no soporta voz, se
-       llama con `false` — quien use esto decide su propio plan B. */
-    speak(text, btn, onComplete) {
+       usuario la cancela a mitad, o falla toda vía de voz, se llama con
+       `false` — quien use esto decide su propio plan B. */
+    _audioEl: null,
+    _speakingBtn: null,
+
+    audioUrl(audioId) {
+      return `audio/${audioId}.${I18N.getLang() || "es"}.mp3`;
+    },
+
+    /* Para si algo estaba sonando (mp3 o voz del navegador) y limpia el
+       botón que lo mostraba. No dispara onComplete: lo hace quien llama. */
+    _stopCurrent() {
+      if (this._audioEl) {
+        this._audioEl.pause();
+        this._audioEl = null;
+      }
+      if ("speechSynthesis" in window && speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+      if (this._speakingBtn) {
+        this._speakingBtn.dataset.speaking = "";
+        this._speakingBtn.textContent = "🔊";
+      }
+      this._speakingBtn = null;
+    },
+
+    /* `audioId` (opcional): clip pregenerado con ElevenLabs, p.ej.
+       "stage3_enigma". Si existe el mp3 se reproduce tal cual; si falta o
+       falla (offline la primera vez, error de red…) cae automáticamente
+       en la voz sintética del navegador con el mismo texto. */
+    speak(text, btn, onComplete, audioId) {
+      const wasThisBtn = !!btn && this._speakingBtn === btn;
+      this._stopCurrent();
+      if (wasThisBtn) {
+        if (onComplete) onComplete(false); // cancelada: no cuenta como escuchada
+        return;
+      }
+      if (audioId) {
+        this._speakFile(audioId, text, btn, onComplete);
+      } else {
+        this._speakBrowser(text, btn, onComplete);
+      }
+    },
+
+    _speakFile(audioId, fallbackText, btn, onComplete) {
+      const audio = new Audio(this.audioUrl(audioId));
+      this._audioEl = audio;
+      this._speakingBtn = btn || null;
+      if (btn) { btn.dataset.speaking = "1"; btn.textContent = "⏸"; }
+      audio.onended = () => {
+        if (this._audioEl === audio) this._audioEl = null;
+        if (this._speakingBtn === btn) this._speakingBtn = null;
+        if (btn) { btn.dataset.speaking = ""; btn.textContent = "🔊"; }
+        if (onComplete) onComplete(true);
+      };
+      const fallback = () => {
+        if (this._audioEl === audio) this._audioEl = null;
+        if (this._speakingBtn === btn) this._speakingBtn = null;
+        if (btn) { btn.dataset.speaking = ""; btn.textContent = "🔊"; }
+        this._speakBrowser(fallbackText, btn, onComplete);
+      };
+      audio.onerror = fallback;
+      audio.play().catch(fallback);
+    },
+
+    _speakBrowser(text, btn, onComplete) {
       if (!("speechSynthesis" in window)) {
         toast(t("gps_unsupported")); // reutilizamos aviso genérico de "no soportado"
         if (onComplete) onComplete(false);
         return;
-      }
-      if (speechSynthesis.speaking) {
-        speechSynthesis.cancel();
-        if (btn && btn.dataset.speaking === "1") {
-          btn.dataset.speaking = "";
-          btn.textContent = "🔊";
-          if (onComplete) onComplete(false); // cancelada: no cuenta como escuchada
-          return;
-        }
       }
       const u = new SpeechSynthesisUtterance(text);
       u.lang = BCP47[I18N.getLang() || "es"];
@@ -137,22 +191,25 @@
       const voice = this.voice();
       if (voice) u.voice = voice;
       u.pitch = this.pitchFor(voice); // grave: es un cronista entrado en años
+      this._speakingBtn = btn || null;
       if (btn) {
         btn.dataset.speaking = "1";
         btn.textContent = "⏸";
       }
       u.onend = () => {
+        if (this._speakingBtn === btn) this._speakingBtn = null;
         if (btn) { btn.dataset.speaking = ""; btn.textContent = "🔊"; }
         if (onComplete) onComplete(true);
       };
       u.onerror = () => {
+        if (this._speakingBtn === btn) this._speakingBtn = null;
         if (btn) { btn.dataset.speaking = ""; btn.textContent = "🔊"; }
         if (onComplete) onComplete(false);
       };
       speechSynthesis.speak(u);
     },
     stop() {
-      if ("speechSynthesis" in window) speechSynthesis.cancel();
+      this._stopCurrent();
     },
   };
 
@@ -355,6 +412,7 @@
       home: viewHome,
       title: viewTitle,
       prologue: viewPrologue,
+      history: viewHistory,
       stage: viewStage,
       google: viewGoogle,
       transition: viewTransition,
@@ -467,7 +525,7 @@
     wireLangSwitcher(v);
     v.querySelector("#btnStart").onclick = () => {
       if (hasSave) {
-        go(S.stageIndex === 0 && !S.stageLog.length && S.screen === "title" ? "stage" : resumeScreen());
+        go(resumeScreen());
       } else {
         go("prologue");
       }
@@ -573,8 +631,8 @@
 
   function resumeScreen() {
     // reanudar en la pantalla guardada, con respaldo a la etapa actual
-    const valid = ["stage", "google", "transition", "victory", "prologue"];
-    return valid.includes(S.savedScreen) ? S.savedScreen : "stage";
+    const valid = ["history", "stage", "google", "transition", "victory", "prologue"];
+    return valid.includes(S.savedScreen) ? S.savedScreen : "history";
   }
 
   /* ---------- Pantalla: prólogo ---------- */
@@ -609,7 +667,7 @@
         <button class="btn-primary" id="btnGo">${t("arrived_start")}</button>
       </div>
     `);
-    v.querySelector(".btn-audio").onclick = (e) => tts.speak(p.text, e.currentTarget);
+    v.querySelector(".btn-audio").onclick = (e) => tts.speak(p.text, e.currentTarget, null, "prologue");
     v.querySelector("#btnGps").onclick = () =>
       gpsCheck(p.startCoords, v.querySelector("#gpsStatus"), {
         georef: p.mapGeoref,
@@ -617,8 +675,42 @@
       });
     v.querySelector("#btnGo").onclick = () => {
       if (!S.startedAt) S.startedAt = Date.now();
-      go("stage");
+      go("history");
     };
+    $screen.appendChild(v);
+  }
+
+  /* ---------- Pantalla: historia del lugar (antes del enigma) ----------
+     Don Baltasar cuenta quién construyó cada cosa, para qué y qué
+     anécdotas ocurrieron aquí — separado del enigma en sí para que leer
+     la historia no cuente para el cronómetro de la prueba. */
+  function viewHistory() {
+    const st = Engine.currentStage();
+    const art = artCard(st, st.landmark);
+    const v = el(`
+      <div>
+        <div class="stage-header">
+          <div class="stage-kicker">${t("history_kicker", { n: st.num, total: GAME_DATA.stages.length })}</div>
+          <h2>${st.title}</h2>
+          <p class="location-line">📍 ${st.location} · ${st.landmark}</p>
+        </div>
+
+        ${art}
+
+        <div class="card">
+          <button class="btn-audio" title="${t("listen_narration")}">🔊</button>
+          ${speaker("speaker_narrative")}
+          <p>${st.narrative}</p>
+        </div>
+
+        <button class="btn-primary" id="btnToEnigma">${t("history_continue")}</button>
+      </div>
+    `);
+
+    v.querySelector(".btn-audio").onclick = (e) =>
+      tts.speak(st.narrative, e.currentTarget, null, `stage${st.num}_narrative`);
+    v.querySelector("#btnToEnigma").onclick = () => go("stage");
+
     $screen.appendChild(v);
   }
 
@@ -630,7 +722,6 @@
       S.stageEnteredAt = Date.now();
       Engine.save();
     }
-    const art = artCard(st, st.landmark);
     const v = el(`
       <div>
         <div class="stage-header">
@@ -640,16 +731,8 @@
           <p class="stage-timer">${t("stage_timer", { timer: "0 s" })}</p>
         </div>
 
-        ${art}
-
-        <div class="card">
-          <button class="btn-audio" data-say="narrative" title="${t("listen_narration")}">🔊</button>
-          ${speaker("speaker_narrative")}
-          <p>${st.narrative}</p>
-        </div>
-
         <div class="card enigma">
-          <button class="btn-audio" data-say="enigma" title="${t("listen_enigma")}">🔊</button>
+          <button class="btn-audio" title="${t("listen_enigma")}">🔊</button>
           ${speaker("speaker_enigma")}
           <p>${st.enigma}</p>
         </div>
@@ -665,12 +748,10 @@
       </div>
     `);
 
-    v.querySelectorAll(".btn-audio").forEach((b) => {
-      b.onclick = (e) => {
-        e.preventDefault();
-        tts.speak(b.dataset.say === "enigma" ? st.enigma : st.narrative, b);
-      };
-    });
+    v.querySelector(".btn-audio").onclick = (e) => {
+      e.preventDefault();
+      tts.speak(st.enigma, e.currentTarget, null, `stage${st.num}_enigma`);
+    };
 
     const $input = v.querySelector("#answerInput");
     const $hintArea = v.querySelector("#hintArea");
@@ -879,7 +960,11 @@
       ? Engine.currentStage()
       : GAME_DATA.stages[S.stageIndex + 1];
     const walkText = afterGoogle ? S.pendingWalkText : tr.text;
+    const walkAudioId = afterGoogle
+      ? `stage${solvedStage.num}_google_walktext`
+      : `stage${solvedStage.num}_transition`;
     const freeTour = next.freeTourIntro; // solo la prueba 1 (cubierta por el prólogo) no tiene
+    const freeTourAudioId = `stage${next.num}_freetour`;
     const freeTourArt = freeTour
       ? artCard({ photo: next.freeTourPhoto, photoCaption: next.freeTourPhotoCaption }, next.location)
       : "";
@@ -918,7 +1003,7 @@
     v.insertBefore(photoSection(solvedStage), v.querySelector(".map-link"));
 
     v.querySelector(".card:not(.freetour-card) .btn-audio").onclick = (e) =>
-      tts.speak(walkText, e.currentTarget);
+      tts.speak(walkText, e.currentTarget, null, walkAudioId);
     v.querySelector("#btnGps").onclick = () =>
       gpsCheck(next.coords, v.querySelector("#gpsStatus"));
 
@@ -944,7 +1029,7 @@
       const $ftBtn = v.querySelector(".freetour-card .btn-audio");
       $ftBtn.onclick = (e) => tts.speak(freeTour, e.currentTarget, (finished) => {
         if (finished) unlockArrive();
-      });
+      }, freeTourAudioId);
       // Red de seguridad: si algo impide detectar el final de la voz
       // (navegador raro, fallo puntual), no dejamos a nadie bloqueado
       // para siempre — se desbloquea solo tras un tiempo generoso de
@@ -961,7 +1046,7 @@
       S.pendingWalkText = null;
       S.lastPoints = 0;
       if (!afterGoogle) Engine.advanceStage();
-      go("stage");
+      go("history");
     };
 
     $screen.appendChild(v);
@@ -1017,7 +1102,7 @@
         <button class="btn-ghost" id="btnAgain">${t("victory_again")}</button>
       </div>
     `);
-    v.querySelector(".btn-audio").onclick = (e) => tts.speak(vic.text, e.currentTarget);
+    v.querySelector(".btn-audio").onclick = (e) => tts.speak(vic.text, e.currentTarget, null, "victory");
     // foto de la victoria en la Plaza Mayor (la etapa final no pasa por transición)
     const lastStage = GAME_DATA.stages[GAME_DATA.stages.length - 1];
     const slot = v.querySelector("#finalPhotoSlot");

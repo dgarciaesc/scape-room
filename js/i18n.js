@@ -123,6 +123,9 @@ const I18N = (() => {
       who_guides: "⚜ Quién os guía",
       arrived_start: "He llegado a la Plaza de Oriente",
 
+      history_kicker: "Sello {n} de {total}",
+      history_continue: "Ver el enigma →",
+
       stage_kicker: "Sello {n} de {total}",
       stage_timer: "⏱ {timer} · bonus si resolvéis en 2 min",
       answer_format: "Formato: {format}",
@@ -228,6 +231,9 @@ const I18N = (() => {
       who_guides: "⚜ Who guides you",
       arrived_start: "I've reached Plaza de Oriente",
 
+      history_kicker: "Seal {n} of {total}",
+      history_continue: "See the riddle →",
+
       stage_kicker: "Seal {n} of {total}",
       stage_timer: "⏱ {timer} · bonus if solved within 2 min",
       answer_format: "Format: {format}",
@@ -332,6 +338,9 @@ const I18N = (() => {
       listen_instructions: "Écouter les indications",
       who_guides: "⚜ Qui vous guide",
       arrived_start: "Je suis arrivé à la Plaza de Oriente",
+
+      history_kicker: "Sceau {n} sur {total}",
+      history_continue: "Voir l'énigme →",
 
       stage_kicker: "Sceau {n} sur {total}",
       stage_timer: "⏱ {timer} · bonus si résolu en 2 min",

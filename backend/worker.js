@@ -83,37 +83,64 @@ const STAGES_I18N = [
       es:
         "¡Atención, investigadores! Os halláis en el antiguo solar del Alcázar " +
         "Real de los Austrias, la fortaleza medieval donde Diego Velázquez " +
-        "instaló su taller y pintó «Las Meninas». Ante vosotros se alza la " +
-        "impresionante estatua de Felipe IV, la primera estatua ecuestre del " +
-        "mundo sostenida únicamente sobre las patas traseras del caballo " +
-        "gracias a los cálculos del mismísimo Galileo Galilei. Pero el rey no " +
-        "está solo: a los pies de su montura, otros guardianes vigilan en " +
-        "silencio. Para abrir el primer archivo de la dinastía, fijaos bien " +
-        "en quién custodia el pedestal.",
+        "instaló su taller y pintó «Las Meninas». Aquella fortaleza ardió por " +
+        "completo en la Nochebuena de 1734; el palacio que hoy cierra la " +
+        "plaza es su sucesor, construido entre 1738 y 1755 según los planos " +
+        "del italiano Filippo Juvarra, modificados por su discípulo Juan " +
+        "Bautista Sacchetti. Carlos III fue el primer rey en habitarlo, el 1 " +
+        "de diciembre de 1764. En el centro de la plaza se alza la " +
+        "impresionante estatua de Felipe IV: la diseñó el propio Velázquez, " +
+        "la fundió en bronce en Florencia el escultor Pietro Tacca con la " +
+        "ayuda de cálculos de Galileo Galilei, y fue un regalo de los " +
+        "Grandes Duques de Toscana, la familia Médici. Estuvo primero en los " +
+        "jardines del Buen Retiro, hasta que la trasladaron aquí en 1843. Es " +
+        "la primera estatua ecuestre del mundo sostenida únicamente sobre " +
+        "las patas traseras del caballo. Pero el rey no está solo: a los " +
+        "pies de su montura, otros guardianes vigilan en silencio. Para " +
+        "abrir el primer archivo de la dinastía, fijaos bien en quién " +
+        "custodia el pedestal.",
       en:
         "Attention, investigators! You stand on the ancient site of the " +
         "Habsburgs' Royal Alcázar, the medieval fortress where Diego " +
-        "Velázquez set up his workshop and painted \"Las Meninas.\" Before " +
-        "you rises the imposing statue of Philip IV, the first equestrian " +
-        "statue in the world held up solely on the horse's hind legs, thanks " +
-        "to the calculations of Galileo Galilei himself. But the king is " +
-        "not alone: at his mount's feet, other guardians keep silent watch. " +
-        "To open the dynasty's first file, look closely at who guards the " +
-        "pedestal.",
+        "Velázquez set up his workshop and painted \"Las Meninas.\" That " +
+        "fortress burned to the ground on Christmas Eve 1734; the palace " +
+        "closing off the square today is its successor, built between 1738 " +
+        "and 1755 to the plans of the Italian architect Filippo Juvarra, " +
+        "modified by his pupil Juan Bautista Sacchetti. Charles III was the " +
+        "first king to live in it, on 1 December 1764. In the centre of the " +
+        "square rises the imposing statue of Philip IV: it was designed by " +
+        "Velázquez himself, cast in bronze in Florence by the sculptor " +
+        "Pietro Tacca with the help of calculations by Galileo Galilei, and " +
+        "was a gift from the Medici Grand Dukes of Tuscany. It first stood " +
+        "in the gardens of the Buen Retiro, until it was moved here in " +
+        "1843. It is the first equestrian statue in the world held up " +
+        "solely on the horse's hind legs. But the king is not alone: at " +
+        "his mount's feet, other guardians keep silent watch. To open the " +
+        "dynasty's first file, look closely at who guards the pedestal.",
       fr:
         "Attention, enquêteurs ! Vous vous trouvez sur l'ancien emplacement " +
         "de l'Alcázar Royal des Habsbourg, la forteresse médiévale où Diego " +
-        "Velázquez installa son atelier et peignit « Les Ménines ». Devant " +
-        "vous se dresse l'imposante statue de Philippe IV, la première " +
-        "statue équestre au monde tenue uniquement sur les pattes arrière du " +
-        "cheval, grâce aux calculs de Galilée lui-même. Mais le roi n'est " +
-        "pas seul : aux pieds de sa monture, d'autres gardiens veillent en " +
-        "silence. Pour ouvrir le premier dossier de la dynastie, observez " +
-        "bien qui garde le piédestal.",
+        "Velázquez installa son atelier et peignit « Les Ménines ». Cette " +
+        "forteresse brûla entièrement la nuit de Noël 1734 ; le palais qui " +
+        "ferme la place aujourd'hui est son successeur, construit entre " +
+        "1738 et 1755 selon les plans de l'architecte italien Filippo " +
+        "Juvarra, modifiés par son élève Juan Bautista Sacchetti. Charles " +
+        "III fut le premier roi à y vivre, le 1er décembre 1764. Au centre " +
+        "de la place se dresse l'imposante statue de Philippe IV : elle fut " +
+        "dessinée par Velázquez lui-même, coulée en bronze à Florence par " +
+        "le sculpteur Pietro Tacca avec l'aide des calculs de Galilée, et " +
+        "offerte par les grands-ducs de Toscane de la famille Médicis. Elle " +
+        "se dressait d'abord dans les jardins du Buen Retiro, avant d'être " +
+        "transférée ici en 1843. C'est la première statue équestre au " +
+        "monde tenue uniquement sur les pattes arrière du cheval. Mais le " +
+        "roi n'est pas seul : aux pieds de sa monture, d'autres gardiens " +
+        "veillent en silence. Pour ouvrir le premier dossier de la " +
+        "dynastie, observez bien qui garde le piédestal.",
     },
     enigma: {
       es:
-        "El rey de bronce desafía la gravedad gracias al sabio de Pisa. Pero " +
+        "En el centro de la Plaza de Oriente, el rey de bronce desafía la " +
+        "gravedad gracias al sabio de Pisa. Pero " +
         "no miréis arriba, sino abajo: rodead la base de piedra del pedestal " +
         "a ras de suelo. En cada una de sus cuatro esquinas descansa, " +
         "tumbado y silencioso, el mismo animal heráldico — el símbolo de la " +
@@ -127,7 +154,8 @@ const STAGES_I18N = [
         "balaustrada en su lugar? Unid esa palabra al número de guardianes " +
         "para sellar la clave.",
       en:
-        "The bronze king defies gravity thanks to the sage of Pisa. But " +
+        "In the centre of Plaza de Oriente, the bronze king defies gravity " +
+        "thanks to the sage of Pisa. But " +
         "don't look up — look down: walk around the stone base of the " +
         "pedestal at ground level. On each of its four corners lies the " +
         "same heraldic animal, silent and resting — the symbol of the Crown " +
@@ -141,7 +169,8 @@ const STAGES_I18N = [
         "balustrade there today? Join that word with the number of " +
         "guardians to seal the key.",
       fr:
-        "Le roi de bronze défie la gravité grâce au sage de Pise. Mais ne " +
+        "Au centre de la Plaza de Oriente, le roi de bronze défie la " +
+        "gravité grâce au sage de Pise. Mais ne " +
         "regardez pas en haut, regardez en bas : faites le tour de la base " +
         "en pierre du piédestal, au ras du sol. À chacun de ses quatre " +
         "angles repose, couché et silencieux, le même animal héraldique — " +
@@ -288,18 +317,30 @@ const STAGES_I18N = [
         "Habéis llegado al corazón del Madrid medieval. En mayo de 1561, el " +
         "rey Felipe II firmó el decreto que cambió para siempre el destino de " +
         "esta villa, convirtiéndola en la capital del Imperio Español. En el " +
-        "centro de la plaza se yergue la estatua de don Álvaro de Bazán, el " +
-        "almirante que jamás conoció la derrota en el mar y cuyo valor " +
-        "fascinó a los mejores poetas del Siglo de Oro. Lope de Vega en " +
-        "persona quiso rendirle tributo grabando en la piedra del pedestal " +
-        "unos versos eternos. Ahí se oculta el salvoconducto de la Corte.",
+        "centro de la plaza se yergue la estatua de don Álvaro de Bazán, " +
+        "marqués de Santa Cruz, el único almirante de su época que jamás " +
+        "perdió un combate naval: venció en Lepanto y en las Azores, y " +
+        "estaba llamado a comandar la Armada Invencible… hasta que murió en " +
+        "Lisboa en febrero de 1588, apenas unos meses antes de que la flota " +
+        "zarpara sin él. Su valor fascinó a los mejores poetas del Siglo de " +
+        "Oro. La estatua, en bronce, es obra del escultor Mariano Benlliure " +
+        "y se inauguró el 19 de diciembre de 1891, con la propia reina " +
+        "regente María Cristina entre el público. Lope de Vega en persona " +
+        "quiso rendirle tributo grabando en la piedra del pedestal unos " +
+        "versos eternos. Ahí se oculta el salvoconducto de la Corte.",
       en:
         "You have reached the heart of medieval Madrid. In May 1561, King " +
         "Philip II signed the decree that changed this town's destiny " +
         "forever, turning it into the capital of the Spanish Empire. In the " +
-        "centre of the square stands the statue of Don Álvaro de Bazán, the " +
-        "admiral who never knew defeat at sea and whose courage captivated " +
-        "the finest poets of the Golden Age. Lope de Vega himself wished to " +
+        "centre of the square stands the statue of Don Álvaro de Bazán, " +
+        "Marquess of Santa Cruz, the only admiral of his age who never lost " +
+        "a naval battle: he triumphed at Lepanto and in the Azores, and " +
+        "was set to command the Spanish Armada — until he died in Lisbon " +
+        "in February 1588, just months before the fleet sailed without " +
+        "him. His courage captivated the finest poets of the Golden Age. " +
+        "The bronze statue, the work of sculptor Mariano Benlliure, was " +
+        "unveiled on 19 December 1891, with the regent Queen María " +
+        "Cristina herself among the crowd. Lope de Vega himself wished to " +
         "pay him tribute by carving eternal verses into the stone of his " +
         "pedestal. That is where the Court's safe-conduct lies hidden.",
       fr:
@@ -307,11 +348,17 @@ const STAGES_I18N = [
         "Philippe II signa le décret qui allait à jamais changer le destin " +
         "de cette ville, en faisant la capitale de l'Empire espagnol. Au " +
         "centre de la place se dresse la statue de don Álvaro de Bazán, " +
-        "l'amiral qui ne connut jamais la défaite en mer et dont le courage " +
-        "fascina les plus grands poètes du Siècle d'Or. Lope de Vega " +
-        "lui-même voulut lui rendre hommage en gravant des vers éternels " +
-        "dans la pierre de son piédestal. C'est là que se cache le " +
-        "laissez-passer de la Cour.",
+        "marquis de Santa Cruz, le seul amiral de son époque à n'avoir " +
+        "jamais perdu un combat naval : vainqueur à Lépante et aux Açores, " +
+        "il devait commander l'Invincible Armada — jusqu'à sa mort à " +
+        "Lisbonne en février 1588, quelques mois à peine avant que la " +
+        "flotte ne prenne la mer sans lui. Son courage fascina les plus " +
+        "grands poètes du Siècle d'Or. La statue de bronze, œuvre du " +
+        "sculpteur Mariano Benlliure, fut inaugurée le 19 décembre 1891, " +
+        "en présence de la reine régente María Cristina elle-même. Lope de " +
+        "Vega lui-même voulut lui rendre hommage en gravant des vers " +
+        "éternels dans la pierre de son piédestal. C'est là que se cache " +
+        "le laissez-passer de la Cour.",
     },
     enigma: {
       es:
@@ -504,30 +551,48 @@ const STAGES_I18N = [
     narrative: {
       es:
         "Deteneos frente al portón de madera de la finca donde vivió y murió " +
-        "Lope de Vega, el «Fénix de los Ingenios». Lope escribió más de 1.500 " +
-        "obras teatrales, tuvo una vida llena de pasiones y amores " +
-        "prohibidos, y mantuvo una enemistad encarnizada con su vecino Miguel " +
-        "de Cervantes. Tras años de vivir de alquiler en alquiler, Lope pudo " +
-        "por fin comprar esta casa en 1610, y tan orgulloso estaba de ser " +
-        "dueño de su propio tejado que mandó esculpirlo en el dintel de " +
-        "piedra de su puerta, en latín.",
+        "Lope de Vega, el «Fénix de los Ingenios». La casa se construyó " +
+        "hacia 1578, y Lope, tras años de vivir de alquiler en alquiler, " +
+        "pudo por fin comprarla en 1610 por 9.000 reales; vivió en ella los " +
+        "últimos veinticinco años de su vida, hasta su muerte en 1635. Tan " +
+        "orgulloso estaba de ser dueño de su propio tejado que mandó " +
+        "esculpirlo en el dintel de piedra de su puerta, en latín. Escribió " +
+        "más de 1.500 obras teatrales, tuvo una vida llena de pasiones y " +
+        "amores prohibidos, y mantuvo una enemistad encarnizada con su " +
+        "vecino Miguel de Cervantes. La casa cayó en el olvido tras su " +
+        "muerte, hasta que en 1935 los arquitectos Emilio Moya y Pedro " +
+        "Muguruza la restauraron para la Real Academia Española, " +
+        "amueblándola pieza a pieza según el propio inventario que Lope " +
+        "dejó en su testamento de 1627.",
       en:
         "Stop before the wooden gate of the house where Lope de Vega, the " +
-        "'Phoenix of Wits,' lived and died. Lope wrote more than 1,500 " +
-        "plays, led a life full of passions and forbidden loves, and kept " +
-        "up a bitter feud with his neighbour Miguel de Cervantes. After " +
-        "years of moving from rental to rental, Lope was finally able to " +
-        "buy this house in 1610, and was so proud of owning his own roof " +
-        "that he had it carved, in Latin, into his door's stone lintel.",
+        "'Phoenix of Wits,' lived and died. The house was built around " +
+        "1578, and Lope, after years of moving from rental to rental, was " +
+        "finally able to buy it in 1610 for 9,000 reales; he lived in it " +
+        "for the last twenty-five years of his life, until his death in " +
+        "1635. He was so proud of owning his own roof that he had it " +
+        "carved, in Latin, into his door's stone lintel. He wrote more " +
+        "than 1,500 plays, led a life full of passions and forbidden " +
+        "loves, and kept up a bitter feud with his neighbour Miguel de " +
+        "Cervantes. The house fell into obscurity after his death, until " +
+        "in 1935 architects Emilio Moya and Pedro Muguruza restored it for " +
+        "the Real Academia Española, furnishing it piece by piece " +
+        "according to the very inventory Lope left in his 1627 will.",
       fr:
         "Arrêtez-vous devant le portail de bois de la maison où vécut et " +
-        "mourut Lope de Vega, le « Phénix des Esprits ». Lope écrivit plus " +
-        "de 1 500 pièces de théâtre, mena une vie pleine de passions et " +
-        "d'amours interdites, et entretint une inimitié féroce avec son " +
-        "voisin Miguel de Cervantès. Après des années de location en " +
-        "location, Lope put enfin acheter cette maison en 1610, et il était " +
-        "si fier d'avoir enfin un toit à lui qu'il le fit graver, en latin, " +
-        "sur le linteau de pierre de sa porte.",
+        "mourut Lope de Vega, le « Phénix des Esprits ». La maison fut " +
+        "construite vers 1578, et Lope, après des années de location en " +
+        "location, put enfin l'acheter en 1610 pour 9 000 réaux ; il y " +
+        "vécut les vingt-cinq dernières années de sa vie, jusqu'à sa mort " +
+        "en 1635. Il était si fier d'avoir enfin un toit à lui qu'il le " +
+        "fit graver, en latin, sur le linteau de pierre de sa porte. Il " +
+        "écrivit plus de 1 500 pièces de théâtre, mena une vie pleine de " +
+        "passions et d'amours interdites, et entretint une inimitié féroce " +
+        "avec son voisin Miguel de Cervantès. La maison tomba dans l'oubli " +
+        "après sa mort, jusqu'à ce qu'en 1935 les architectes Emilio Moya " +
+        "et Pedro Muguruza la restaurent pour la Real Academia Española, " +
+        "la meublant pièce par pièce d'après l'inventaire même que Lope " +
+        "laissa dans son testament de 1627.",
     },
     enigma: {
       es:
@@ -680,32 +745,48 @@ const STAGES_I18N = [
       es:
         "Estáis ante los muros de ladrillo del Convento de las Trinitarias " +
         "Descalzas. Bajo este suelo descansa en paz Miguel de Cervantes desde " +
-        "abril de 1616. Cervantes pidió ser enterrado aquí por pura gratitud: " +
-        "la Orden de los Trinitarios fue la que pagó su rescate tras pasar " +
-        "cinco años encarcelado por corsarios en Argel. Aunque durante siglos " +
-        "la ubicación exacta de su fosa fue un misterio, la Real Academia " +
-        "Española colocó una placa conmemorativa en la fachada exterior que " +
-        "guarda la fecha clave para resolver este enigma.",
+        "abril de 1616. La Orden de la Santísima Trinidad, fundada en 1198 " +
+        "por San Juan de Mata y San Félix de Valois con la misión de " +
+        "rescatar cautivos cristianos, fue quien pagó su libertad: " +
+        "capturado por corsarios argelinos en 1575, Cervantes pasó cinco " +
+        "años esclavo en Argel hasta que dos frailes trinitarios, fray " +
+        "Antonio de la Bella y fray Juan Gil, negociaron su rescate el 19 " +
+        "de septiembre de 1580. Por pura gratitud pidió ser enterrado aquí, " +
+        "en el convento de la orden que le devolvió la libertad. Aunque " +
+        "durante siglos la ubicación exacta de su fosa fue un misterio, la " +
+        "Real Academia Española colocó una placa conmemorativa en la " +
+        "fachada exterior que guarda la fecha clave para resolver este " +
+        "enigma.",
       en:
         "You stand before the brick walls of the Convent of the Barefoot " +
         "Trinitarian Nuns. Beneath this ground, Miguel de Cervantes has " +
-        "rested in peace since April 1616. Cervantes asked to be buried " +
-        "here out of pure gratitude: the Trinitarian Order was the one that " +
-        "paid his ransom after five years of captivity by corsairs in " +
-        "Algiers. Although for centuries the exact location of his grave " +
-        "was a mystery, the Real Academia Española placed a commemorative " +
-        "plaque on the outer façade that holds the key date to solve this " +
-        "riddle.",
+        "rested in peace since April 1616. The Order of the Most Holy " +
+        "Trinity, founded in 1198 by Saint John of Matha and Saint Felix " +
+        "of Valois with the mission of ransoming Christian captives, was " +
+        "the one that paid for his freedom: captured by Algerian corsairs " +
+        "in 1575, Cervantes spent five years enslaved in Algiers until two " +
+        "Trinitarian friars, Antonio de la Bella and Juan Gil, negotiated " +
+        "his ransom on 19 September 1580. Out of pure gratitude he asked " +
+        "to be buried here, in the convent of the order that gave him " +
+        "back his freedom. Although for centuries the exact location of " +
+        "his grave was a mystery, the Real Academia Española placed a " +
+        "commemorative plaque on the outer façade that holds the key date " +
+        "to solve this riddle.",
       fr:
         "Vous voici devant les murs de brique du couvent des Trinitaires " +
         "déchaussées. Sous ce sol repose en paix Miguel de Cervantès depuis " +
-        "avril 1616. Cervantès demanda à y être enterré par pure gratitude " +
-        ": c'est l'ordre des Trinitaires qui paya sa rançon après cinq " +
-        "années de captivité chez les corsaires à Alger. Bien que, pendant " +
-        "des siècles, l'emplacement exact de sa tombe soit resté un " +
-        "mystère, la Real Academia Española apposa sur la façade extérieure " +
-        "une plaque commémorative qui garde la date clé pour résoudre cette " +
-        "énigme.",
+        "avril 1616. L'ordre de la Très Sainte Trinité, fondé en 1198 par " +
+        "saint Jean de Matha et saint Félix de Valois avec pour mission de " +
+        "racheter les captifs chrétiens, est celui qui paya sa liberté : " +
+        "capturé par des corsaires algériens en 1575, Cervantès passa cinq " +
+        "ans en esclavage à Alger jusqu'à ce que deux frères trinitaires, " +
+        "Antonio de la Bella et Juan Gil, négocient sa libération le 19 " +
+        "septembre 1580. Par pure gratitude, il demanda à être enterré " +
+        "ici, dans le couvent de l'ordre qui lui rendit la liberté. Bien " +
+        "que, pendant des siècles, l'emplacement exact de sa tombe soit " +
+        "resté un mystère, la Real Academia Española apposa sur la façade " +
+        "extérieure une plaque commémorative qui garde la date clé pour " +
+        "résoudre cette énigme.",
     },
     enigma: {
       es:
@@ -848,29 +929,36 @@ const STAGES_I18N = [
         "levantaba el famoso Corral del Príncipe, el espacio donde el pueblo " +
         "llano, los nobles y las mujeres hacinadas en «la cazuela» aclamaban " +
         "o abucheaban las comedias de la época. Presidiendo la plaza se " +
-        "encuentra la estatua de don Pedro Calderón de la Barca. En los " +
-        "bajorrelieves de bronce de su pedestal están inmortalizadas las " +
-        "escenas de sus dramas más universales. Una de ellas es «La vida es " +
-        "sueño», donde el príncipe Segismundo reflexiona sobre la libertad y " +
-        "el destino.",
+        "encuentra la estatua de don Pedro Calderón de la Barca, en mármol " +
+        "blanco, obra del escultor Juan Figueras y Vila: la fundieron en " +
+        "Roma, en la fundición Nelli, y se inauguró en 1880, dos años " +
+        "después de que Figueras la presentara. En los bajorrelieves de " +
+        "bronce de su pedestal están inmortalizadas las escenas de sus " +
+        "dramas más universales. Una de ellas es «La vida es sueño», donde " +
+        "el príncipe Segismundo reflexiona sobre la libertad y el destino.",
       en:
         "Welcome to the cradle of Spanish theatre! Right here once stood " +
         "the famous Corral del Príncipe, the venue where commoners, nobles " +
         "and women crowded into 'la cazuela' cheered or booed the plays of " +
-        "the age. Presiding over the square is the statue of Don Pedro " +
-        "Calderón de la Barca. The bronze reliefs on his pedestal " +
-        "immortalise scenes from his most universal dramas. One of them is " +
-        "'Life Is a Dream,' where Prince Segismundo reflects on freedom and " +
-        "destiny.",
+        "the age. Presiding over the square is the white marble statue of " +
+        "Don Pedro Calderón de la Barca, the work of sculptor Juan " +
+        "Figueras y Vila: it was cast in Rome, at the Nelli foundry, and " +
+        "unveiled in 1880, two years after Figueras first presented it. " +
+        "The bronze reliefs on his pedestal immortalise scenes from his " +
+        "most universal dramas. One of them is 'Life Is a Dream,' where " +
+        "Prince Segismundo reflects on freedom and destiny.",
       fr:
         "Bienvenue au berceau du théâtre espagnol ! C'est ici même que se " +
         "dressait le célèbre Corral del Príncipe, l'espace où le peuple, " +
         "les nobles et les femmes entassées dans « la cazuela » acclamaient " +
         "ou huaient les comédies de l'époque. La statue de don Pedro " +
-        "Calderón de la Barca préside la place. Les reliefs de bronze de " +
-        "son piédestal immortalisent des scènes de ses drames les plus " +
-        "universels. L'un d'eux est « La vie est un songe », où le prince " +
-        "Sigismond réfléchit sur la liberté et le destin.",
+        "Calderón de la Barca, en marbre blanc, préside la place : œuvre " +
+        "du sculpteur Juan Figueras y Vila, elle fut coulée à Rome, à la " +
+        "fonderie Nelli, et inaugurée en 1880, deux ans après sa " +
+        "présentation par Figueras. Les reliefs de bronze de son piédestal " +
+        "immortalisent des scènes de ses drames les plus universels. L'un " +
+        "d'eux est « La vie est un songe », où le prince Sigismond " +
+        "réfléchit sur la liberté et le destin.",
     },
     enigma: {
       es:
@@ -1023,33 +1111,44 @@ const STAGES_I18N = [
         "1619, esta gran plaza porticada fue el escenario imperial donde la " +
         "Corona mostraba su poder en corridas de toros, grandes mascaradas y " +
         "solemnes ceremonias. En el centro de la plaza se alza la estatua " +
-        "ecuestre de Felipe III, moldeada en Florencia por los grandes " +
-        "maestros del bronce Giambologna y Pietro Tacca. Para certificar " +
-        "vuestra victoria y desbloquear el testamento real, debéis leer la " +
-        "placa de mármol de su pedestal y encontrar, entre las fechas que " +
-        "en ella se recogen, la más antigua de todas.",
+        "ecuestre de Felipe III, empezada en Florencia por el gran " +
+        "Giambologna y terminada, tras su muerte, por su discípulo Pietro " +
+        "Tacca: fue un regalo del duque Cosme II de Médici al rey español " +
+        "en 1616. Durante más de dos siglos estuvo en los jardines de la " +
+        "Casa de Campo, hasta que en 1848 la reina Isabel II ordenó " +
+        "trasladarla aquí. Para certificar vuestra victoria y desbloquear " +
+        "el testamento real, debéis leer la placa de mármol de su pedestal " +
+        "y encontrar, entre las fechas que en ella se recogen, la más " +
+        "antigua de todas.",
       en:
         "You made it! You have reached the beating heart of Habsburg " +
         "Madrid: the Plaza Mayor. Inaugurated by Philip III in 1619, this " +
         "great arcaded square was the imperial stage where the Crown " +
         "displayed its power through bullfights, grand masquerades and " +
         "solemn ceremonies. In the centre of the square stands the " +
-        "equestrian statue of Philip III, cast in Florence by the great " +
-        "bronze masters Giambologna and Pietro Tacca. To certify your " +
-        "victory and unlock the royal testament, you must read the marble " +
-        "plaque on its pedestal and find, among the dates it records, the " +
-        "oldest of them all.",
+        "equestrian statue of Philip III, begun in Florence by the great " +
+        "Giambologna and finished, after his death, by his pupil Pietro " +
+        "Tacca: it was a gift from Duke Cosimo II de' Medici to the " +
+        "Spanish king in 1616. For more than two centuries it stood in " +
+        "the gardens of the Casa de Campo, until Queen Isabel II had it " +
+        "moved here in 1848. To certify your victory and unlock the royal " +
+        "testament, you must read the marble plaque on its pedestal and " +
+        "find, among the dates it records, the oldest of them all.",
       fr:
         "Vous avez réussi ! Vous voici au cœur battant du Madrid des " +
         "Habsbourg : la Plaza Mayor. Inaugurée par Philippe III en 1619, " +
         "cette grande place à arcades fut la scène impériale où la Couronne " +
         "affichait sa puissance à travers corridas, grandes mascarades et " +
         "cérémonies solennelles. Au centre de la place se dresse la statue " +
-        "équestre de Philippe III, coulée à Florence par les grands maîtres " +
-        "du bronze Giambologna et Pietro Tacca. Pour certifier votre " +
-        "victoire et déverrouiller le testament royal, vous devez lire la " +
-        "plaque de marbre de son piédestal et trouver, parmi les dates " +
-        "qu'elle indique, la plus ancienne de toutes.",
+        "équestre de Philippe III, commencée à Florence par le grand " +
+        "Giambologna et achevée, après sa mort, par son élève Pietro " +
+        "Tacca : ce fut un cadeau du duc Cosme II de Médicis au roi " +
+        "d'Espagne en 1616. Pendant plus de deux siècles, elle se dressa " +
+        "dans les jardins de la Casa de Campo, jusqu'à ce que la reine " +
+        "Isabelle II la fasse transférer ici en 1848. Pour certifier " +
+        "votre victoire et déverrouiller le testament royal, vous devez " +
+        "lire la plaque de marbre de son piédestal et trouver, parmi les " +
+        "dates qu'elle indique, la plus ancienne de toutes.",
     },
     enigma: {
       es:
@@ -1162,6 +1261,21 @@ function corsHeaders(env) {
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
+}
+
+/* Orígenes de desarrollo local permitidos además del de producción — así
+   se puede probar el juego con `python3 serve.py` sin CORS-checks a mano.
+   No es una rendija de seguridad real: solo se añaden estos orígenes
+   concretos y conocidos, nunca un comodín "*". */
+const LOCAL_DEV_ORIGINS = [
+  "http://localhost:8080",
+  "http://127.0.0.1:8080",
+];
+
+function resolveOrigin(request, env) {
+  const origin = request.headers.get("Origin");
+  if (origin && LOCAL_DEV_ORIGINS.includes(origin)) return origin;
+  return env.ALLOWED_ORIGIN || "*";
 }
 
 function json(data, status, env) {
@@ -1341,27 +1455,30 @@ async function handleRedeem(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // env "efectivo" para esta petición: mismo objeto, pero con
+    // ALLOWED_ORIGIN ya resuelto (producción o localhost de desarrollo).
+    const scopedEnv = { ...env, ALLOWED_ORIGIN: resolveOrigin(request, env) };
 
     if (request.method === "OPTIONS") {
-      return new Response(null, { headers: corsHeaders(env) });
+      return new Response(null, { headers: corsHeaders(scopedEnv) });
     }
 
     try {
       if (url.pathname === "/api/checkout" && request.method === "POST")
-        return await handleCheckout(request, env);
+        return await handleCheckout(request, scopedEnv);
 
       if (url.pathname === "/api/stripe-webhook" && request.method === "POST")
-        return await handleWebhook(request, env);
+        return await handleWebhook(request, scopedEnv);
 
       if (url.pathname === "/api/code-for-session" && request.method === "GET")
-        return await handleCodeForSession(request, env);
+        return await handleCodeForSession(request, scopedEnv);
 
       if (url.pathname === "/api/redeem" && request.method === "POST")
-        return await handleRedeem(request, env);
+        return await handleRedeem(request, scopedEnv);
 
-      return json({ error: "not found" }, 404, env);
+      return json({ error: "not found" }, 404, scopedEnv);
     } catch (err) {
-      return json({ error: err.message || "error interno" }, 500, env);
+      return json({ error: err.message || "error interno" }, 500, scopedEnv);
     }
   },
 };
