@@ -1,6 +1,6 @@
 /* Service worker: juego 100% offline una vez cargado.
    Importante en la calle, donde la cobertura falla. */
-const CACHE = "testamento-v16";
+const CACHE = "testamento-v17";
 const ASSETS = [
   "./img/app_bg.jpg",
   "./img/home_madrid.jpg",
@@ -35,7 +35,7 @@ const ASSETS = [
   "./js/engine.js",
   "./js/app.js",
   "./manifest.webmanifest",
-  "./icons/icon.svg",
+  "./img/emblem.png",
 ];
 
 self.addEventListener("install", (e) => {

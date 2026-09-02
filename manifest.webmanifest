@@ -1,7 +1,7 @@
 {
   "name": "El Testamento del Siglo de Oro",
   "short_name": "Testamento",
-  "description": "Escape room urbano por el Madrid de los Austrias: 6 enigmas del Palacio Real a la Plaza Mayor.",
+  "description": "Escape room urbano por el Madrid de los Austrias: 6 enigmas del Barrio de las Letras al Palacio Real.",
   "lang": "es",
   "start_url": "./index.html",
   "scope": "./",
@@ -10,12 +10,6 @@
   "background_color": "#efe0c0",
   "theme_color": "#2b1d0e",
   "icons": [
-    {
-      "src": "icons/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
     {
       "src": "icons/icon-192.png",
       "sizes": "192x192",
