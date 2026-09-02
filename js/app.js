@@ -296,6 +296,18 @@
     }
   }
 
+  /* Identificador estable de cada etapa para los clips de audio
+     pregenerados con ElevenLabs (audio/stageN_tipo.lang.mp3). No se
+     puede usar `stage.num` (posición actual en la ruta, que cambia si
+     se reordena el recorrido) porque el audio ya está grabado con el
+     número que llevaba cada etapa cuando se generó — que es, y sigue
+     siendo, el número fijo dentro de su `id` (p.ej. "etapa_3_..." →
+     3), invariable aunque la etapa pase a ser la primera o la última. */
+  function audioStageNum(stage) {
+    const m = /etapa_(\d+)_/.exec(stage.id);
+    return m ? m[1] : stage.num;
+  }
+
   function mapsLink(coords, label) {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${coords.lat},${coords.lng}&travelmode=walking`;
     return `<a class="map-link" href="${url}" target="_blank" rel="noopener">${t("maps_link", { label })}</a>`;
@@ -709,7 +721,7 @@
     `);
 
     v.querySelector(".btn-audio").onclick = (e) =>
-      tts.speak(st.narrative, e.currentTarget, null, `stage${st.num}_narrative`);
+      tts.speak(st.narrative, e.currentTarget, null, `stage${audioStageNum(st)}_narrative`);
     v.querySelector("#btnToEnigma").onclick = () => go("stage");
 
     $screen.appendChild(v);
@@ -757,7 +769,7 @@
 
     v.querySelector(".btn-audio").onclick = (e) => {
       e.preventDefault();
-      tts.speak(st.enigma, e.currentTarget, null, `stage${st.num}_enigma`);
+      tts.speak(st.enigma, e.currentTarget, null, `stage${audioStageNum(st)}_enigma`);
     };
 
     const $input = v.querySelector("#answerInput");
@@ -1000,10 +1012,10 @@
       : GAME_DATA.stages[S.stageIndex + 1];
     const walkText = afterGoogle ? S.pendingWalkText : tr.text;
     const walkAudioId = afterGoogle
-      ? `stage${solvedStage.num}_google_walktext`
-      : `stage${solvedStage.num}_transition`;
+      ? `stage${audioStageNum(solvedStage)}_google_walktext`
+      : `stage${audioStageNum(solvedStage)}_transition`;
     const freeTour = next.freeTourIntro; // solo la prueba 1 (cubierta por el prólogo) no tiene
-    const freeTourAudioId = `stage${next.num}_freetour`;
+    const freeTourAudioId = `stage${audioStageNum(next)}_freetour`;
     const freeTourArt = freeTour
       ? artCard({ photo: next.freeTourPhoto, photoCaption: next.freeTourPhotoCaption }, next.location)
       : "";
@@ -1139,7 +1151,7 @@
       </div>
     `);
     v.querySelector(".btn-audio").onclick = (e) => tts.speak(vic.text, e.currentTarget, null, "victory");
-    // foto de la victoria en la Plaza Mayor (la etapa final no pasa por transición)
+    // foto de la victoria en la última etapa (Plaza de Oriente)
     const lastStage = GAME_DATA.stages[GAME_DATA.stages.length - 1];
     const slot = v.querySelector("#finalPhotoSlot");
     slot.appendChild(photoSection(lastStage, render)); // re-render: entra en el álbum

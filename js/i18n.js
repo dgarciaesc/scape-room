@@ -97,7 +97,7 @@ const I18N = (() => {
       photo_heading: "Un recuerdo de {location}",
       photo_continue: "Continuar →",
 
-      title_meta: "6 sellos ocultos en piedra y bronce<br />Del Palacio Real a la Plaza Mayor · ~2 h a pie<br />Recomendado: jugar en la calle, en equipo",
+      title_meta: "6 sellos ocultos en piedra y bronce<br />Del Barrio de las Letras al Palacio Real · ~2 h a pie<br />Recomendado: jugar en la calle, en equipo",
       title_continue: "▶ Continuar la investigación",
       title_start: "Comenzar la aventura",
       title_restart: "Empezar de nuevo",
@@ -123,7 +123,7 @@ const I18N = (() => {
       listen_enigma: "Escuchar enigma",
       listen_instructions: "Escuchar indicaciones",
       who_guides: "⚜ Quién os guía",
-      arrived_start: "He llegado a la Plaza de Oriente",
+      arrived_start: "He llegado a la Casa de Lope de Vega",
 
       history_kicker: "Sello {n} de {total}",
       history_continue: "Ver el enigma →",
@@ -207,7 +207,7 @@ const I18N = (() => {
       photo_heading: "A memento of {location}",
       photo_continue: "Continue →",
 
-      title_meta: "6 seals hidden in stone and bronze<br />From the Royal Palace to Plaza Mayor · ~2 h on foot<br />Recommended: play outdoors, as a team",
+      title_meta: "6 seals hidden in stone and bronze<br />From the Barrio de las Letras to the Royal Palace · ~2 h on foot<br />Recommended: play outdoors, as a team",
       title_continue: "▶ Continue the investigation",
       title_start: "Begin the adventure",
       title_restart: "Start over",
@@ -233,7 +233,7 @@ const I18N = (() => {
       listen_enigma: "Listen to riddle",
       listen_instructions: "Listen to directions",
       who_guides: "⚜ Who guides you",
-      arrived_start: "I've reached Plaza de Oriente",
+      arrived_start: "I've reached the Lope de Vega House",
 
       history_kicker: "Seal {n} of {total}",
       history_continue: "See the riddle →",
@@ -317,7 +317,7 @@ const I18N = (() => {
       photo_heading: "Un souvenir de {location}",
       photo_continue: "Continuer →",
 
-      title_meta: "6 sceaux cachés dans la pierre et le bronze<br />Du Palais Royal à la Plaza Mayor · ~2 h à pied<br />Recommandé : jouer dans la rue, en équipe",
+      title_meta: "6 sceaux cachés dans la pierre et le bronze<br />Du Barrio de las Letras au Palais Royal · ~2 h à pied<br />Recommandé : jouer dans la rue, en équipe",
       title_continue: "▶ Continuer l'enquête",
       title_start: "Commencer l'aventure",
       title_restart: "Recommencer",
@@ -343,7 +343,7 @@ const I18N = (() => {
       listen_enigma: "Écouter l'énigme",
       listen_instructions: "Écouter les indications",
       who_guides: "⚜ Qui vous guide",
-      arrived_start: "Je suis arrivé à la Plaza de Oriente",
+      arrived_start: "Je suis arrivé à la Maison de Lope de Vega",
 
       history_kicker: "Sceau {n} sur {total}",
       history_continue: "Voir l'énigme →",

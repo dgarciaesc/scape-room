@@ -79,8 +79,8 @@ const GAME_DATA_I18N = {
         "piedra y bronce por las calles del viejo Madrid. Velázquez, Cervantes, " +
         "Lope de Vega, Calderón… todos dejaron su rastro. Vuestra misión: " +
         "recorrer la Villa, descifrar cada sello y recuperar el Testamento antes " +
-        "de que sus secretos caigan en el olvido. La aventura comienza en la " +
-        "Plaza de Oriente, frente al Palacio Real. ¡En marcha!",
+        "de que sus secretos caigan en el olvido. La aventura comienza en el " +
+        "Barrio de las Letras, ante la casa de Lope de Vega. ¡En marcha!",
       en:
         "Greetings, investigators. My name is Baltasar de Quintana, Chief " +
         "Chronicler of the Villa and guardian of the secret archives of " +
@@ -89,8 +89,8 @@ const GAME_DATA_I18N = {
         "streets of old Madrid. Velázquez, Cervantes, Lope de Vega, " +
         "Calderón… all of them left their trace. Your mission: walk the " +
         "Villa, decipher each seal and recover the Testament before its " +
-        "secrets fall into oblivion. The adventure begins at Plaza de " +
-        "Oriente, facing the Royal Palace. Onward!",
+        "secrets fall into oblivion. The adventure begins in the Barrio " +
+        "de las Letras, before the house of Lope de Vega. Onward!",
       fr:
         "Salut à vous, enquêteurs. Je m'appelle Baltasar de Quintana, " +
         "Chroniqueur en chef de la Ville et gardien des archives secrètes du " +
@@ -100,11 +100,11 @@ const GAME_DATA_I18N = {
         "Vega, Calderón… tous y ont laissé leur trace. Votre mission : " +
         "parcourir la Ville, déchiffrer chaque sceau et récupérer le " +
         "Testament avant que ses secrets ne sombrent dans l'oubli. " +
-        "L'aventure commence Plaza de Oriente, face au Palais Royal. En " +
-        "route !",
+        "L'aventure commence dans le Barrio de las Letras, devant la " +
+        "maison de Lope de Vega. En route !",
     },
-    startLocation: "Plaza de Oriente",
-    startCoords: { lat: 40.418, lng: -3.7126 },
+    startLocation: "Calle de Cervantes, 11",
+    startCoords: { lat: 40.414, lng: -3.6976 },
     photo: "img/prologo.jpg",
     photoCaption: {
       es: "Plano de Madrid de Pedro Texeira (1656) · Biblioteca Nacional de España",
@@ -138,19 +138,22 @@ const GAME_DATA_I18N = {
     text: {
       es:
         "Habéis descifrado el último sello del Testamento del Siglo de Oro en la " +
-        "Plaza Mayor de Madrid. Gracias a vuestra perspicacia histórica y " +
-        "capacidad de observación, los secretos mejor guardados de la Corte de " +
-        "los Austrias quedan a salvo de las sombras del olvido.",
+        "Plaza de Oriente, frente al Palacio Real de Madrid. Gracias a " +
+        "vuestra perspicacia histórica y capacidad de observación, los " +
+        "secretos mejor guardados de la Corte de los Austrias quedan a " +
+        "salvo de las sombras del olvido.",
       en:
         "You have deciphered the last seal of the Golden Age Testament in " +
-        "Madrid's Plaza Mayor. Thanks to your historical insight and " +
-        "powers of observation, the best-kept secrets of the Habsburg Court " +
-        "are safe from the shadows of oblivion.",
+        "Plaza de Oriente, facing Madrid's Royal Palace. Thanks to your " +
+        "historical insight and powers of observation, the best-kept " +
+        "secrets of the Habsburg Court are safe from the shadows of " +
+        "oblivion.",
       fr:
         "Vous avez déchiffré le dernier sceau du Testament du Siècle d'Or " +
-        "sur la Plaza Mayor de Madrid. Grâce à votre perspicacité " +
-        "historique et à votre sens de l'observation, les secrets les mieux " +
-        "gardés de la Cour des Habsbourg sont désormais à l'abri de l'oubli.",
+        "Plaza de Oriente, face au Palais Royal de Madrid. Grâce à votre " +
+        "perspicacité historique et à votre sens de l'observation, les " +
+        "secrets les mieux gardés de la Cour des Habsbourg sont désormais " +
+        "à l'abri de l'oubli.",
     },
   },
 
