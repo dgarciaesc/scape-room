@@ -127,6 +127,9 @@ const I18N = (() => {
       listen_instructions: "Escuchar indicaciones",
       who_guides: "⚜ Quién os guía",
       figure_bio_label: "¿Quién fue?",
+      ar_close: "Cerrar",
+      ar_requesting_camera: "Activando la cámara…",
+      ar_camera_error: "No se pudo acceder a la cámara. Comprueba los permisos e inténtalo de nuevo.",
       arrived_start: "He llegado a la Casa de Lope de Vega",
 
       history_kicker: "Sello {n} de {total}",
@@ -241,6 +244,9 @@ const I18N = (() => {
       listen_instructions: "Listen to directions",
       who_guides: "⚜ Who guides you",
       figure_bio_label: "Who was he?",
+      ar_close: "Close",
+      ar_requesting_camera: "Activating camera…",
+      ar_camera_error: "Couldn't access the camera. Check your permissions and try again.",
       arrived_start: "I've reached the Lope de Vega House",
 
       history_kicker: "Seal {n} of {total}",
@@ -355,6 +361,9 @@ const I18N = (() => {
       listen_instructions: "Écouter les indications",
       who_guides: "⚜ Qui vous guide",
       figure_bio_label: "Qui était-il ?",
+      ar_close: "Fermer",
+      ar_requesting_camera: "Activation de la caméra…",
+      ar_camera_error: "Impossible d'accéder à la caméra. Vérifiez les autorisations et réessayez.",
       arrived_start: "Je suis arrivé à la Maison de Lope de Vega",
 
       history_kicker: "Sceau {n} sur {total}",

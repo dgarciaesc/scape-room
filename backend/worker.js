@@ -1078,6 +1078,27 @@ const STAGES_I18N = [
       en: "Plaza de Oriente, with the Royal Palace in the background",
       fr: "La Plaza de Oriente, avec le Palais Royal en arrière-plan",
     },
+    /* Superposición con la cámara: solo esta etapa la tiene por ahora.
+       app.js la activa si el campo existe, así que basta con añadir
+       este bloque a cualquier otra etapa para extenderla. */
+    arOverlay: {
+      image: "img/alcazar_1704.jpg",
+      buttonLabel: {
+        es: "🏛️ Ver el Alcázar desaparecido",
+        en: "🏛️ See the vanished Alcázar",
+        fr: "🏛️ Voir l'Alcázar disparu",
+      },
+      caption: {
+        es: "Aquí estuvo el Alcázar Real hasta que ardió por completo en la Nochebuena de 1734. Arrastra para comparar su fachada con el Palacio Real que ocupa el mismo lugar hoy.",
+        en: "The Royal Alcázar stood here until it burned to the ground on Christmas Eve 1734. Drag to compare its façade with the Royal Palace that occupies the same site today.",
+        fr: "L'Alcázar Royal se dressait ici jusqu'à ce qu'il brûle entièrement la nuit de Noël 1734. Faites glisser pour comparer sa façade avec le Palais Royal qui occupe aujourd'hui le même emplacement.",
+      },
+      credit: {
+        es: "«Aspecto del Real Palacio de Madrid y su Plaza…», Filippo Pallota (1704) · Wikimedia Commons",
+        en: "\"Aspecto del Real Palacio de Madrid y su Plaza…,\" Filippo Pallota (1704) · Wikimedia Commons",
+        fr: "« Aspecto del Real Palacio de Madrid y su Plaza… », Filippo Pallota (1704) · Wikimedia Commons",
+      },
+    },
     narrative: {
       es:
         "¡Lo habéis conseguido! Habéis llegado a la última parada: os " +

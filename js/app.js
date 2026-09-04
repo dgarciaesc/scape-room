@@ -382,6 +382,94 @@
     return STAGE_ART[key] ? `<div class="art-card"${idAttr}>${STAGE_ART[key]}</div>` : "";
   }
 
+  /* ---------- Superposición de cámara (comparador histórico) ----------
+     Abre la cámara del móvil a pantalla completa y superpone una imagen
+     histórica sobre el directo, con un deslizante para comparar (mismo
+     mecanismo que un slider de "antes/ahora": un clip-path que se mueve
+     al arrastrar). Sin librerías. Si el jugador no da permiso de cámara,
+     o el dispositivo no la soporta, se avisa dentro del propio recuadro
+     sin romper el resto del juego. `overlay` es el campo st.arOverlay
+     de la etapa (image/buttonLabel/caption/credit). */
+  function openArOverlay(overlay) {
+    const ov = el(`
+      <div class="ar-overlay">
+        <button class="ar-close" aria-label="${t("ar_close")}">✕</button>
+        <div class="ar-stage" id="arStage">
+          <video class="ar-video" id="arVideo" autoplay playsinline muted></video>
+          <img class="ar-old" id="arOld" src="${overlay.image}" alt="" />
+          <div class="ar-handle" id="arHandle"><div class="ar-handle-grip">↔</div></div>
+          <p class="ar-status" id="arStatus">${t("ar_requesting_camera")}</p>
+        </div>
+        <div class="ar-caption">
+          <p>${overlay.caption}</p>
+          <p class="ar-credit">${overlay.credit}</p>
+        </div>
+      </div>
+    `);
+    document.body.appendChild(ov);
+    document.body.classList.add("no-scroll");
+
+    const $video = ov.querySelector("#arVideo");
+    const $stage = ov.querySelector("#arStage");
+    const $old = ov.querySelector("#arOld");
+    const $handle = ov.querySelector("#arHandle");
+    const $status = ov.querySelector("#arStatus");
+    let stream = null;
+
+    function setPos(pct) {
+      const p = Math.max(2, Math.min(98, pct));
+      $old.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
+      $handle.style.left = p + "%";
+    }
+    setPos(50);
+
+    function posFromEvent(e) {
+      const rect = $stage.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      return (x / rect.width) * 100;
+    }
+    let dragging = false;
+    const onDown = (e) => {
+      dragging = true;
+      setPos(posFromEvent(e));
+    };
+    const onMove = (e) => {
+      if (dragging) setPos(posFromEvent(e));
+    };
+    const onUp = () => {
+      dragging = false;
+    };
+    $stage.addEventListener("pointerdown", onDown);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+
+    function close() {
+      if (stream) stream.getTracks().forEach((tr) => tr.stop());
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      document.body.classList.remove("no-scroll");
+      ov.remove();
+    }
+    ov.querySelector(".ar-close").onclick = close;
+
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      $status.textContent = t("ar_camera_error");
+      $status.classList.add("ar-status-error");
+    } else {
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" }, audio: false })
+        .then((s) => {
+          stream = s;
+          $video.srcObject = s;
+          $status.remove();
+        })
+        .catch(() => {
+          $status.textContent = t("ar_camera_error");
+          $status.classList.add("ar-status-error");
+        });
+    }
+  }
+
   /* ---------- Fotos de recuerdo ---------- */
   function photoSection(stage, onSaved) {
     const existing = Engine.getPhotos()[stage.id];
@@ -812,6 +900,11 @@
         </div>
 
         ${locationArt}
+        ${
+          st.arOverlay
+            ? `<button class="btn-secondary btn-ar" id="btnArOverlay">${st.arOverlay.buttonLabel}</button>`
+            : ""
+        }
 
         <div class="card enigma">
           <button class="btn-audio" title="${t("listen_enigma")}">🔊</button>
@@ -834,6 +927,9 @@
       e.preventDefault();
       tts.speak(st.enigma, e.currentTarget, null, `stage${audioStageNum(st)}_enigma`);
     };
+
+    const $btnAr = v.querySelector("#btnArOverlay");
+    if ($btnAr) $btnAr.onclick = () => openArOverlay(st.arOverlay);
 
     const $input = v.querySelector("#answerInput");
     const $hintArea = v.querySelector("#hintArea");
