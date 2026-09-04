@@ -126,6 +126,7 @@ const I18N = (() => {
       listen_enigma: "Escuchar enigma",
       listen_instructions: "Escuchar indicaciones",
       who_guides: "⚜ Quién os guía",
+      figure_bio_label: "¿Quién fue?",
       arrived_start: "He llegado a la Casa de Lope de Vega",
 
       history_kicker: "Sello {n} de {total}",
@@ -239,6 +240,7 @@ const I18N = (() => {
       listen_enigma: "Listen to riddle",
       listen_instructions: "Listen to directions",
       who_guides: "⚜ Who guides you",
+      figure_bio_label: "Who was he?",
       arrived_start: "I've reached the Lope de Vega House",
 
       history_kicker: "Seal {n} of {total}",
@@ -352,6 +354,7 @@ const I18N = (() => {
       listen_enigma: "Écouter l'énigme",
       listen_instructions: "Écouter les indications",
       who_guides: "⚜ Qui vous guide",
+      figure_bio_label: "Qui était-il ?",
       arrived_start: "Je suis arrivé à la Maison de Lope de Vega",
 
       history_kicker: "Sceau {n} sur {total}",

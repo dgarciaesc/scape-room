@@ -223,6 +223,30 @@ figure.art-card figcaption {
   padding: 7px 10px 3px;
 }
 
+/* Ficha biográfica del personaje del enigma, dentro del mismo
+   recuadro que su retrato/obra (ver artCard()). */
+.art-card-bio {
+  padding: 12px 14px 4px;
+  border-top: 1px solid rgba(184, 134, 11, 0.25);
+}
+
+.art-card-bio-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.art-card-bio p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
 /* ---------- Fotos de recuerdo ---------- */
 .photo-section { margin-top: 6px; }
 

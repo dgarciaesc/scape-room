@@ -367,6 +367,14 @@
           <div class="art-card-imgwrap"${idAttr}>
             <img src="${item.photo}" alt="${alt}" loading="lazy" />
           </div>
+          ${
+            item.figureBio
+              ? `<div class="art-card-bio">
+                   <span class="art-card-bio-label">${t("figure_bio_label")}</span>
+                   <p>${item.figureBio}</p>
+                 </div>`
+              : ""
+          }
           ${item.photoCaption ? `<figcaption>${item.photoCaption}</figcaption>` : ""}
         </figure>`;
     }

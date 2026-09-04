@@ -79,6 +79,11 @@ const STAGES_I18N = [
       en: "Lope de Vega, by Juan van der Hamen (c. 1620), wearing the habit of the Order of St John",
       fr: "Lope de Vega, par Juan van der Hamen (v. 1620), portant l'habit de l'ordre de Saint-Jean",
     },
+    figureBio: {
+      es: "Félix Lope de Vega (1562-1635) fue el dramaturgo más prolífico y popular de su tiempo: escribió más de 1.500 comedias, además de novelas y poesía. Creó las reglas del teatro español moderno —el «arte nuevo de hacer comedias»— que marcarían la escena durante generaciones. Es, junto a Cervantes y Calderón, una de las tres grandes cumbres del Siglo de Oro.",
+      en: "Félix Lope de Vega (1562-1635) was the most prolific and popular playwright of his age: he wrote more than 1,500 plays, plus novels and poetry. He created the rules of modern Spanish theatre — the \"new art of writing plays\" — which would shape the stage for generations. Together with Cervantes and Calderón, he is one of the three towering figures of the Golden Age.",
+      fr: "Félix Lope de Vega (1562-1635) fut le dramaturge le plus prolifique et le plus populaire de son temps : il écrivit plus de 1 500 pièces, ainsi que des romans et des poèmes. Il créa les règles du théâtre espagnol moderne — le « nouvel art d'écrire des comédies » — qui marquèrent la scène pendant des générations. Avec Cervantès et Calderón, il forme l'un des trois sommets du Siècle d'Or.",
+    },
     locationPhoto: "img/lugar3.jpg",
     locationPhotoCaption: {
       es: "Fachada de la Casa-Museo de Lope de Vega, Calle de Cervantes",
@@ -277,6 +282,11 @@ const STAGES_I18N = [
       en: "Miguel de Cervantes, attributed to Juan de Jáuregui (1600) · RAE",
       fr: "Miguel de Cervantès, attribué à Juan de Jáuregui (1600) · RAE",
     },
+    figureBio: {
+      es: "Miguel de Cervantes (1547-1616) es el escritor más universal de la lengua española. Su novela «Don Quijote de la Mancha» (1605), considerada la primera novela moderna, ha sido traducida a más idiomas que cualquier otro libro salvo la Biblia. Antes de escribirla combatió en la batalla de Lepanto (1571), donde perdió el uso de la mano izquierda, y pasó cinco años cautivo en Argel.",
+      en: "Miguel de Cervantes (1547-1616) is the most universal writer in the Spanish language. His novel \"Don Quixote\" (1605), considered the first modern novel, has been translated into more languages than any book except the Bible. Before writing it he fought at the Battle of Lepanto (1571), where he lost the use of his left hand, and spent five years held captive in Algiers.",
+      fr: "Miguel de Cervantès (1547-1616) est l'écrivain le plus universel de la langue espagnole. Son roman « Don Quichotte » (1605), considéré comme le premier roman moderne, a été traduit en plus de langues qu'aucun autre livre à l'exception de la Bible. Avant de l'écrire, il combattit à la bataille de Lépante (1571), où il perdit l'usage de la main gauche, et passa cinq ans captif à Alger.",
+    },
     locationPhoto: "img/lugar4.jpg",
     locationPhotoCaption: {
       es: "Fachada del Convento de las Trinitarias Descalzas",
@@ -464,6 +474,11 @@ const STAGES_I18N = [
       en: "Calderón de la Barca, engraving by Pedro de Villafranca (1676)",
       fr: "Calderón de la Barca, gravure de Pedro de Villafranca (1676)",
     },
+    figureBio: {
+      es: "Pedro Calderón de la Barca (1600-1681) fue el gran dramaturgo del Siglo de Oro tardío, sucesor de Lope de Vega como autor de referencia del teatro español. Su obra «La vida es sueño» es una de las reflexiones más profundas jamás escritas sobre la libertad y el destino humano. Fue también sacerdote y autor de numerosos autos sacramentales para las fiestas del Corpus.",
+      en: "Pedro Calderón de la Barca (1600-1681) was the great playwright of the late Golden Age, Lope de Vega's successor as the leading figure of Spanish theatre. His play \"Life Is a Dream\" is one of the most profound reflections ever written on freedom and human destiny. He was also a priest and the author of numerous religious plays for the feast of Corpus Christi.",
+      fr: "Pedro Calderón de la Barca (1600-1681) fut le grand dramaturge de la fin du Siècle d'Or, successeur de Lope de Vega comme figure de référence du théâtre espagnol. Sa pièce « La vie est un songe » est l'une des réflexions les plus profondes jamais écrites sur la liberté et le destin humain. Il fut aussi prêtre et auteur de nombreux autos sacramentales pour les fêtes de la Fête-Dieu.",
+    },
     locationPhoto: "img/lugar5.jpg",
     locationPhotoCaption: {
       es: "Monumento a Calderón de la Barca, en la Plaza de Santa Ana",
@@ -649,6 +664,11 @@ const STAGES_I18N = [
       es: "«Fiesta real en la Plaza Mayor» (s. XVII) · Museo de Historia de Madrid",
       en: "\"Royal Celebration in the Plaza Mayor\" (17th c.) · Museo de Historia de Madrid",
       fr: "« Fête royale sur la Plaza Mayor » (XVIIe s.) · Museo de Historia de Madrid",
+    },
+    figureBio: {
+      es: "Felipe III (1578-1621) reinó entre 1598 y 1621, delegando buena parte del gobierno en su valido, el duque de Lerma. Su reinado, conocido como la «Pax Hispánica», trajo un periodo de paz relativa tras las guerras de Felipe II, aunque también decretó la expulsión de los moriscos. A él se debe la construcción de la Plaza Mayor, corazón del Madrid de los Austrias.",
+      en: "Philip III (1578-1621) reigned from 1598 to 1621, delegating much of the government to his favourite, the Duke of Lerma. His reign, known as the \"Pax Hispanica,\" brought a period of relative peace after Philip II's wars, though he also decreed the expulsion of the Moriscos. He is responsible for building the Plaza Mayor, the heart of Habsburg Madrid.",
+      fr: "Philippe III (1578-1621) régna de 1598 à 1621, délégant une grande partie du gouvernement à son favori, le duc de Lerma. Son règne, connu comme la « Pax Hispanica », apporta une période de paix relative après les guerres de Philippe II, bien qu'il ait aussi décrété l'expulsion des morisques. C'est à lui que l'on doit la construction de la Plaza Mayor, cœur du Madrid des Habsbourg.",
     },
     locationPhoto: "img/lugar6.jpg",
     locationPhotoCaption: {
@@ -853,6 +873,11 @@ const STAGES_I18N = [
       en: "\"The Battle of Lepanto\" (1571), anonymous · National Maritime Museum",
       fr: "« La bataille de Lépante » (1571), anonyme · National Maritime Museum",
     },
+    figureBio: {
+      es: "Álvaro de Bazán, marqués de Santa Cruz (1526-1588), fue el almirante más temido de su tiempo: no perdió jamás un combate naval. Combatió en Lepanto (1571) y fue el estratega original de la Armada Invencible, aunque murió meses antes de que la flota zarpara sin él. Su fama inspiró a los grandes poetas del Siglo de Oro.",
+      en: "Álvaro de Bazán, Marquess of Santa Cruz (1526-1588), was the most feared admiral of his time: he never lost a naval battle. He fought at Lepanto (1571) and was the original strategist behind the Spanish Armada, though he died months before the fleet sailed without him. His reputation inspired the great poets of the Golden Age.",
+      fr: "Álvaro de Bazán, marquis de Santa Cruz (1526-1588), fut l'amiral le plus redouté de son temps : il ne perdit jamais un seul combat naval. Il combattit à Lépante (1571) et fut le stratège original de l'Invincible Armada, bien qu'il mourût quelques mois avant que la flotte ne prenne la mer sans lui. Sa réputation inspira les grands poètes du Siècle d'Or.",
+    },
     locationPhoto: "img/lugar2.jpg",
     locationPhotoCaption: {
       es: "La Plaza de la Villa, con la Torre de los Lujanes al fondo",
@@ -1041,6 +1066,11 @@ const STAGES_I18N = [
       es: "«Las Meninas», Diego Velázquez (1656), pintado en el Alcázar · Museo del Prado",
       en: "\"Las Meninas,\" Diego Velázquez (1656), painted in the Alcázar · Museo del Prado",
       fr: "« Les Ménines », Diego Velázquez (1656), peint dans l'Alcázar · Museo del Prado",
+    },
+    figureBio: {
+      es: "Felipe IV (1605-1665) reinó entre 1621 y 1665 y fue el gran mecenas artístico del Siglo de Oro: convirtió a Diego Velázquez en su pintor de cámara y le instaló un taller en el propio Alcázar. Mientras el poder político del imperio empezaba a declinar, su corte vivió el momento más brillante del arte español, con obras como «Las Meninas».",
+      en: "Philip IV (1605-1665) reigned from 1621 to 1665 and was the great artistic patron of the Golden Age: he made Diego Velázquez his court painter and gave him a studio inside the Alcázar itself. As the empire's political power began to decline, his court experienced the brightest moment of Spanish art, with works such as \"Las Meninas.\"",
+      fr: "Philippe IV (1605-1665) régna de 1621 à 1665 et fut le grand mécène artistique du Siècle d'Or : il fit de Diego Velázquez son peintre de cour et lui installa un atelier dans l'Alcázar lui-même. Tandis que le pouvoir politique de l'empire commençait à décliner, sa cour connut le moment le plus brillant de l'art espagnol, avec des œuvres comme « Les Ménines ».",
     },
     locationPhoto: "img/lugar1.jpg",
     locationPhotoCaption: {
