@@ -610,7 +610,7 @@ input.shake {
   overflow: hidden;
 }
 
-.home-photo img {
+.home-photo > img {
   position: absolute;
   inset: 0;
   width: 100%;
