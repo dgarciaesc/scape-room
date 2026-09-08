@@ -470,6 +470,260 @@
     }
   }
 
+  /* ---------- Certificado de finalización ----------
+     Genera, en un <canvas>, una imagen tipo diploma con el emblema del
+     juego, la puntuación, el tiempo y hasta 6 fotos del equipo (una
+     por etapa, las que se hayan hecho). Todo en el propio dispositivo,
+     sin servidor: se puede descargar como PNG o compartir con
+     navigator.share si el navegador lo soporta (en escritorio, sin
+     API de compartir, se ofrece solo la descarga). */
+  function loadImage(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null); // que un fallo no bloquee el resto
+      img.src = src;
+    });
+  }
+
+  /* Centra texto envuelto a `maxWidth`, devuelve la y tras la última
+     línea (para poder seguir dibujando debajo sin solaparse). Con
+     `dryRun` no pinta nada: solo calcula cuánto ocupará el texto —
+     lo usa drawCertificate() para saber la altura final ANTES de
+     pintar un solo píxel (ver más abajo). */
+  function wrapCenteredText(ctx, text, cx, y, maxWidth, lineHeight, dryRun) {
+    const words = text.split(/\s+/);
+    let line = "";
+    let cy = y;
+    for (const word of words) {
+      const test = line ? `${line} ${word}` : word;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        if (!dryRun) ctx.fillText(line, cx, cy);
+        line = word;
+        cy += lineHeight;
+      } else {
+        line = test;
+      }
+    }
+    if (line) {
+      if (!dryRun) ctx.fillText(line, cx, cy);
+      cy += lineHeight;
+    }
+    return cy;
+  }
+
+  /* Recorre todo el contenido del certificado (cabecera, estadísticas,
+     álbum) sobre un contexto dado. En modo `dryRun` solo mide (ningún
+     fillText/drawImage real) y sirve para saber la altura final del
+     documento; con dryRun:false pinta de verdad. Así el marco y el
+     degradado de fondo, que se dibujan aparte una vez conocida esa
+     altura, siempre encajan justo con el contenido, tenga 0 o 6 fotos
+     y independientemente de en cuántas líneas envuelva el título en
+     cada idioma. */
+  function layoutCertificate(ctx, W, photoImgs, dryRun) {
+    const ink = "#2b1d0e";
+    const inkSoft = "#4a3620";
+    const gold = "#b8860b";
+    const goldBright = "#d4a017";
+    const cx = W / 2;
+    ctx.textAlign = "center";
+
+    let y = 340;
+    ctx.fillStyle = goldBright;
+    ctx.font = "700 22px Georgia, serif";
+    if (!dryRun) ctx.fillText(t("certificate_eyebrow").toUpperCase(), cx, y);
+
+    y += 56;
+    ctx.fillStyle = ink;
+    ctx.font = "700 46px 'Iowan Old Style', Georgia, serif";
+    y = wrapCenteredText(ctx, GAME_DATA.title, cx, y, W - 200, 54, dryRun);
+
+    y += 6;
+    ctx.fillStyle = inkSoft;
+    ctx.font = "italic 24px 'Iowan Old Style', Georgia, serif";
+    if (!dryRun) ctx.fillText(t("certificate_subtitle"), cx, y);
+
+    y += 44;
+    ctx.fillStyle = gold;
+    ctx.font = "26px Georgia, serif";
+    if (!dryRun) ctx.fillText("❦ ❦ ❦", cx, y);
+
+    y += 50;
+    ctx.fillStyle = inkSoft;
+    ctx.font = "24px 'Iowan Old Style', Georgia, serif";
+    y = wrapCenteredText(ctx, t("certificate_body"), cx, y, W - 220, 34, dryRun);
+
+    // Estadísticas: ducados / tiempo / fecha
+    y += 34;
+    const stats = [
+      { label: t("currency"), value: String(S.score) },
+      { label: t("certificate_time_label"), value: Engine.elapsedText() },
+      {
+        label: t("certificate_date_label"),
+        value: new Date(S.finishedAt || Date.now()).toLocaleDateString(I18N.getLang() || "es"),
+      },
+    ];
+    const colW = (W - 200) / 3;
+    if (!dryRun) {
+      stats.forEach((s, i) => {
+        const scx = 100 + colW * i + colW / 2;
+        ctx.fillStyle = ink;
+        ctx.font = "700 40px Georgia, serif";
+        ctx.fillText(s.value, scx, y);
+        ctx.fillStyle = gold;
+        ctx.font = "700 15px Georgia, serif";
+        ctx.fillText(s.label.toUpperCase(), scx, y + 30);
+        if (i > 0) {
+          ctx.strokeStyle = "rgba(184,134,11,0.35)";
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(100 + colW * i, y - 42);
+          ctx.lineTo(100 + colW * i, y + 40);
+          ctx.stroke();
+        }
+      });
+    }
+
+    // Álbum: hasta 6 fotos en cuadrícula 3×2
+    y += 76;
+    if (photoImgs.length) {
+      const cols = 3;
+      const gap = 14;
+      const cell = (W - 200 - gap * (cols - 1)) / cols;
+      if (!dryRun) {
+        photoImgs.forEach((img, i) => {
+          if (!img) return;
+          const col = i % cols;
+          const row = Math.floor(i / cols);
+          const px = 100 + col * (cell + gap);
+          const py = y + row * (cell + gap);
+          // recorte centrado a cuadrado (cover)
+          const side = Math.min(img.width, img.height);
+          const sx = (img.width - side) / 2;
+          const sy = (img.height - side) / 2;
+          ctx.save();
+          ctx.strokeStyle = gold;
+          ctx.lineWidth = 3;
+          ctx.strokeRect(px, py, cell, cell);
+          ctx.drawImage(img, sx, sy, side, side, px, py, cell, cell);
+          ctx.restore();
+        });
+      }
+      y += Math.ceil(photoImgs.length / cols) * (cell + gap);
+    }
+
+    // Pie
+    y += 60;
+    ctx.fillStyle = gold;
+    ctx.font = "700 16px Georgia, serif";
+    if (!dryRun) ctx.fillText("MADRIDAVENTURE.COM", cx, y);
+    y += 40;
+
+    return y; // altura total del contenido, usada para dimensionar el lienzo
+  }
+
+  async function drawCertificate(canvas) {
+    const W = 1080;
+
+    const photosMap = Engine.getPhotos();
+    const photoImgs = await Promise.all(
+      GAME_DATA.stages
+        .map((st) => photosMap[st.id])
+        .filter(Boolean)
+        .slice(0, 6)
+        .map(loadImage)
+    );
+
+    // Pasada 1 (medir): mismo recorrido de dibujo pero sin pintar nada,
+    // solo para saber cuánto va a ocupar el contenido real.
+    const measureCtx = document.createElement("canvas").getContext("2d");
+    const contentH = layoutCertificate(measureCtx, W, photoImgs, true);
+
+    // Pasada 2 (pintar): ahora sí, sobre un lienzo del tamaño exacto.
+    canvas.width = W;
+    canvas.height = contentH + 48; // margen inferior a juego con el marco
+    const H = canvas.height;
+    const ctx = canvas.getContext("2d");
+    const gold = "#b8860b";
+
+    const bgGrad = ctx.createLinearGradient(0, 0, W, H);
+    bgGrad.addColorStop(0, "#f7eed9");
+    bgGrad.addColorStop(1, "#efe0c0");
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.strokeStyle = gold;
+    ctx.lineWidth = 3;
+    ctx.strokeRect(36, 36, W - 72, H - 72);
+    ctx.lineWidth = 1;
+    ctx.strokeRect(48, 48, W - 96, H - 96);
+
+    const emblem = await loadImage("img/emblem.png");
+    if (emblem) {
+      const cx = W / 2;
+      const size = 190;
+      const ar = emblem.width / emblem.height;
+      const ew = ar >= 1 ? size : size * ar;
+      const eh = ar >= 1 ? size / ar : size;
+      ctx.drawImage(emblem, cx - ew / 2, 90, ew, eh);
+    }
+
+    layoutCertificate(ctx, W, photoImgs, false);
+  }
+
+  function openCertificate() {
+    const ov = el(`
+      <div class="ar-overlay cert-overlay">
+        <button class="ar-close" aria-label="${t("ar_close")}">✕</button>
+        <div class="cert-stage">
+          <canvas class="cert-canvas" id="certCanvas"></canvas>
+        </div>
+        <div class="cert-actions">
+          <button class="btn-primary" id="btnCertDownload">${t("certificate_download")}</button>
+          <button class="btn-secondary" id="btnCertShare">${t("certificate_share")}</button>
+        </div>
+      </div>
+    `);
+    document.body.appendChild(ov);
+    document.body.classList.add("no-scroll");
+
+    function close() {
+      document.body.classList.remove("no-scroll");
+      ov.remove();
+    }
+    ov.querySelector(".ar-close").onclick = close;
+
+    const canvas = ov.querySelector("#certCanvas");
+    drawCertificate(canvas);
+
+    ov.querySelector("#btnCertDownload").onclick = () => {
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png");
+      a.download = "madrid-aventure-certificado.png";
+      a.click();
+    };
+    ov.querySelector("#btnCertShare").onclick = async () => {
+      canvas.toBlob(async (blob) => {
+        if (!blob) return;
+        const file = new File([blob], "madrid-aventure-certificado.png", { type: "image/png" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({ files: [file], title: GAME_DATA.title });
+            return;
+          } catch (e) {
+            return; // cancelado por el usuario, no hacer nada más
+          }
+        }
+        // sin API de compartir con ficheros (típico en escritorio): descargar
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "madrid-aventure-certificado.png";
+        a.click();
+      }, "image/png");
+    };
+  }
+
   /* ---------- Fotos de recuerdo ---------- */
   function photoSection(stage, onSaved) {
     const existing = Engine.getPhotos()[stage.id];
@@ -1305,6 +1559,7 @@
             : ""
         }
         <div id="finalPhotoSlot"></div>
+        <button class="btn-primary" id="btnCertificate">${t("victory_certificate")}</button>
         <button class="btn-secondary" id="btnShare">${t("victory_share")}</button>
         <button class="btn-ghost" id="btnAgain">${t("victory_again")}</button>
       </div>
@@ -1314,6 +1569,7 @@
     const lastStage = GAME_DATA.stages[GAME_DATA.stages.length - 1];
     const slot = v.querySelector("#finalPhotoSlot");
     slot.appendChild(photoSection(lastStage, render)); // re-render: entra en el álbum
+    v.querySelector("#btnCertificate").onclick = () => openCertificate();
     v.querySelector("#btnShare").onclick = async () => {
       const text = t("share_text", {
         title: GAME_DATA.title,
