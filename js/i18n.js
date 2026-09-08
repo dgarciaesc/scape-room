@@ -55,7 +55,7 @@ const I18N = (() => {
   /* --- Diccionario de interfaz (textos fijos, no el guion del juego) --- */
   const STRINGS = {
     es: {
-      home_title: "Madrid Aventure",
+      home_title: "Madrid Adventure",
       home_tagline: "Escape rooms urbanos por el corazón histórico de Madrid",
       home_choose_lang: "Elige tu idioma",
       home_credit: "Foto: José Manuel Suárez (CC BY 2.0)",
@@ -180,7 +180,7 @@ const I18N = (() => {
     },
 
     en: {
-      home_title: "Madrid Aventure",
+      home_title: "Madrid Adventure",
       home_tagline: "Urban escape rooms through the historic heart of Madrid",
       home_choose_lang: "Choose your language",
       home_credit: "Photo: José Manuel Suárez (CC BY 2.0)",
@@ -305,7 +305,7 @@ const I18N = (() => {
     },
 
     fr: {
-      home_title: "Madrid Aventure",
+      home_title: "Madrid Adventure",
       home_tagline: "Escape games urbains au cœur historique de Madrid",
       home_choose_lang: "Choisissez votre langue",
       home_credit: "Photo : José Manuel Suárez (CC BY 2.0)",

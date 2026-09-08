@@ -832,7 +832,7 @@
           <div class="home-scrim"></div>
           <div class="home-content">
             <img class="home-emblem" src="img/emblem.png" alt="El Testamento del Siglo de Oro" />
-            <h1 class="home-title">Madrid Aventure</h1>
+            <h1 class="home-title">${t("home_title")}</h1>
             <p class="home-tagline" id="homeTagline"></p>
             <div class="home-langs">
               <button class="home-lang-btn" data-lang="es">
