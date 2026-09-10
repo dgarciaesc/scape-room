@@ -55,7 +55,7 @@ const I18N = (() => {
   /* --- Diccionario de interfaz (textos fijos, no el guion del juego) --- */
   const STRINGS = {
     es: {
-      home_title: "Madrid Adventure",
+      home_title: "HiddenMadrid",
       home_tagline: "Escape rooms urbanos por el corazón histórico de Madrid",
       home_choose_lang: "Elige tu idioma",
       home_credit: "Foto: José Manuel Suárez (CC BY 2.0)",
@@ -169,7 +169,7 @@ const I18N = (() => {
       victory_share: "📤 Compartir hazaña",
       victory_again: "Jugar de nuevo",
       certificate_eyebrow: "Certificado de finalización",
-      certificate_subtitle: "Madrid Adventure · Escape Room Urbano",
+      certificate_subtitle: "HiddenMadrid · Escape Room Urbano",
       certificate_body: "Este equipo ha recorrido Madrid del Barrio de las Letras al Palacio Real y ha descifrado los seis sellos del Siglo de Oro.",
       certificate_time_label: "Tiempo",
       certificate_date_label: "Fecha",
@@ -180,7 +180,7 @@ const I18N = (() => {
     },
 
     en: {
-      home_title: "Madrid Adventure",
+      home_title: "HiddenMadrid",
       home_tagline: "Urban escape rooms through the historic heart of Madrid",
       home_choose_lang: "Choose your language",
       home_credit: "Photo: José Manuel Suárez (CC BY 2.0)",
@@ -294,7 +294,7 @@ const I18N = (() => {
       victory_share: "📤 Share your feat",
       victory_again: "Play again",
       certificate_eyebrow: "Certificate of completion",
-      certificate_subtitle: "Madrid Adventure · Urban Escape Room",
+      certificate_subtitle: "HiddenMadrid · Urban Escape Room",
       certificate_body: "This team walked Madrid from the Barrio de las Letras to the Royal Palace and deciphered the six seals of the Golden Age.",
       certificate_time_label: "Time",
       certificate_date_label: "Date",
@@ -305,7 +305,7 @@ const I18N = (() => {
     },
 
     fr: {
-      home_title: "Madrid Adventure",
+      home_title: "HiddenMadrid",
       home_tagline: "Escape games urbains au cœur historique de Madrid",
       home_choose_lang: "Choisissez votre langue",
       home_credit: "Photo : José Manuel Suárez (CC BY 2.0)",
@@ -419,7 +419,7 @@ const I18N = (() => {
       victory_share: "📤 Partager l'exploit",
       victory_again: "Rejouer",
       certificate_eyebrow: "Certificat de réussite",
-      certificate_subtitle: "Madrid Adventure · Escape Game Urbain",
+      certificate_subtitle: "HiddenMadrid · Escape Game Urbain",
       certificate_body: "Cette équipe a parcouru Madrid du Barrio de las Letras au Palais Royal et déchiffré les six sceaux du Siècle d'Or.",
       certificate_time_label: "Temps",
       certificate_date_label: "Date",
