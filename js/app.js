@@ -617,7 +617,7 @@
     y += 60;
     ctx.fillStyle = gold;
     ctx.font = "700 16px Georgia, serif";
-    if (!dryRun) ctx.fillText("QUESTSMADRID.COM", cx, y);
+    if (!dryRun) ctx.fillText("HIDDENMADRID.COM", cx, y);
     y += 40;
 
     return y; // altura total del contenido, usada para dimensionar el lienzo
