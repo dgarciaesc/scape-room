@@ -1616,6 +1616,20 @@
   }
 
   /* ---------- Arranque ---------- */
+  // Si se llega desde la landing (hiddenmadrid.com) con ?lang=xx, ese
+  // idioma manda y nos saltamos la pantalla de elegir idioma — el
+  // jugador ya lo eligió allí. "de" (u otro no soportado) cae a inglés,
+  // ya que el juego solo tiene es/en/fr. Esto NO bloquea nada: el
+  // selector de idioma dentro de la app (título, candado de licencia)
+  // sigue funcionando igual para corregirlo después.
+  const urlLang = new URLSearchParams(location.search).get("lang");
+  if (urlLang) {
+    I18N.setLang(I18N.SUPPORTED.includes(urlLang) ? urlLang : "en");
+    const cleanUrl = new URL(location.href);
+    cleanUrl.searchParams.delete("lang");
+    history.replaceState(null, "", cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+  }
+
   // Si ya se validó una licencia antes, las 6 pruebas se recuperan de
   // la caché local (sin red); si no, GAME_DATA.stages queda vacío y
   // viewTitle() mostrará el candado de licencia.
