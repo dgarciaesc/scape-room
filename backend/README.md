@@ -48,8 +48,8 @@ Save and deploy".
    | `STRIPE_SECRET_KEY` | tu clave secreta de Stripe (paso 3) | ✅ |
    | `STRIPE_WEBHOOK_SECRET` | la firma del webhook (paso 3) | ✅ |
    | `STRIPE_PRICE_ID` | el ID del precio creado en Stripe (paso 3) | ✅ |
-   | `SITE_URL` | `https://dgarciaesc.github.io/scape-room` (con la ruta, sin barra final — se usa para construir las URLs de vuelta de Stripe) | — |
-   | `ALLOWED_ORIGIN` | `https://dgarciaesc.github.io` (⚠️ **sin** la ruta `/scape-room` — el navegador nunca incluye la ruta en la cabecera `Origin`, así que si pones la ruta aquí, CORS bloquea todas las peticiones) | — |
+   | `SITE_URL` | `https://hiddenmadrid.com/goldenage` (con la ruta, sin barra final — el juego vive bajo /goldenage, ver `backend/proxy_worker.js`; se usa para construir las URLs de vuelta de Stripe) | — |
+   | `ALLOWED_ORIGIN` | `https://hiddenmadrid.com` (⚠️ **sin ninguna ruta** — el navegador nunca incluye la ruta en la cabecera `Origin`, así que esto no cambia aunque el juego esté en /goldenage; si pones una ruta aquí, CORS bloquea todas las peticiones) | — |
 
    Guarda y **vuelve a desplegar** el Worker tras añadirlas (Deploy).
 
@@ -78,7 +78,7 @@ git push
 
 ## 5. Probar de punta a punta
 
-1. Abre `https://dgarciaesc.github.io/scape-room/` en una pestaña nueva (o borra `localStorage` en las herramientas de desarrollador)
+1. Abre `https://hiddenmadrid.com/goldenage/` en una pestaña nueva (o borra `localStorage` en las herramientas de desarrollador)
 2. Pulsa "Comprar licencia" → paga con la tarjeta de prueba `4242 4242 4242 4242`, cualquier fecha futura y CVC
 3. Deberías caer en `gracias.html` con un código `MADRID-XXXXXX`
 4. Vuelve al juego, introdúcelo → debería desbloquear las 6 pruebas
