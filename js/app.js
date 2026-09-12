@@ -375,6 +375,14 @@
                  </div>`
               : ""
           }
+          ${
+            item.photoNote
+              ? `<div class="art-card-bio">
+                   <span class="art-card-bio-label">${t("photo_note_label")}</span>
+                   <p>${item.photoNote}</p>
+                 </div>`
+              : ""
+          }
           ${item.photoCaption ? `<figcaption>${item.photoCaption}</figcaption>` : ""}
         </figure>`;
     }
@@ -1144,6 +1152,16 @@
       { photo: st.locationPhoto, photoCaption: st.locationPhotoCaption },
       st.location
     );
+    const enigmaArt = st.enigmaPhoto
+      ? artCard(
+          {
+            photo: st.enigmaPhoto,
+            photoCaption: st.enigmaPhotoCaption,
+            photoNote: st.enigmaPhotoNote,
+          },
+          st.location
+        )
+      : "";
     const v = el(`
       <div>
         <div class="stage-header">
@@ -1163,8 +1181,9 @@
         <div class="card enigma">
           <button class="btn-audio" title="${t("listen_enigma")}">🔊</button>
           ${speaker("speaker_enigma")}
-          <p>${st.enigma}</p>
+          ${paragraphs(st.enigma)}
         </div>
+        ${enigmaArt}
 
         <form class="answer-form" id="answerForm">
           <p class="answer-format">${t("answer_format", { format: st.answerFormat })}</p>

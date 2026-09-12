@@ -84,6 +84,17 @@ const STAGES_I18N = [
       en: "Félix Lope de Vega (1562-1635) was the most prolific and popular playwright of his age: he wrote more than 1,500 plays, plus novels and poetry. He created the rules of modern Spanish theatre — the \"new art of writing plays\" — which would shape the stage for generations. Together with Cervantes and Calderón, he is one of the three towering figures of the Golden Age.",
       fr: "Félix Lope de Vega (1562-1635) fut le dramaturge le plus prolifique et le plus populaire de son temps : il écrivit plus de 1 500 pièces, ainsi que des romans et des poèmes. Il créa les règles du théâtre espagnol moderne — le « nouvel art d'écrire des comédies » — qui marquèrent la scène pendant des générations. Avec Cervantès et Calderón, il forme l'un des trois sommets du Siècle d'Or.",
     },
+    enigmaPhoto: "img/enigma_letras.jpg",
+    enigmaPhotoCaption: {
+      es: "Calle de Huertas, Barrio de las Letras · Foto: Jorge E. San Román (CC BY 2.5)",
+      en: "Calle de Huertas, Barrio de las Letras · Photo: Jorge E. San Román (CC BY 2.5)",
+      fr: "Calle de Huertas, Barrio de las Letras · Photo : Jorge E. San Román (CC BY 2.5)",
+    },
+    enigmaPhotoNote: {
+      es: "Esta es una de las calles del Barrio de las Letras, el barrio literario donde Lope de Vega vivió sus últimos veinticinco años, rodeado de otros grandes nombres del Siglo de Oro. Hoy es una de las zonas con más ambiente de Madrid, llena de terrazas como esta.",
+      en: "This is one of the streets of the Barrio de las Letras, the literary quarter where Lope de Vega lived his last twenty-five years, surrounded by other great names of the Golden Age. Today it's one of the liveliest areas in Madrid, full of terraces like this one.",
+      fr: "Voici l'une des rues du Barrio de las Letras, le quartier littéraire où Lope de Vega vécut ses vingt-cinq dernières années, entouré d'autres grands noms du Siècle d'Or. C'est aujourd'hui l'un des quartiers les plus animés de Madrid, plein de terrasses comme celle-ci.",
+    },
     locationPhoto: "img/lugar3.jpg",
     locationPhotoCaption: {
       es: "Fachada de la Casa-Museo de Lope de Vega, Calle de Cervantes",
@@ -138,27 +149,23 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "Ante el portón del poeta más prolijo del Imperio, alza la mirada " +
-        "hacia el dintel tallado en piedra. Bajo las siglas D.O.M., Lope " +
-        "mandó labrar en la lengua de la antigua Roma una sentencia en dos " +
-        "líneas sobre el valor de lo propio frente a lo ajeno. Transcribe " +
-        "las seis palabras latinas en piedra que custodian la entrada para " +
-        "cruzar el umbral del dramaturgo.",
+        "Ante el portón del poeta más prolijo del Imperio, alza la mirada hacia el dintel tallado en piedra." +
+        "\n\n" +
+        "Bajo las siglas D.O.M., Lope mandó labrar en la lengua de la antigua Roma una sentencia en dos líneas sobre el valor de lo propio frente a lo ajeno." +
+        "\n\n" +
+        "Transcribe las seis palabras latinas en piedra que custodian la entrada para cruzar el umbral del dramaturgo.",
       en:
-        "Before the gate of the Empire's most prolific poet, raise your " +
-        "eyes to the stone-carved lintel. Beneath the letters D.O.M., Lope " +
-        "had carved, in the tongue of ancient Rome, a two-line sentence " +
-        "about the worth of what is one's own versus what belongs to " +
-        "another. Transcribe the six Latin words in stone that guard the " +
-        "entrance to cross the playwright's threshold.",
+        "Before the gate of the Empire's most prolific poet, raise your eyes to the stone-carved lintel." +
+        "\n\n" +
+        "Beneath the letters D.O.M., Lope had carved, in the tongue of ancient Rome, a two-line sentence about the worth of what is one's own versus what belongs to another." +
+        "\n\n" +
+        "Transcribe the six Latin words in stone that guard the entrance to cross the playwright's threshold.",
       fr:
-        "Devant le portail du poète le plus prolifique de l'Empire, levez " +
-        "les yeux vers le linteau taillé dans la pierre. Sous les lettres " +
-        "D.O.M., Lope fit graver, dans la langue de la Rome antique, une " +
-        "phrase en deux lignes sur la valeur de ce qui nous appartient face " +
-        "à ce qui appartient à autrui. Transcrivez les six mots latins " +
-        "gravés dans la pierre qui gardent l'entrée, pour franchir le " +
-        "seuil du dramaturge.",
+        "Devant le portail du poète le plus prolifique de l'Empire, levez les yeux vers le linteau taillé dans la pierre." +
+        "\n\n" +
+        "Sous les lettres D.O.M., Lope fit graver, dans la langue de la Rome antique, une phrase en deux lignes sur la valeur de ce qui nous appartient face à ce qui appartient à autrui." +
+        "\n\n" +
+        "Transcrivez les six mots latins gravés dans la pierre qui gardent l'entrée, pour franchir le seuil du dramaturge.",
     },
     answerFormat: {
       es: "SEIS PALABRAS EN LATÍN",
@@ -287,6 +294,17 @@ const STAGES_I18N = [
       en: "Miguel de Cervantes (1547-1616) is the most universal writer in the Spanish language. His novel \"Don Quixote\" (1605), considered the first modern novel, has been translated into more languages than any book except the Bible. Before writing it he fought at the Battle of Lepanto (1571), where he lost the use of his left hand, and spent five years held captive in Algiers.",
       fr: "Miguel de Cervantès (1547-1616) est l'écrivain le plus universel de la langue espagnole. Son roman « Don Quichotte » (1605), considéré comme le premier roman moderne, a été traduit en plus de langues qu'aucun autre livre à l'exception de la Bible. Avant de l'écrire, il combattit à la bataille de Lépante (1571), où il perdit l'usage de la main gauche, et passa cinq ans captif à Alger.",
     },
+    enigmaPhoto: "img/enigma_cervantes.jpg",
+    enigmaPhotoCaption: {
+      es: "Monumento a Cervantes, Plaza de España · Foto: Carlos Delgado (CC BY-SA)",
+      en: "Monument to Cervantes, Plaza de España · Photo: Carlos Delgado (CC BY-SA)",
+      fr: "Monument à Cervantès, Plaza de España · Photo : Carlos Delgado (CC BY-SA)",
+    },
+    enigmaPhotoNote: {
+      es: "El gran monumento a Cervantes de la Plaza de España, con las estatuas de Don Quijote y Sancho Panza a sus pies. No está cerca del convento de las Trinitarias, pero es el homenaje más conocido de Madrid al autor que descansa allí.",
+      en: "The great monument to Cervantes in Plaza de España, with the statues of Don Quixote and Sancho Panza at its feet. It isn't near the Trinitarias convent, but it's Madrid's best-known tribute to the author who rests there.",
+      fr: "Le grand monument à Cervantès de la Plaza de España, avec les statues de Don Quichotte et Sancho Panza à ses pieds. Il ne se trouve pas près du couvent des Trinitaires, mais c'est l'hommage le plus connu de Madrid à l'auteur qui y repose.",
+    },
     locationPhoto: "img/lugar4.jpg",
     locationPhotoCaption: {
       es: "Fachada del Convento de las Trinitarias Descalzas",
@@ -342,27 +360,17 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "En la morada sagrada que rescató de Argel al autor de «El Quijote», " +
-        "la lápida de mármol de la Academia guarda dos fechas talladas en " +
-        "números normales: el año de su nacimiento y el de su muerte. " +
-        "Buscad el segundo —el mismo que ya conocéis por este relato— y " +
-        "convertidlo al lenguaje del César: los números romanos. Esa " +
-        "conversión, escrita por vosotros mismos, es la clave.",
+        "En la morada sagrada que rescató de Argel al autor de «El Quijote», la lápida de mármol de la Academia guarda dos fechas talladas en números normales: el año de su nacimiento y el de su muerte." +
+        "\n\n" +
+        "Buscad el segundo —el mismo que ya conocéis por este relato— y convertidlo al lenguaje del César: los números romanos. Esa conversión, escrita por vosotros mismos, es la clave.",
       en:
-        "In the sacred dwelling that ransomed the author of 'Don Quixote' " +
-        "from Algiers, the Academy's marble plaque holds two dates carved " +
-        "in ordinary numerals: the year of his birth and the year of his " +
-        "death. Find the second one — the same one you already know from " +
-        "this story — and convert it into the language of Caesar: Roman " +
-        "numerals. That conversion, written by you, is the key.",
+        "In the sacred dwelling that ransomed the author of 'Don Quixote' from Algiers, the Academy's marble plaque holds two dates carved in ordinary numerals: the year of his birth and the year of his death." +
+        "\n\n" +
+        "Find the second one — the same one you already know from this story — and convert it into the language of Caesar: Roman numerals. That conversion, written by you, is the key.",
       fr:
-        "Dans la demeure sacrée qui racheta d'Alger l'auteur de « Don " +
-        "Quichotte », la plaque de marbre de l'Académie porte deux dates " +
-        "gravées en chiffres ordinaires : l'année de sa naissance et celle " +
-        "de sa mort. Cherchez la seconde — celle que vous connaissez déjà " +
-        "grâce à ce récit — et convertissez-la dans la langue de César : " +
-        "les chiffres romains. Cette conversion, écrite par vous, est la " +
-        "clé.",
+        "Dans la demeure sacrée qui racheta d'Alger l'auteur de « Don Quichotte », la plaque de marbre de l'Académie porte deux dates gravées en chiffres ordinaires : l'année de sa naissance et celle de sa mort." +
+        "\n\n" +
+        "Cherchez la seconde — celle que vous connaissez déjà grâce à ce récit — et convertissez-la dans la langue de César : les chiffres romains. Cette conversion, écrite par vous, est la clé.",
     },
     answerFormat: {
       es: "NÚMEROS ROMANOS (ej.: MCMXCIX)",
@@ -479,6 +487,17 @@ const STAGES_I18N = [
       en: "Pedro Calderón de la Barca (1600-1681) was the great playwright of the late Golden Age, Lope de Vega's successor as the leading figure of Spanish theatre. His play \"Life Is a Dream\" is one of the most profound reflections ever written on freedom and human destiny. He was also a priest and the author of numerous religious plays for the feast of Corpus Christi.",
       fr: "Pedro Calderón de la Barca (1600-1681) fut le grand dramaturge de la fin du Siècle d'Or, successeur de Lope de Vega comme figure de référence du théâtre espagnol. Sa pièce « La vie est un songe » est l'une des réflexions les plus profondes jamais écrites sur la liberté et le destin humain. Il fut aussi prêtre et auteur de nombreux autos sacramentales pour les fêtes de la Fête-Dieu.",
     },
+    enigmaPhoto: "img/enigma_santaana.jpg",
+    enigmaPhotoCaption: {
+      es: "Plaza de Santa Ana de noche · Foto: Edgardo W. Olivera (CC BY 2.0)",
+      en: "Plaza de Santa Ana at night · Photo: Edgardo W. Olivera (CC BY 2.0)",
+      fr: "La Plaza de Santa Ana la nuit · Photo : Edgardo W. Olivera (CC BY 2.0)",
+    },
+    enigmaPhotoNote: {
+      es: "La Plaza de Santa Ana de noche, con el hotel ME Reina Victoria iluminado al fondo. Sigue siendo, como en el Siglo de Oro, uno de los puntos de encuentro más animados del Barrio de las Letras.",
+      en: "Plaza de Santa Ana by night, with the illuminated ME Reina Victoria hotel in the background. Just as in the Golden Age, it remains one of the liveliest meeting points in the Barrio de las Letras.",
+      fr: "La Plaza de Santa Ana la nuit, avec l'hôtel ME Reina Victoria illuminé en arrière-plan. Comme au Siècle d'Or, elle reste l'un des lieux de rencontre les plus animés du Barrio de las Letras.",
+    },
     locationPhoto: "img/lugar5.jpg",
     locationPhotoCaption: {
       es: "Monumento a Calderón de la Barca, en la Plaza de Santa Ana",
@@ -524,29 +543,23 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "El gran dramaturgo en mármol preside la plaza, sentado sobre su " +
-        "pedestal de piedra. Bajo su nombre esculpido, varios relieves de " +
-        "bronce —uno por cada obra maestra— rodean la base: recórrelos " +
-        "todos y cuenta cuántos son en total. Uno de ellos retrata «La vida " +
-        "es sueño», el drama donde el príncipe Segismundo descubre que toda " +
-        "la existencia puede ser una ilusión. Une el número de relieves con " +
-        "la palabra clave del título de esa obra.",
+        "El gran dramaturgo en mármol preside la plaza, sentado sobre su pedestal de piedra." +
+        "\n\n" +
+        "Bajo su nombre esculpido, varios relieves de bronce —uno por cada obra maestra— rodean la base: recórrelos todos y cuenta cuántos son en total." +
+        "\n\n" +
+        "Uno de ellos retrata «La vida es sueño», el drama donde el príncipe Segismundo descubre que toda la existencia puede ser una ilusión. Une el número de relieves con la palabra clave del título de esa obra.",
       en:
-        "The great playwright in marble surveys the square, seated on his " +
-        "stone pedestal. Beneath his carved name, several bronze reliefs — " +
-        "one per masterpiece — surround the base: walk all the way around " +
-        "and count how many there are in total. One of them portrays 'Life " +
-        "Is a Dream,' the drama where Prince Segismundo discovers that all " +
-        "existence may be an illusion. Join the number of reliefs with the " +
-        "key word from that play's title.",
+        "The great playwright in marble surveys the square, seated on his stone pedestal." +
+        "\n\n" +
+        "Beneath his carved name, several bronze reliefs — one per masterpiece — surround the base: walk all the way around and count how many there are in total." +
+        "\n\n" +
+        "One of them portrays 'Life Is a Dream,' the drama where Prince Segismundo discovers that all existence may be an illusion. Join the number of reliefs with the key word from that play's title.",
       fr:
-        "Le grand dramaturge de marbre contemple la place, assis sur son " +
-        "piédestal de pierre. Sous son nom gravé, plusieurs reliefs de " +
-        "bronze — un par chef-d'œuvre — entourent la base : faites-en le " +
-        "tour complet et comptez combien il y en a au total. L'un d'eux " +
-        "représente « La vie est un songe », le drame où le prince " +
-        "Sigismond découvre que toute existence pourrait être une illusion. " +
-        "Associez le nombre de reliefs au mot-clé du titre de cette œuvre.",
+        "Le grand dramaturge de marbre contemple la place, assis sur son piédestal de pierre." +
+        "\n\n" +
+        "Sous son nom gravé, plusieurs reliefs de bronze — un par chef-d'œuvre — entourent la base : faites-en le tour complet et comptez combien il y en a au total." +
+        "\n\n" +
+        "L'un d'eux représente « La vie est un songe », le drame où le prince Sigismond découvre que toute existence pourrait être une illusion. Associez le nombre de reliefs au mot-clé du titre de cette œuvre.",
     },
     answerFormat: {
       es: "NÚMERO-PALABRA (ej.: 0-DRAMA)",
@@ -670,6 +683,17 @@ const STAGES_I18N = [
       en: "Philip III (1578-1621) reigned from 1598 to 1621, delegating much of the government to his favourite, the Duke of Lerma. His reign, known as the \"Pax Hispanica,\" brought a period of relative peace after Philip II's wars, though he also decreed the expulsion of the Moriscos. He is responsible for building the Plaza Mayor, the heart of Habsburg Madrid.",
       fr: "Philippe III (1578-1621) régna de 1598 à 1621, délégant une grande partie du gouvernement à son favori, le duc de Lerma. Son règne, connu comme la « Pax Hispanica », apporta une période de paix relative après les guerres de Philippe II, bien qu'il ait aussi décrété l'expulsion des morisques. C'est à lui que l'on doit la construction de la Plaza Mayor, cœur du Madrid des Habsbourg.",
     },
+    enigmaPhoto: "img/enigma_felipe3.jpg",
+    enigmaPhotoCaption: {
+      es: "Estatua ecuestre de Felipe III, Plaza Mayor · Foto: Carlos Delgado (CC BY-SA)",
+      en: "Equestrian statue of Philip III, Plaza Mayor · Photo: Carlos Delgado (CC BY-SA)",
+      fr: "Statue équestre de Philippe III, Plaza Mayor · Photo : Carlos Delgado (CC BY-SA)",
+    },
+    enigmaPhotoNote: {
+      es: "La estatua ecuestre de Felipe III preside la Plaza Mayor desde 1848. En su pedestal de piedra se esconde la placa de mármol que hay que leer para resolver este enigma.",
+      en: "The equestrian statue of Philip III has presided over the Plaza Mayor since 1848. Its stone pedestal holds the marble plaque you need to read to solve this riddle.",
+      fr: "La statue équestre de Philippe III préside la Plaza Mayor depuis 1848. Son piédestal de pierre cache la plaque de marbre qu'il faut lire pour résoudre cette énigme.",
+    },
     locationPhoto: "img/lugar6.jpg",
     locationPhotoCaption: {
       es: "La Plaza Mayor, con la Casa de la Panadería al fondo",
@@ -723,27 +747,23 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "Rodead el gran pedestal de piedra hasta encontrar la placa de " +
-        "mármol que la reina Isabel II mandó colocar aquí en 1848. En ella " +
-        "se leen tres años distintos: el regreso de la Corte a Madrid, la " +
-        "construcción de esta misma plaza, y la llegada de esta estatua a " +
-        "su lugar actual. Buscad el más antiguo de los tres —el primero " +
-        "que se menciona— para sellar la clave de esta parada.",
+        "Rodead el gran pedestal de piedra hasta encontrar la placa de mármol que la reina Isabel II mandó colocar aquí en 1848." +
+        "\n\n" +
+        "En ella se leen tres años distintos: el regreso de la Corte a Madrid, la construcción de esta misma plaza, y la llegada de esta estatua a su lugar actual." +
+        "\n\n" +
+        "Buscad el más antiguo de los tres —el primero que se menciona— para sellar la clave de esta parada.",
       en:
-        "Walk around the great stone pedestal until you find the marble " +
-        "plaque that Queen Isabel II had placed here in 1848. On it you'll " +
-        "read three different years: the return of the Court to Madrid, " +
-        "the construction of this very square, and the arrival of this " +
-        "statue at its current spot. Find the oldest of the three — the " +
-        "first one mentioned — to seal this stop's key.",
+        "Walk around the great stone pedestal until you find the marble plaque that Queen Isabel II had placed here in 1848." +
+        "\n\n" +
+        "On it you'll read three different years: the return of the Court to Madrid, the construction of this very square, and the arrival of this statue at its current spot." +
+        "\n\n" +
+        "Find the oldest of the three — the first one mentioned — to seal this stop's key.",
       fr:
-        "Faites le tour du grand piédestal de pierre jusqu'à trouver la " +
-        "plaque de marbre que la reine Isabelle II fit placer ici en 1848. " +
-        "On y lit trois années différentes : le retour de la Cour à " +
-        "Madrid, la construction de cette même place, et l'arrivée de " +
-        "cette statue à son emplacement actuel. Trouvez la plus ancienne " +
-        "des trois — la première mentionnée — pour sceller la clé " +
-        "de cette étape.",
+        "Faites le tour du grand piédestal de pierre jusqu'à trouver la plaque de marbre que la reine Isabelle II fit placer ici en 1848." +
+        "\n\n" +
+        "On y lit trois années différentes : le retour de la Cour à Madrid, la construction de cette même place, et l'arrivée de cette statue à son emplacement actuel." +
+        "\n\n" +
+        "Trouvez la plus ancienne des trois — la première mentionnée — pour sceller la clé de cette étape.",
     },
     answerFormat: {
       es: "AÑO DE 4 DÍGITOS",
@@ -878,6 +898,17 @@ const STAGES_I18N = [
       en: "Álvaro de Bazán, Marquess of Santa Cruz (1526-1588), was the most feared admiral of his time: he never lost a naval battle. He fought at Lepanto (1571) and was the original strategist behind the Spanish Armada, though he died months before the fleet sailed without him. His reputation inspired the great poets of the Golden Age.",
       fr: "Álvaro de Bazán, marquis de Santa Cruz (1526-1588), fut l'amiral le plus redouté de son temps : il ne perdit jamais un seul combat naval. Il combattit à Lépante (1571) et fut le stratège original de l'Invincible Armada, bien qu'il mourût quelques mois avant que la flotte ne prenne la mer sans lui. Sa réputation inspira les grands poètes du Siècle d'Or.",
     },
+    enigmaPhoto: "img/enigma_bazan.jpg",
+    enigmaPhotoCaption: {
+      es: "Monumento a Álvaro de Bazán, Mariano Benlliure (1891) · Foto: Luis García (CC BY-SA)",
+      en: "Monument to Álvaro de Bazán, by Mariano Benlliure (1891) · Photo: Luis García (CC BY-SA)",
+      fr: "Monument à Álvaro de Bazán, par Mariano Benlliure (1891) · Photo : Luis García (CC BY-SA)",
+    },
+    enigmaPhotoNote: {
+      es: "El monumento a Álvaro de Bazán, obra de Mariano Benlliure, muestra al almirante de frente, con la Torre de los Lujanes al fondo. Los versos que pide el enigma están en la cara opuesta del pedestal, la que da la espalda al propio Bazán.",
+      en: "The monument to Álvaro de Bazán, by sculptor Mariano Benlliure, shows the admiral from the front, with the Torre de los Lujanes behind him. The verses the riddle asks about are on the opposite side of the pedestal, the one Bazán's own back is turned to.",
+      fr: "Le monument à Álvaro de Bazán, œuvre de Mariano Benlliure, montre l'amiral de face, avec la Torre de los Lujanes en arrière-plan. Les vers que demande l'énigme se trouvent sur la face opposée du piédestal, celle à laquelle Bazán tourne le dos.",
+    },
     locationPhoto: "img/lugar2.jpg",
     locationPhotoCaption: {
       es: "La Plaza de la Villa, con la Torre de los Lujanes al fondo",
@@ -934,26 +965,23 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "El invicto marino da la espalda al secreto que el «Fénix de los " +
-        "Ingenios» le dedicó en la piedra. Lee los versos tras el monumento y " +
-        "descubre la célebre batalla naval donde la armada turca encontró su " +
-        "espanto. Cuenta las letras que forman el nombre de esa mítica " +
-        "batalla y antepón esa cifra a la palabra para sellar la cédula real " +
-        "de 1561.",
+        "El invicto marino da la espalda al secreto que el «Fénix de los Ingenios» le dedicó en la piedra." +
+        "\n\n" +
+        "Lee los versos tras el monumento y descubre la célebre batalla naval donde la armada turca encontró su espanto." +
+        "\n\n" +
+        "Cuenta las letras que forman el nombre de esa mítica batalla y antepón esa cifra a la palabra para sellar la cédula real de 1561.",
       en:
-        "The undefeated sailor turns his back on the secret that the " +
-        "'Phoenix of Wits' dedicated to him in stone. Read the verses behind " +
-        "the monument and discover the famous naval battle where the " +
-        "Turkish fleet met its terror. Count the letters that spell the " +
-        "name of that legendary battle and place that number before the " +
-        "word to seal the royal decree of 1561.",
+        "The undefeated sailor turns his back on the secret that the 'Phoenix of Wits' dedicated to him in stone." +
+        "\n\n" +
+        "Read the verses behind the monument and discover the famous naval battle where the Turkish fleet met its terror." +
+        "\n\n" +
+        "Count the letters that spell the name of that legendary battle and place that number before the word to seal the royal decree of 1561.",
       fr:
-        "L'invaincu marin tourne le dos au secret que le « Phénix des " +
-        "Esprits » lui a dédié dans la pierre. Lisez les vers gravés " +
-        "derrière le monument et découvrez la célèbre bataille navale où la " +
-        "flotte turque connut l'épouvante. Comptez les lettres qui composent " +
-        "le nom de cette bataille légendaire et placez ce chiffre devant le " +
-        "mot pour sceller la cédule royale de 1561.",
+        "L'invaincu marin tourne le dos au secret que le « Phénix des Esprits » lui a dédié dans la pierre." +
+        "\n\n" +
+        "Lisez les vers gravés derrière le monument et découvrez la célèbre bataille navale où la flotte turque connut l'épouvante." +
+        "\n\n" +
+        "Comptez les lettres qui composent le nom de cette bataille légendaire et placez ce chiffre devant le mot pour sceller la cédule royale de 1561.",
     },
     answerFormat: {
       es: "NÚMERO-PALABRA (ej.: 0-BATALLA)",
@@ -1072,6 +1100,17 @@ const STAGES_I18N = [
       en: "Philip IV (1605-1665) reigned from 1621 to 1665 and was the great artistic patron of the Golden Age: he made Diego Velázquez his court painter and gave him a studio inside the Alcázar itself. As the empire's political power began to decline, his court experienced the brightest moment of Spanish art, with works such as \"Las Meninas.\"",
       fr: "Philippe IV (1605-1665) régna de 1621 à 1665 et fut le grand mécène artistique du Siècle d'Or : il fit de Diego Velázquez son peintre de cour et lui installa un atelier dans l'Alcázar lui-même. Tandis que le pouvoir politique de l'empire commençait à décliner, sa cour connut le moment le plus brillant de l'art espagnol, avec des œuvres comme « Les Ménines ».",
     },
+    enigmaPhoto: "img/enigma_felipe4.jpg",
+    enigmaPhotoCaption: {
+      es: "Monumento a Felipe IV, Plaza de Oriente (1843) · Foto: Pazit Polak (CC BY 2.0)",
+      en: "Monument to Philip IV, Plaza de Oriente (1843) · Photo: Pazit Polak (CC BY 2.0)",
+      fr: "Monument à Philippe IV, Plaza de Oriente (1843) · Photo : Pazit Polak (CC BY 2.0)",
+    },
+    enigmaPhotoNote: {
+      es: "El monumento a Felipe IV, inaugurado en 1843, con los leones de bronce que custodian su base — los mismos que hay que contar para resolver este enigma.",
+      en: "The monument to Philip IV, unveiled in 1843, with the bronze lions guarding its base — the same ones you need to count to solve this riddle.",
+      fr: "Le monument à Philippe IV, inauguré en 1843, avec les lions de bronze qui gardent sa base — ceux-là mêmes qu'il faut compter pour résoudre cette énigme.",
+    },
     locationPhoto: "img/lugar1.jpg",
     locationPhotoCaption: {
       es: "La Plaza de Oriente, con el Palacio Real al fondo",
@@ -1164,51 +1203,23 @@ const STAGES_I18N = [
     },
     enigma: {
       es:
-        "En el centro de la Plaza de Oriente, el rey de bronce desafía la " +
-        "gravedad gracias al sabio de Pisa. Pero " +
-        "no miréis arriba, sino abajo: rodead la base de piedra del pedestal " +
-        "a ras de suelo. En cada una de sus cuatro esquinas descansa, " +
-        "tumbado y silencioso, el mismo animal heráldico — el símbolo de la " +
-        "Corona que Felipe IV encarnaba. Identificad qué animal es y contad " +
-        "cuántos hay. Alzad después la vista hacia el remate del tejado del " +
-        "gran palacio que cierra la plaza: allí se iba a esculpir en piedra " +
-        "toda la dinastía de los reyes de España —los mismos veinte que hoy " +
-        "custodian los jardines a vuestro alrededor—, pero un rey de gustos " +
-        "más sobrios ordenó cambiar el proyecto por algo más discreto. ¿Qué " +
-        "pequeños objetos de piedra, repetidos uno tras otro, coronan hoy la " +
-        "balaustrada en su lugar? Unid esa palabra al número de guardianes " +
-        "para sellar la clave final.",
+        "En el centro de la Plaza de Oriente, el rey de bronce desafía la gravedad gracias al sabio de Pisa. Pero no miréis arriba, sino abajo: rodead la base de piedra del pedestal a ras de suelo." +
+        "\n\n" +
+        "En cada una de sus cuatro esquinas descansa, tumbado y silencioso, el mismo animal heráldico — el símbolo de la Corona que Felipe IV encarnaba. Identificad qué animal es y contad cuántos hay." +
+        "\n\n" +
+        "Alzad después la vista hacia el remate del tejado del gran palacio que cierra la plaza: allí se iba a esculpir en piedra toda la dinastía de los reyes de España —los mismos veinte que hoy custodian los jardines a vuestro alrededor—, pero un rey de gustos más sobrios ordenó cambiar el proyecto por algo más discreto. ¿Qué pequeños objetos de piedra, repetidos uno tras otro, coronan hoy la balaustrada en su lugar? Unid esa palabra al número de guardianes para sellar la clave final.",
       en:
-        "In the centre of Plaza de Oriente, the bronze king defies gravity " +
-        "thanks to the sage of Pisa. But " +
-        "don't look up — look down: walk around the stone base of the " +
-        "pedestal at ground level. On each of its four corners lies the " +
-        "same heraldic animal, silent and resting — the symbol of the Crown " +
-        "Philip IV embodied. Identify the animal and count how many there " +
-        "are. Then raise your eyes to the roofline of the great palace " +
-        "closing off the square: it was meant to be crowned in stone by " +
-        "the entire dynasty of Spanish kings — the same twenty that now " +
-        "stand guard in the gardens around you — but a king with more " +
-        "sober tastes had the plan changed for something plainer. What " +
-        "small stone objects, repeated one after another, crown the " +
-        "balustrade there today? Join that word with the number of " +
-        "guardians to seal the final key.",
+        "In the centre of Plaza de Oriente, the bronze king defies gravity thanks to the sage of Pisa. But don't look up — look down: walk around the stone base of the pedestal at ground level." +
+        "\n\n" +
+        "On each of its four corners lies the same heraldic animal, silent and resting — the symbol of the Crown Philip IV embodied. Identify the animal and count how many there are." +
+        "\n\n" +
+        "Then raise your eyes to the roofline of the great palace closing off the square: it was meant to be crowned in stone by the entire dynasty of Spanish kings — the same twenty that now stand guard in the gardens around you — but a king with more sober tastes had the plan changed for something plainer. What small stone objects, repeated one after another, crown the balustrade there today? Join that word with the number of guardians to seal the final key.",
       fr:
-        "Au centre de la Plaza de Oriente, le roi de bronze défie la " +
-        "gravité grâce au sage de Pise. Mais ne " +
-        "regardez pas en haut, regardez en bas : faites le tour de la base " +
-        "en pierre du piédestal, au ras du sol. À chacun de ses quatre " +
-        "angles repose, couché et silencieux, le même animal héraldique — " +
-        "le symbole de la Couronne que Philippe IV incarnait. Identifiez cet " +
-        "animal et comptez combien il y en a. Levez ensuite les yeux vers " +
-        "le couronnement du toit du grand palais qui ferme la place : on " +
-        "prévoyait d'y sculpter en pierre toute la dynastie des rois " +
-        "d'Espagne — les vingt mêmes qui montent aujourd'hui la garde dans " +
-        "les jardins autour de vous —, mais un roi aux goûts plus sobres " +
-        "fit remplacer le projet par quelque chose de plus discret. Quels " +
-        "petits objets de pierre, répétés les uns après les autres, " +
-        "couronnent aujourd'hui la balustrade à leur place ? Associez ce " +
-        "mot au nombre de gardiens pour sceller la clé finale.",
+        "Au centre de la Plaza de Oriente, le roi de bronze défie la gravité grâce au sage de Pise. Mais ne regardez pas en haut, regardez en bas : faites le tour de la base en pierre du piédestal, au ras du sol." +
+        "\n\n" +
+        "À chacun de ses quatre angles repose, couché et silencieux, le même animal héraldique — le symbole de la Couronne que Philippe IV incarnait. Identifiez cet animal et comptez combien il y en a." +
+        "\n\n" +
+        "Levez ensuite les yeux vers le couronnement du toit du grand palais qui ferme la place : on prévoyait d'y sculpter en pierre toute la dynastie des rois d'Espagne — les vingt mêmes qui montent aujourd'hui la garde dans les jardins autour de vous —, mais un roi aux goûts plus sobres fit remplacer le projet par quelque chose de plus discret. Quels petits objets de pierre, répétés les uns après les autres, couronnent aujourd'hui la balustrade à leur place ? Associez ce mot au nombre de gardiens pour sceller la clé finale.",
     },
     answerFormat: {
       es: "PALABRA-NÚMERO (ej.: EJEMPLO-3)",

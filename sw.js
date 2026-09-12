@@ -1,6 +1,6 @@
 /* Service worker: juego 100% offline una vez cargado.
    Importante en la calle, donde la cobertura falla. */
-const CACHE = "testamento-v27";
+const CACHE = "testamento-v28";
 const ASSETS = [
   "./img/app_bg.jpg",
   "./img/home_madrid.jpg",
@@ -8,6 +8,12 @@ const ASSETS = [
   "./img/historiador_retrato.jpg",
   "./img/carlos_v.jpg",
   "./img/alcazar_1704.jpg",
+  "./img/enigma_letras.jpg",
+  "./img/enigma_cervantes.jpg",
+  "./img/enigma_santaana.jpg",
+  "./img/enigma_felipe3.jpg",
+  "./img/enigma_bazan.jpg",
+  "./img/enigma_felipe4.jpg",
   "./img/prologo.jpg",
   "./img/etapa1.jpg",
   "./img/etapa2.jpg",
