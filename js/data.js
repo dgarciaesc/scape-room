@@ -290,4 +290,7 @@ const SCORING = {
   googleBase: 500,      // por la prueba de Google
   speedBonus: 150,      // resolver a la primera en menos de 2 min
   hintCost: 150,        // pedir la pista sutil voluntariamente, antes de fallar
+  quizBase: 500,         // prueba extra de opción múltiple, puntuada por rapidez
+  quizPenaltyPerSecond: 20, // se resta por cada segundo tardado en responder
+  quizMinPoints: 100,    // suelo si se acierta (por lento que se responda)
 };

@@ -1045,6 +1045,51 @@ const STAGES_I18N = [
         "Sainte Ligue écrasa la flotte ottomane. Sept lettres composent son " +
         "nom.",
     },
+    /* Segunda prueba de esta parada: quiz de opción múltiple, puntuado
+       por rapidez (SCORING.quizBase menos SCORING.quizPenaltyPerSecond
+       por segundo, suelo SCORING.quizMinPoints). Se juega justo tras la
+       foto de recuerdo, antes de emprender la caminata a la siguiente
+       parada — ver app.js#viewQuiz. */
+    secondaryQuiz: {
+      question: {
+        es: "¿A qué acontecimiento histórico hace referencia «Lepanto», el nombre que acabáis de descifrar?",
+        en: "What historical event does \"Lepanto\" — the name you just deciphered — refer to?",
+        fr: "À quel événement historique fait référence « Lépante », le nom que vous venez de déchiffrer ?",
+      },
+      options: [
+        {
+          es: "La conquista musulmana de la península en el año 711",
+          en: "The Muslim conquest of the peninsula in the year 711",
+          fr: "La conquête musulmane de la péninsule en 711",
+        },
+        {
+          es: "La batalla naval de 1571 en la que la Liga Santa derrotó a la flota otomana",
+          en: "The 1571 naval battle in which the Holy League defeated the Ottoman fleet",
+          fr: "La bataille navale de 1571 où la Sainte Ligue vainquit la flotte ottomane",
+        },
+        {
+          es: "La firma del Tratado de Tordesillas en 1494",
+          en: "The signing of the Treaty of Tordesillas in 1494",
+          fr: "La signature du traité de Tordesillas en 1494",
+        },
+        {
+          es: "El motín de Esquilache contra Carlos III en 1766",
+          en: "The Esquilache Riots against Charles III in 1766",
+          fr: "L'émeute d'Esquilache contre Charles III en 1766",
+        },
+        {
+          es: "El desembarco de la Armada Invencible en Inglaterra en 1588",
+          en: "The Spanish Armada's landing in England in 1588",
+          fr: "Le débarquement de l'Invincible Armada en Angleterre en 1588",
+        },
+      ],
+      correctIndex: 1,
+      revealExplanation: {
+        es: "Lepanto (1571) fue la mayor batalla naval de la época: la Liga Santa, con España a la cabeza, aplastó a la flota otomana en aguas griegas. Entre los combatientes estaba un joven Miguel de Cervantes, que perdió allí el uso de la mano izquierda.",
+        en: "Lepanto (1571) was the greatest naval battle of its age: the Holy League, led by Spain, crushed the Ottoman fleet in Greek waters. Among the combatants was a young Miguel de Cervantes, who lost the use of his left hand there.",
+        fr: "Lépante (1571) fut la plus grande bataille navale de son temps : la Sainte Ligue, menée par l'Espagne, écrasa la flotte ottomane dans les eaux grecques. Parmi les combattants se trouvait un jeune Miguel de Cervantès, qui y perdit l'usage de la main gauche.",
+      },
+    },
     transition: {
       type: "walk",
       text: {
@@ -1297,6 +1342,26 @@ const STAGES_I18N = [
         "dans les jardins de la place —, mais Charles III, aux goûts plus " +
         "sobres, les remplaça par une rangée de vases de pierre. Et quatre " +
         "lions de bronze gardent les angles du piédestal.",
+    },
+    secondaryQuiz: {
+      question: {
+        es: "Entre los veinte reyes de piedra que vigilan los jardines de la plaza, buscad al que aparece pisando con su pie la cabeza vencida de un enemigo infiel, símbolo de sus victorias en la Reconquista. ¿Quién es?",
+        en: "Among the twenty stone kings standing guard in the square's gardens, find the one shown with his foot resting on the defeated head of an infidel enemy, a symbol of his Reconquista victories. Who is he?",
+        fr: "Parmi les vingt rois de pierre qui montent la garde dans les jardins de la place, cherchez celui qui foule aux pieds la tête vaincue d'un ennemi infidèle, symbole de ses victoires de la Reconquista. Qui est-ce ?",
+      },
+      options: [
+        { es: "Don Pelayo", en: "Don Pelayo", fr: "Don Pelayo" },
+        { es: "Wamba", en: "Wamba", fr: "Wamba" },
+        { es: "Fernando I de Castilla", en: "Ferdinand I of Castile", fr: "Ferdinand Ier de Castille" },
+        { es: "Alfonso III de Asturias", en: "Alfonso III of Asturias", fr: "Alphonse III des Asturies" },
+        { es: "Ramiro II de León", en: "Ramiro II of León", fr: "Ramire II de León" },
+      ],
+      correctIndex: 2,
+      revealExplanation: {
+        es: "Era Fernando I de Castilla y León, «el Magno». Su estatua, tallada por Luis Salvador Carmona hacia 1750, lo muestra pisando la cabeza vencida de un infiel, en recuerdo de sus victorias contra los reinos musulmanes de taifas durante la Reconquista.",
+        en: "It was Ferdinand I of Castile and León, \"the Great.\" His statue, carved by Luis Salvador Carmona around 1750, shows him treading on the defeated head of an infidel, commemorating his victories over the Muslim taifa kingdoms during the Reconquista.",
+        fr: "Il s'agissait de Ferdinand Ier de Castille et León, « le Grand ». Sa statue, sculptée par Luis Salvador Carmona vers 1750, le montre foulant la tête vaincue d'un infidèle, en souvenir de ses victoires sur les royaumes musulmans de taifas pendant la Reconquista.",
+      },
     },
     transition: { type: "victory" },
   },

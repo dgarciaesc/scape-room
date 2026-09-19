@@ -482,14 +482,6 @@ button:active { transform: scale(0.97); }
   cursor: not-allowed;
 }
 
-.listen-required-hint {
-  margin: 10px 0 0;
-  font-size: 13.5px;
-  text-align: center;
-  color: var(--gold-bright, #d4a017);
-  font-weight: 600;
-}
-
 .btn-ghost {
   background: none;
   border: none;
@@ -957,6 +949,38 @@ input.shake {
 .leaderboard-table td:nth-child(3) {
   text-align: right;
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Prueba extra (quiz de opción múltiple) ---------- */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.quiz-option {
+  margin-top: 0;
+  text-align: left;
+}
+
+.quiz-option:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.quiz-option.quiz-correct {
+  background: rgba(46, 125, 50, 0.18);
+  border-color: rgba(46, 125, 50, 0.6);
+  color: var(--ink);
+  opacity: 1;
+}
+
+.quiz-option.quiz-wrong {
+  background: rgba(183, 28, 28, 0.14);
+  border-color: rgba(183, 28, 28, 0.55);
+  color: var(--ink);
+  opacity: 1;
 }
 
 /* ---------- Toast ---------- */

@@ -804,6 +804,7 @@
       history: viewHistory,
       stage: viewStage,
       photo: viewPhoto,
+      quiz: viewQuiz,
       google: viewGoogle,
       transition: viewTransition,
       victory: viewVictory,
@@ -1027,6 +1028,7 @@
       "history",
       "stage",
       "photo",
+      "quiz",
       "google",
       "transition",
       "victory",
@@ -1342,11 +1344,74 @@
     v.querySelector("#photoSlot").appendChild(photoSection(st));
 
     v.querySelector("#btnPhotoContinue").onclick = () => {
-      const tr = st.transition;
-      if (tr.type === "google") { go("google"); return; }
-      if (tr.type === "victory") { Engine.advanceStage(); go("victory"); return; }
-      go("transition");
+      if (st.secondaryQuiz) { go("quiz"); return; }
+      goPastStage(st);
     };
+
+    $screen.appendChild(v);
+  }
+
+  /* Adónde ir tras dar por completada una parada (foto, y quiz si lo
+     hay): a la prueba de Google, a la victoria, o a la transición a
+     pie normal. Compartido entre viewPhoto() y viewQuiz(). */
+  function goPastStage(st) {
+    const tr = st.transition;
+    if (tr.type === "google") { go("google"); return; }
+    if (tr.type === "victory") { Engine.advanceStage(); go("victory"); return; }
+    go("transition");
+  }
+
+  /* ---------- Pantalla: prueba extra (quiz de opción múltiple) ----------
+     Solo la tienen algunas paradas (stage.secondaryQuiz). Se juega justo
+     tras la foto de recuerdo, antes de la caminata a la siguiente parada.
+     Un único intento; puntúa según lo rápido que se responda. */
+  function viewQuiz() {
+    const st = Engine.currentStage();
+    const quiz = st.secondaryQuiz;
+    if (!S.quizEnteredAt) {
+      S.quizEnteredAt = Date.now();
+      Engine.save();
+    }
+    const v = el(`
+      <div>
+        <div class="stage-header">
+          <div class="stage-kicker">${t("quiz_kicker")}</div>
+          <h2>${t("quiz_title")}</h2>
+        </div>
+        <div class="card enigma">
+          ${speaker("speaker_quiz")}
+          <p>${quiz.question}</p>
+        </div>
+        <div id="quizOptions" class="quiz-options"></div>
+        <div id="quizResult"></div>
+      </div>
+    `);
+
+    const $options = v.querySelector("#quizOptions");
+    const $result = v.querySelector("#quizResult");
+
+    quiz.options.forEach((optionText, i) => {
+      const $btn = el(`<button type="button" class="btn-secondary quiz-option">${optionText}</button>`);
+      $btn.onclick = () => {
+        $options.querySelectorAll(".quiz-option").forEach((b) => (b.disabled = true));
+        const correct = i === quiz.correctIndex;
+        $btn.classList.add(correct ? "quiz-correct" : "quiz-wrong");
+        if (!correct) {
+          $options.children[quiz.correctIndex].classList.add("quiz-correct");
+        }
+        const pts = Engine.completeQuiz(correct);
+        License.trackEvent("quiz_answered", { stageId: st.id, correct, points: pts });
+        $result.innerHTML = `
+          <div class="hint-box ${correct ? "reveal" : "direct"}">
+            <p>${t(correct ? "quiz_correct" : "quiz_incorrect", { pts })}</p>
+            <p>${quiz.revealExplanation}</p>
+          </div>
+          <button type="button" class="btn-primary" id="btnQuizContinue">${t("quiz_continue")}</button>
+        `;
+        $result.querySelector("#btnQuizContinue").onclick = () => goPastStage(st);
+      };
+      $options.appendChild($btn);
+    });
 
     $screen.appendChild(v);
   }
@@ -1504,7 +1569,6 @@
         ${mapsLink(next.coords, next.location)}
         <p class="gps-status" id="gpsStatus"></p>
         <button class="btn-secondary" id="btnGps">${t("gps_button")}</button>
-        <p class="listen-required-hint" id="listenHint"></p>
         <button class="btn-primary" id="btnArrived">${t("arrived_next")}</button>
       </div>
     `);
@@ -1514,42 +1578,16 @@
     v.querySelector("#btnGps").onclick = () =>
       gpsCheck(next.coords, v.querySelector("#gpsStatus"));
 
-    /* La explicación estilo free tour es obligatoria: el botón de
-       "he llegado" queda bloqueado hasta que termine de sonar entera al
-       menos una vez. Si el navegador no soporta voz (o algo falla y
-       nunca dispara el final), un plan B por tiempo de lectura evita
-       que nadie se quede atascado sin poder avanzar. */
-    const $btnArrived = v.querySelector("#btnArrived");
-    const $listenHint = v.querySelector("#listenHint");
-    let unlocked = !freeTour;
-
-    function unlockArrive() {
-      if (unlocked) return;
-      unlocked = true;
-      $btnArrived.disabled = false;
-      $listenHint.classList.add("hidden");
-    }
-
+    /* La explicación estilo free tour es siempre opcional: el texto ya
+       está impreso arriba, así que oírla entera nunca es requisito
+       para avanzar — quien no pueda o no quiera usar el audio no debe
+       quedarse esperando un botón bloqueado. */
     if (freeTour) {
-      $btnArrived.disabled = true;
-      $listenHint.textContent = t("listen_required_hint");
       const $ftBtn = v.querySelector(".freetour-card .btn-audio");
-      $ftBtn.onclick = (e) => tts.speak(freeTour, e.currentTarget, (finished) => {
-        if (finished) unlockArrive();
-      }, freeTourAudioId);
-      // Red de seguridad: si algo impide detectar el final de la voz
-      // (navegador raro, fallo puntual), no dejamos a nadie bloqueado
-      // para siempre — se desbloquea solo tras un tiempo generoso de
-      // lectura (bastante más que lo que se tarda en escucharlo).
-      const words = freeTour.split(/\s+/).length;
-      const safetyMs = Math.max(15000, (words / 2.3) * 1000 * 2.5);
-      setTimeout(unlockArrive, safetyMs);
-    } else {
-      $listenHint.classList.add("hidden");
+      $ftBtn.onclick = (e) => tts.speak(freeTour, e.currentTarget, null, freeTourAudioId);
     }
 
-    $btnArrived.onclick = () => {
-      if (!unlocked) return;
+    v.querySelector("#btnArrived").onclick = () => {
       S.pendingWalkText = null;
       S.lastPoints = 0;
       if (!afterGoogle) Engine.advanceStage();
@@ -1572,7 +1610,11 @@
         (l) =>
           `<tr><td>${l.title}</td>
            <td class="time-cell">${Engine.formatSeconds(l.seconds)}${l.bonus ? " ⚡" : ""}</td>
-           <td>${l.revealed ? "🔓" : l.hintUsed ? "💡" : l.attempts === 0 ? "⚜" : "✔"} ${l.points}</td></tr>`
+           <td>${
+             l.type === "quiz"
+               ? l.correct ? "🎯" : "❌"
+               : l.revealed ? "🔓" : l.hintUsed ? "💡" : l.attempts === 0 ? "⚜" : "✔"
+           } ${l.points}</td></tr>`
       )
       .join("");
     const photos = Engine.getPhotos();

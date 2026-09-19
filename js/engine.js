@@ -38,6 +38,7 @@ const Engine = (() => {
       hintUsed: false, // pista sutil pedida voluntariamente en la prueba actual
       googleAttempts: 0,
       stageEnteredAt: null, // cronómetro de la prueba en curso
+      quizEnteredAt: null, // cronómetro de la prueba extra (quiz), en las paradas que la tienen
       score: 0,
       startedAt: null,
       finishedAt: null,
@@ -142,6 +143,32 @@ const Engine = (() => {
     pts = Math.max(pts, 50);
     state.score += pts;
     state.googleAttempts = 0;
+    save();
+    return pts;
+  }
+
+  /* Prueba extra de opción múltiple (solo algunas paradas la tienen,
+     ver stage.secondaryQuiz). Un único intento: acertar puntúa según
+     lo rápido que se responda; fallar no resta, pero no da nada. */
+  function completeQuiz(correct) {
+    const stage = currentStage();
+    const seconds = state.quizEnteredAt
+      ? Math.round((Date.now() - state.quizEnteredAt) / 1000)
+      : null;
+    let pts = 0;
+    if (correct) {
+      pts = Math.max(SCORING.quizMinPoints, SCORING.quizBase - (seconds || 0) * SCORING.quizPenaltyPerSecond);
+    }
+    state.score += pts;
+    state.stageLog.push({
+      id: `${stage.id}_quiz`,
+      title: I18N.t("quiz_log_label", { location: stage.location }),
+      type: "quiz",
+      correct: !!correct,
+      seconds,
+      points: pts,
+    });
+    state.quizEnteredAt = null;
     save();
     return pts;
   }
@@ -267,6 +294,7 @@ const Engine = (() => {
     currentStage,
     completeStage,
     completeGoogle,
+    completeQuiz,
     useHint,
     advanceStage,
     distanceMeters,
