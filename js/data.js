@@ -19,7 +19,8 @@ const GAME_DATA_I18N = {
     fr: "Escape Game Urbain · Madrid des Habsbourg",
   },
   city: "Madrid",
-  price: { es: "19€ por equipo", en: "€19 per team", fr: "19 € par équipe" },
+  price: { es: "9,99€ por equipo", en: "€9.99 per team", fr: "9,99 € par équipe" },
+  bundlePrice: { es: "14,99€ por equipo", en: "€14.99 per team", fr: "14,99 € par équipe" },
 
   /* El guía que acompaña a los jugadores durante toda la partida.
      Nombre ficticio con guiño a Jerónimo de Quintana, cronista real de
