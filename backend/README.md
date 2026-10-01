@@ -48,8 +48,8 @@ Save and deploy".
    | `STRIPE_SECRET_KEY` | tu clave secreta de Stripe (paso 3) | ✅ |
    | `STRIPE_WEBHOOK_SECRET` | la firma del webhook (paso 3) | ✅ |
    | `STRIPE_PRICE_ID` | el ID del precio creado en Stripe (paso 3) | ✅ |
-   | `SITE_URL` | `https://hiddenmadrid.com/goldenage` (con la ruta, sin barra final — el juego vive bajo /goldenage, ver `backend/proxy_worker.js`; se usa para construir las URLs de vuelta de Stripe) | — |
-   | `ALLOWED_ORIGIN` | `https://hiddenmadrid.com` (⚠️ **sin ninguna ruta** — el navegador nunca incluye la ruta en la cabecera `Origin`, así que esto no cambia aunque el juego esté en /goldenage; si pones una ruta aquí, CORS bloquea todas las peticiones) | — |
+   | `SITE_URL` | `https://goldenage.hiddenmadrid.com` (sin barra final — el juego vive en este subdominio propio, ver `backend/proxy_worker.js`; se usa para construir las URLs de vuelta de Stripe) | — |
+   | `ALLOWED_ORIGIN` | `https://goldenage.hiddenmadrid.com` (⚠️ **debe coincidir exactamente** con el origen desde el que se sirve el juego; si no coincide, CORS bloquea todas las peticiones) | — |
 
    Guarda y **vuelve a desplegar** el Worker tras añadirlas (Deploy).
 
@@ -76,9 +76,36 @@ git commit -m "Conectar backend de licencias"
 git push
 ```
 
+## 4.5. Publicar en goldenage.hiddenmadrid.com (Worker-puente)
+
+El juego vive en GitHub Pages, pero los jugadores deben usar
+`goldenage.hiddenmadrid.com` (no la URL de github.io). La raíz de
+hiddenmadrid.com la sirve Lovable y exige su registro DNS en modo
+"DNS only" (nube gris), por lo que una Worker Route sobre una subruta
+de la raíz no funciona — el juego vive en un **subdominio propio**,
+con su propio registro DNS, que sí puede ir "Proxied" sin tocar nada
+de la raíz:
+
+1. **DNS** → Add record → Type: `CNAME`, Name: `goldenage`, Target:
+   cualquier valor válido (p.ej. `goldenage-proxy.<tu-cuenta>.workers.dev`
+   si ya existe el Worker, o el propio `goldenage.hiddenmadrid.com`) →
+   Proxy status: **Proxied** (nube naranja).
+2. **Workers & Pages** → **Create** → **Workers** → **Create Worker**
+3. Nombre: `goldenage-proxy` → Deploy (con el código de ejemplo, luego lo sustituyes)
+4. **Edit code** → borra todo, pega el de [proxy_worker.js](proxy_worker.js) de este repo → **Save and deploy**
+5. En el propio Worker → **Settings → Domains & Routes → Add → Route**:
+   - Route: `goldenage.hiddenmadrid.com/*` (con el asterisco al final)
+   - Zona: `hiddenmadrid.com`
+   - Guarda
+
+Esto es exactamente el mismo mecanismo que usa `tabernas.hiddenmadrid.com`
+para el segundo juego — cada juego tiene su propio Worker-puente y su
+propio subdominio, así que no hay ningún conflicto entre ambos ni con
+la raíz del dominio (que sigue intacta para Lovable).
+
 ## 5. Probar de punta a punta
 
-1. Abre `https://hiddenmadrid.com/goldenage/` en una pestaña nueva (o borra `localStorage` en las herramientas de desarrollador)
+1. Abre `https://goldenage.hiddenmadrid.com/` en una pestaña nueva (o borra `localStorage` en las herramientas de desarrollador)
 2. Pulsa "Comprar licencia" → paga con la tarjeta de prueba `4242 4242 4242 4242`, cualquier fecha futura y CVC
 3. Deberías caer en `gracias.html` con un código `MADRID-XXXXXX`
 4. Vuelve al juego, introdúcelo → debería desbloquear las 6 pruebas

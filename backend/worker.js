@@ -24,11 +24,13 @@
      STRIPE_BUNDLE_PRICE_ID          — ID del precio del pack de las 2 aventuras
                                         (mismo valor que en el Worker de Tabernas:
                                         es un único precio de Stripe, compartido)
-     SITE_URL                        — https://hiddenmadrid.com/goldenage (con ruta — el
-                                        juego vive bajo /goldenage; ver backend/proxy_worker.js)
-     ALLOWED_ORIGIN                  — https://hiddenmadrid.com (SIN ruta: el navegador
-                                        nunca incluye la ruta en la cabecera Origin, así
-                                        que esto NO cambia aunque el juego esté en /goldenage)
+     SITE_URL                        — https://goldenage.hiddenmadrid.com (el juego vive en
+                                        este subdominio propio; ver backend/proxy_worker.js)
+     ALLOWED_ORIGIN                  — https://goldenage.hiddenmadrid.com (debe coincidir
+                                        EXACTAMENTE con el origen desde el que se sirve el
+                                        juego — si el juego se sirve desde un subdominio
+                                        distinto, el navegador bloqueará por CORS todas las
+                                        llamadas a este Worker)
 
    BINDINGS NECESARIOS:
      DB       → la base de datos D1 de este juego, creada con schema.sql
@@ -1577,7 +1579,7 @@ async function handleCodeForSession(request, env) {
           game: "tabernas",
           label: "Tabernas con Historia",
           code: otherRow.code,
-          playUrl: "https://hiddenmadrid.com/tabernas/",
+          playUrl: "https://tabernas.hiddenmadrid.com/",
         });
       }
     } catch (e) {
